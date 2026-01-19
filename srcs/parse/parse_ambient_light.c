@@ -1,27 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   parse.light.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/23 10:36:01 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/01/19 18:56:03 by gcassi-d         ###   ########.fr       */
+/*   Created: 2026/01/19 20:14:57 by gcassi-d          #+#    #+#             */
+/*   Updated: 2026/01/19 20:15:06 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "miniRT.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <fcntl.h>
-
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 214748364
-# endif
-
-char	*get_next_line(int fd);
-int		ft_update(char **line, char *aux);
-
-#endif

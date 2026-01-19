@@ -6,12 +6,11 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 10:35:28 by gcassi-d          #+#    #+#             */
-/*   Updated: 2025/12/12 00:03:26 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/01/19 18:55:55 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <fcntl.h>
 
 static int	ft_read(int fd, char *buff, char **line)
 {
@@ -56,19 +55,3 @@ char	*get_next_line(int fd)
 			return (NULL);
 	}
 }
-
-#include <stdio.h>
-
-int main()
-{
-	int fd = open("prueba.txt", O_RDONLY);
-	char* line = get_next_line(fd);
-	while (line)
-	{
-		printf("%s", line);
-		free(line);
-		line = get_next_line(fd);
-	}
-	close(fd);
-}
- 

@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 21:55:09 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/01/19 18:48:11 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/01/19 20:31:09 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@
 # define PI2 1.57079632679489661923
 # define PI4 0.78539816339744830962
 # define ROTANG 0.00872664625997164788
+# define TOL 0.00000000000001
 
 enum
 {
@@ -44,6 +45,9 @@ enum
 	FILE_NOT_FOUND,
 	MALLOC,
 	UNKNOWN_SPECIFIER,
+	MULTIPLE_CAMERA,
+	MULTILE_AMBIENT_LIGHTING,
+	MULTIPLE_LIGHT,
 }	e_error;
 
 typedef struct s_pixel
@@ -96,5 +100,9 @@ int		parse_plane(t_miniRT *rt, char **split);
 int		parse_cylinder(t_miniRT *rt, char **split);
 
 int		ft_strcmp(const char *s1, const char *s2);
+double	ft_atod(char *str, double *x);
+int		ft_ft_atoi(char *str, double *x);
+size_t	split_len(char **split);
+double	mod(double x, double y, double z);
 
 #endif
