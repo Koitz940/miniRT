@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 20:15:42 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/01/20 22:50:01 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/01/20 23:07:10 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ int	parse_light2(t_miniRT *rt, char **split, char **nums)
 int	parse_light(t_miniRT *rt, char **split)
 {
 	char	**nums;
-	double	num;
 
 	if (rt->light->isdef)
 		return (free_split(split), MULTIPLE_MANDATORY);

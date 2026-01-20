@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 21:55:09 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/01/20 22:48:15 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/01/21 00:13:30 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
-# include "../gnl/get_next_line.h"
 
 # define WIDTH 800
 # define HEIGHT 600
@@ -48,7 +47,8 @@ enum
 	WRONG_SPECIFIER,
 	MULTIPLE_MANDATORY,
 	NO_MANDATORY,
-}	e_error;
+	EMPTY,
+};
 
 typedef struct s_pixel
 {
@@ -100,7 +100,7 @@ int		parse_plane(t_miniRT *rt, char **split);
 int		parse_cylinder(t_miniRT *rt, char **split);
 
 int		ft_strcmp(const char *s1, const char *s2);
-double	ft_atod(char *str, double *x);
+int		ft_atod(char *str, double *x);
 int		ft_ft_atoi(char *str, int *n);
 int		is_color(int r, int g, int b);
 size_t	split_len(char **split);

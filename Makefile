@@ -7,11 +7,15 @@ RM = rm -f
 MLX_DIR = mlx
 LIBFT_DIR = libft
 INCLUDE_DIR	= includes
+GNL_DIR = gnl
 INCLUDES	= -I$(INCLUDE_DIR) \
 			  -I$(MLX_DIR) \
-			  -I$(LIBFT_DIR)
+			  -I$(LIBFT_DIR) \
 
-SRC = main.c free_file.c utils.c init/init_file.c init/init_vecs.c parse/parse_ambient_light.c parse/parse_light.c parse_light.c parse/parse_sphere.c parse1.c
+SRC = main.c free_file.c utils.c init/init_file.c init/init_vecs.c\
+	parse/parse_ambient_light.c parse/parse_light.c parse/parse_sphere.c\
+	parse/parse_cylinder.c parse/parse_camera.c parse/parse_plane.c\
+	error_file.c append.c parse/parse1.c start.c
 
 OBJ_DIR = objs
 

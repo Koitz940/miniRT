@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 20:25:19 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/01/20 22:30:25 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/01/20 23:50:11 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	add_plane(t_planes *planes, t_plane plane)
 	if (planes->length == planes->capacity)
 	{
 		planes->capacity = planes->capacity * 2;
-		new = malloc(sizeof(t_plane) * planes->capacity);
+		new = ft_calloc(sizeof(t_plane), planes->capacity);
 		if (!new)
 			return (MALLOC);
 		i = -1;
@@ -42,7 +42,7 @@ int	add_sphere(t_spheres *spheres, t_sphere sphere)
 	if (spheres->length == spheres->capacity)
 	{
 		spheres->capacity = spheres->capacity * 2;
-		new = malloc(sizeof(t_sphere) * spheres->capacity);
+		new = ft_calloc(sizeof(t_sphere), spheres->capacity);
 		if (!new)
 			return (MALLOC);
 		i = -1;
@@ -64,7 +64,7 @@ int	add_cylinder(t_cylinders *cylinders, t_cylinder cylinder)
 	if (cylinders->length == cylinders->capacity)
 	{
 		cylinders->capacity = cylinders->capacity * 2;
-		new = malloc(sizeof(t_cylinder) * cylinders->capacity);
+		new = ft_calloc(sizeof(t_cylinder), cylinders->capacity);
 		if (!new)
 			return (MALLOC);
 		i = -1;

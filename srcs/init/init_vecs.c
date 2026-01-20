@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/18 19:48:39 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/01/20 19:12:24 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/01/20 23:51:03 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	init_spheres(t_miniRT *rt, int *flag)
 {
-	rt->spheres = malloc(sizeof(t_spheres));
+	rt->spheres = ft_calloc(sizeof(t_spheres), 1);
 	if (!rt->spheres)
 	{
 		*flag = MALLOC;
@@ -29,7 +29,7 @@ void	init_spheres(t_miniRT *rt, int *flag)
 
 void	init_cylinders(t_miniRT *rt, int *flag)
 {
-	rt->cylinders = malloc(sizeof(t_cylinders));
+	rt->cylinders = calloc(sizeof(t_cylinders), 1);
 	if (!rt->cylinders)
 	{
 		*flag = MALLOC;
@@ -44,7 +44,7 @@ void	init_cylinders(t_miniRT *rt, int *flag)
 
 void	init_planes(t_miniRT *rt, int *flag)
 {
-	rt->planes = malloc(sizeof(t_planes));
+	rt->planes = ft_calloc(sizeof(t_planes), 1);
 	if (!rt->planes)
 	{
 		*flag = MALLOC;

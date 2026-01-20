@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 22:21:01 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/01/20 19:11:43 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/01/21 00:00:13 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,18 +58,17 @@ void	free_planes(t_planes *planes)
 
 void	free_screen(t_screen *screen)
 {
-	if (!screen || !screen->mlx)
+	if (!screen)
 		return ;
 	if (screen->screen)
 		free(screen->screen);
+	if (!screen->mlx)
+		return ;
 	if (screen->img)
 		mlx_destroy_image(screen->mlx, screen->img);
 	if (screen->window)
 		mlx_destroy_window(screen->mlx, screen->window);
-	if (screen->mlx)
-	{
-		mlx_destroy_display(screen->mlx);
-		free(screen->mlx);
-	}
+	mlx_destroy_display(screen->mlx);
+	free(screen->mlx);
 	free(screen);
 }

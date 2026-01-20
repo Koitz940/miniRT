@@ -6,20 +6,26 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 18:56:46 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/01/20 20:18:53 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/01/21 00:12:53 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-double	ft_atod(char *str, double *x)
+int	ft_atod(char *str, double *x)
 {
-
+	(void)str;
+	(void)x;
+	*x = 1.0;
+	return (SUCCESS);
 }
 
 int	ft_ft_atoi(char *str, int *n)
 {
-
+	(void)str;
+	(void)n;
+	*n = 1;
+	return (SUCCESS);
 }
 
 size_t	split_len(char **split)

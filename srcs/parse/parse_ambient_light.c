@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 20:14:57 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/01/20 22:49:47 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/01/20 23:06:58 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int	parse_ambient_lighting2(t_miniRT *rt, char **split, char **nums)
 int	parse_ambient_lighting(t_miniRT *rt, char **split)
 {
 	char	**nums;
-	double	num;
 
 	if (rt->ambient_light->isdef)
 		return (free_split(split), MULTIPLE_MANDATORY);
@@ -47,5 +46,5 @@ int	parse_ambient_lighting(t_miniRT *rt, char **split)
 		return (free_split(nums), free_split(split), UNKNOWN_SPECIFIER);
 	if (nums[3] || split[3])
 		return (free_split(nums), free_split(split), UNKNOWN_SPECIFIER);
-	return (parse_ambient_lighting_light2(rt, split, nums));
+	return (parse_ambient_lighting2(rt, split, nums));
 }
