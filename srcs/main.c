@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/18 18:07:12 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/01/19 18:25:23 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/01/20 19:12:42 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,3 @@ int	main(int ac, char **av)
 		return (errmsg(flag), free_all(rt), 1);
 	start(rt);
 }
-

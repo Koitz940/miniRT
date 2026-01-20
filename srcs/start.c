@@ -1,44 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   start.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/19 18:56:46 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/01/20 20:18:53 by gcassi-d         ###   ########.fr       */
+/*   Created: 2026/01/20 20:24:00 by gcassi-d          #+#    #+#             */
+/*   Updated: 2026/01/20 22:42:01 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-double	ft_atod(char *str, double *x)
+void	start(t_miniRT *rt)
 {
-
-}
-
-int	ft_ft_atoi(char *str, int *n)
-{
-
-}
-
-size_t	split_len(char **split)
-{
-	size_t	i;
-
-	i = 0;
-	while (split[i])
-		i++;
-	return (i);
-}
-
-double	mod(double x, double y, double z)
-{
-	return (x * x + y * y + z * z);
-}
-
-int	is_color(int r, int g, int b)
-{
-	return (r < 256 && r >= 0 && g < 256
-		&& g >= 0 && b < 256 && b >= 0);
+	free_all(rt);
 }

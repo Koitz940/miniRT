@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/18 19:48:39 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/01/19 18:25:23 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/01/20 19:12:24 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,3 @@ void	init_planes(t_miniRT *rt, int *flag)
 	if (!rt->planes->planes)
 		*flag = MALLOC;
 }
-

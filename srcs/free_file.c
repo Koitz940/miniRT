@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 22:21:01 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/01/19 18:25:23 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/01/20 19:11:43 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,4 +73,3 @@ void	free_screen(t_screen *screen)
 	}
 	free(screen);
 }
-

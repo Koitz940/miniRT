@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 21:55:09 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/01/19 20:31:09 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/01/20 22:48:15 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # include "light.h"
 # include "plane.h"
 # include "sphere.h"
-# include "../libft/libft.h"
-# include "../mlx/mlx.h"
+# include "libft.h"
+# include "mlx.h"
 # include <X11/keysym.h>
 # include <unistd.h>
 # include <stdlib.h>
@@ -45,9 +45,9 @@ enum
 	FILE_NOT_FOUND,
 	MALLOC,
 	UNKNOWN_SPECIFIER,
-	MULTIPLE_CAMERA,
-	MULTILE_AMBIENT_LIGHTING,
-	MULTIPLE_LIGHT,
+	WRONG_SPECIFIER,
+	MULTIPLE_MANDATORY,
+	NO_MANDATORY,
 }	e_error;
 
 typedef struct s_pixel
@@ -101,8 +101,16 @@ int		parse_cylinder(t_miniRT *rt, char **split);
 
 int		ft_strcmp(const char *s1, const char *s2);
 double	ft_atod(char *str, double *x);
-int		ft_ft_atoi(char *str, double *x);
+int		ft_ft_atoi(char *str, int *n);
+int		is_color(int r, int g, int b);
 size_t	split_len(char **split);
 double	mod(double x, double y, double z);
+
+void	errormsg(int flag);
+void	start(t_miniRT *rt);
+
+int		add_plane(t_planes *planes, t_plane plane);
+int		add_sphere(t_spheres *spheres, t_sphere sphere);
+int		add_cylinder(t_cylinders *cylinders, t_cylinder cylinder);
 
 #endif

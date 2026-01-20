@@ -1,84 +1,54 @@
-# Special targets
-.POSIX:
-.PHONY: clean re fclean all
+NAME = miniRT
+NAME_BONUS = fractol_bonus
+CC = cc
+CFLAGS = -Wall -Werror -Wextra
+RM = rm -f
 
-# Color
-BBLUE		= \033[1;34m
-GREEN		= \033[0;32m
-NC			= \033[0m
-
-# Compiler
-NAME		= fractol
-CC			= cc
-CFLAGS		= -Wall -Werror -Wextra -g
-MAKE		= make -sC
-RM			= rm -rf
-OS			= $(shell uname)
-
-# Libs
-MLX_DIR		= mlx
-MLX 		= $(MLX_DIR)/mlx.a
-LIBFT_DIR	= libft
-LIBFT		= $(LIBFT_DIR)/libft.a
-LINKER	+= -L$(MLX_DIR) -lmlx -lXext -lX11 -lm -lz
-
-# Includes
-INCLUDE_DIR	= include
+MLX_DIR = mlx
+LIBFT_DIR = libft
+INCLUDE_DIR	= includes
 INCLUDES	= -I$(INCLUDE_DIR) \
-			  -I$(MLX_DIR)
+			  -I$(MLX_DIR) \
+			  -I$(LIBFT_DIR)
 
-# Sources
-SRC_DIR		= srcs
-SOURCES		= main.c free_file.c init/init_file.c utils.c init/init_vecs.c parse/parse1.c parse/parse_ambient_lighting.c parse/parse_camera.c parse/parse_light.c 
+SRC = main.c free_file.c utils.c init/init_file.c init/init_vecs.c parse/parse_ambient_light.c parse/parse_light.c parse_light.c parse/parse_sphere.c parse1.c
 
-# Objects
-OBJ_DIR		= obj
-OBJ			= $(SOURCES:.c=.o)
-OBJECTS		= $(addprefix $(OBJ_DIR)/, $(SOURCES:.c=.o))
+OBJ_DIR = objs
 
-# Bonus sources
-#BSRC_DIR	= src_bonus
-#BSOURCES	= main.c utils.c fractal.c libft_utils.c ft_strtod.c interactions.c 
+OBJS = $(SRC:.c=.o)
+OBJECTS	= $(addprefix $(OBJ_DIR)/, $(OBJS))
 
-# Bonus objects
-#BOBJ_DIR	= obj_bonus
-#BOBJECTS	= $(addprefix $(BOBJ_DIR)/, $(BSOURCES:.c=.o))
+OBJS_BONUS = $(SRC_BONUS:.c=.o)
 
+MLXFLAGS = -Lmlx -lmlx -lX11 -lXext -lm -lbsd -lft -Llibft
 
-all:  $(NAME)
+MLX = mlx/libmlx.a
+LIBFT = libft/libft.a
 
+objs/%.o: srcs/%.c
+	$(CC) $(CFLAGS) -c $< -o $@ $(MLXFLAGS) $(INCLUDES)
 
-# Libraries and other dependencies
-deps: $(MLX)
+$(NAME): $(MLX) $(LIBFT) $(OBJECTS)
+	@echo $(OBJECTS)
+	$(CC) $(CFLAGS) $(OBJECTS) $(MLXFLAGS) $(INCLUDES) -o $@ 
 
 $(MLX):
-	@echo "$(BBLUE)$(NAME)$(NC): Creating $(GREEN)minilibx$(NC)..."
-	@$(MAKE) $(MLX_DIR)
-	@echo "$(BBLUE)$(NAME)$(NC): $(GREEN)minilibx$(NC) created"
+	$(MAKE) -C mlx
+	$(MAKE) -C libft
 
+all: $(NAME) 
 
-# Main program
-$(NAME): deps $(OBJECTS)
-	@echo "$(BBLUE)$(NAME)$(NC): Creating $(GREEN)$@$(NC)..."
-	$(CC) $(CFLAGS) -o $@ $(OBJECTS) $(LINKER)
-	@echo "$(BBLUE)$(NAME)$(NC): $(GREEN)$(NAME)$(NC) created"
+$(NAME_BONUS): $(MLX) $(OBJS_BONUS)
+	$(CC) $(CFLAGS) $(OBJS_BONUS) $(MLXFLAGS) -o $@
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	@mkdir -p $(OBJ_DIR)
-	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@ 
-
-
-# Cleaning targets
+bonus: $(NAME_BONUS)
 
 clean:
-	@$(MAKE) $(MLX_DIR) clean
-	@$(RM) $(OBJ_DIR)
-	@echo "$(BBLUE)$(NAME)$(NC): Objects cleaned"
+	$(RM) $(OBJECTS) $(OBJS_BONUS)
 
 fclean: clean
-	@$(RM) $(NAME)
-	@echo "$(BBLUE)$(NAME)$(NC): Fully cleaned"
+	$(RM) $(NAME) $(NAME_BONUS)
+	$(MAKE) clean -C mlx
+	$(MAKE) fclean -C libft
 
 re: fclean all
-
-

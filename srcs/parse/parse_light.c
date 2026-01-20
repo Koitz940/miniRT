@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 20:15:42 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/01/19 20:33:13 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/01/20 22:50:01 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,13 @@
 
 int	parse_light2(t_miniRT *rt, char **split, char **nums)
 {
-	if (atod(split[1], &(rt->light->bright)))
+	if (ft_atod(split[2], &(rt->light->bright)))
 		return (free_split(nums), free_split(split), UNKNOWN_SPECIFIER);
-	if (!split[2])
+	if (rt->light->bright < 0 || rt->light->bright > 1)
+		return (free_split(split), WRONG_SPECIFIER);
+	if (!split[3])
 		return (free_split(split), UNKNOWN_SPECIFIER);
-	nums = ft_split(split[2], ',');
+	nums = ft_split(split[3], ',');
 	if (!nums)
 		return (free_split(split), MALLOC);
 	if (!nums[0] || ft_ft_atoi(nums[0], &(rt->light->r)))
@@ -27,10 +29,12 @@ int	parse_light2(t_miniRT *rt, char **split, char **nums)
 		return (free_split(nums), free_split(split), UNKNOWN_SPECIFIER);
 	if (!nums[2] || ft_ft_atoi(nums[2], &(rt->light->b)))
 		return (free_split(nums), free_split(split), UNKNOWN_SPECIFIER);
-	if (nums[3] || split[3])
+	if (nums[3] || split[4] || !is_color(rt->light->r,
+			rt->light->g, rt->light->b))
 		return (free_split(nums), free_split(split), UNKNOWN_SPECIFIER);
 	free_split(nums);
 	free_split(split);
+	rt->light->isdef = 1;
 	return (SUCCESS);
 }
 
@@ -40,10 +44,10 @@ int	parse_light(t_miniRT *rt, char **split)
 	double	num;
 
 	if (rt->light->isdef)
-		return (free_split(split), MULTIPLE_LIGHT);
-	if (!split[0])
+		return (free_split(split), MULTIPLE_MANDATORY);
+	if (!split[1])
 		return (free_split(split), UNKNOWN_SPECIFIER);
-	nums = ft_split(split[0], ',');
+	nums = ft_split(split[1], ',');
 	if (!nums)
 		return (free_split(split), MALLOC);
 	if (!nums[0] || ft_atod(nums[0], &(rt->light->x)))
@@ -54,10 +58,8 @@ int	parse_light(t_miniRT *rt, char **split)
 		return (free_split(nums), free_split(split), UNKNOWN_SPECIFIER);
 	if (nums[3])
 		return (free_split(nums), free_split(split), UNKNOWN_SPECIFIER);
-	if (!split[1])
-		return (free_split(split), UNKNOWN_SPECIFIER);
 	free_split(nums);
-	if (!split[1])
+	if (!split[2])
 		return (free_split(split), UNKNOWN_SPECIFIER);
 	return (parse_light2(rt, split, nums));
 }

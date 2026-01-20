@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/18 18:55:16 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/01/19 18:25:23 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/01/20 22:50:28 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,13 @@ static int	init2(t_miniRT *rt, int flag, char *filename)
 			return (flag);
 		flag = parse(rt, line);
 		free(line);
+		if (flag)
+			return (flag);
 	}
+	if (!rt->camera->isdef || !rt->light->isdef
+		|| !rt->ambient_light->isdef)
+		return (NO_MANDATORY);
+	return (SUCCESS);
 }
 
 int	init(t_miniRT *rt, char *filename)
@@ -119,4 +125,3 @@ int	init(t_miniRT *rt, char *filename)
 	rt->light->isdef = 0;
 	return (init2(rt, flag, filename));
 }
-
