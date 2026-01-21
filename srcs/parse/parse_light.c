@@ -6,13 +6,13 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 20:15:42 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/01/21 12:49:38 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/01/21 13:30:28 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-int	parse_light2(t_miniRT *rt, char **split, char **nums)
+static int	parse_light2(t_miniRT *rt, char **split, char **nums)
 {
 	if (ft_atod(split[2], &(rt->light->bright)))
 		return (free_split(nums), free_split(split), UNKNOWN_SPECIFIER);

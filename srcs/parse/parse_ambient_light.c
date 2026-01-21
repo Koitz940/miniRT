@@ -6,13 +6,13 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 20:14:57 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/01/21 12:48:42 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/01/21 13:30:55 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-int	parse_ambient_lighting2(t_miniRT *rt, char **split, char **nums)
+static int	parse_ambient_lighting2(t_miniRT *rt, char **split, char **nums)
 {
 	free_split(nums);
 	free_split(split);

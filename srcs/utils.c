@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 18:56:46 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/01/21 12:47:01 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/01/21 13:24:04 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ int	ft_ft_atoi(char *str, int *n)
 {
 	size_t	i;
 
+	*n = 0;
 	if (!str || !str[0])
 		return (UNKNOWN_SPECIFIER);
 	i = 0;

@@ -6,13 +6,21 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 19:58:12 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/01/21 11:40:00 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/01/21 13:38:01 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-int	parse_cylinder2(t_miniRT *rt, char **nums, char **split,
+static int	parse_cylinder3(char **split, t_cylinder *cylinder)
+{
+	ft_bzero(cylinder, sizeof(t_cylinder));
+	if (validate_nums(split[1]))
+		return (free_split(split), UNKNOWN_SPECIFIER);
+	return (SUCCESS);
+}
+
+static int	parse_cylinder2(t_miniRT *rt, char **nums, char **split,
 		t_cylinder cylinder)
 {
 	double	vec_mod;
@@ -23,8 +31,8 @@ int	parse_cylinder2(t_miniRT *rt, char **nums, char **split,
 	cylinder.zdir /= vec_mod;
 	if (!split[4] || ft_atod(split[4], &(cylinder.h)))
 		return (free_split(split), UNKNOWN_SPECIFIER);
-	if (cylinder.h < 0)
-		return (free_split(split), UNKNOWN_SPECIFIER);
+	if (cylinder.h <= 0)
+		return (free_split(split), WRONG_SPECIFIER);
 	if (validate_nums(split[5]))
 		return (free_split(split), UNKNOWN_SPECIFIER);
 	nums = ft_split(split[5], ',');
@@ -47,7 +55,7 @@ int	parse_cylinder(t_miniRT *rt, char **split)
 	char		**nums;
 	t_cylinder	cylinder;
 
-	if (validate_nums(split[1]))
+	if (parse_cylinder3(split, &cylinder))
 		return (free_split(split), UNKNOWN_SPECIFIER);
 	nums = ft_split(split[1], ',');
 	if (!nums[0] || !nums[1] || !nums[2] || nums[3]
@@ -66,7 +74,7 @@ int	parse_cylinder(t_miniRT *rt, char **split)
 	free_split(nums);
 	if (!split[3] || ft_atod(split[3], &(cylinder.d)))
 		return (free_split(split), UNKNOWN_SPECIFIER);
-	if (cylinder.d < 0)
+	if (cylinder.d <= 0)
 		return (free_split(split), UNKNOWN_SPECIFIER);
 	return (parse_cylinder2(rt, nums, split, cylinder));
 }

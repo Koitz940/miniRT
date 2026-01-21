@@ -6,13 +6,13 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 19:19:58 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/01/21 11:43:03 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/01/21 13:31:05 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-int	parse_plane2(t_miniRT *rt, char **nums, char **split, t_plane plane)
+static int	parse_plane2(t_miniRT *rt, char **nums, char **split, t_plane plane)
 {
 	double	vec_mod;
 
@@ -40,6 +40,7 @@ int	parse_plane(t_miniRT *rt, char **split)
 	char	**nums;
 	t_plane	plane;
 
+	ft_bzero(&plane, sizeof(plane));
 	if (validate_nums(split[1]))
 		return (free_split(split), UNKNOWN_SPECIFIER);
 	nums = ft_split(split[1], ',');
