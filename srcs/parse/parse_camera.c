@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 18:22:53 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/01/21 00:20:51 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/01/21 12:46:22 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	parse_camera(t_miniRT *rt, char **split)
 
 	if (rt->camera->isdef)
 		return (free_split(split), MULTIPLE_MANDATORY);
-	if (!split[1])
+	if (validate_nums(split[1]))
 		return (free_split(split), UNKNOWN_SPECIFIER);
 	nums = ft_split(split[1], ',');
 	if (!nums)
@@ -64,7 +64,7 @@ int	parse_camera(t_miniRT *rt, char **split)
 	if (!nums[2] || ft_atod(nums[2], &(rt->camera->z)) || nums[3])
 		return (free_split(nums), free_split(split), UNKNOWN_SPECIFIER);
 	free_split(nums);
-	if (!split[2])
+	if (validate_nums(split[2]))
 		return (free_split(split), UNKNOWN_SPECIFIER);
 	nums = ft_split(split[2], ',');
 	if (!nums)

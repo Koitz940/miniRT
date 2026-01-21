@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/18 18:07:12 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/01/21 00:19:21 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/01/21 12:49:57 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,19 @@ static int	validate_file(int ac, char **av)
 	return (SUCCESS);
 }
 
+int	validate_nums(char *nums)
+{
+	size_t	len;
+
+	if (!nums)
+		return (UNKNOWN_SPECIFIER);
+	len = ft_strlen(nums);
+	if (!nums[0] || nums[0] == ','
+		|| ft_strnstr(nums, ",,", len) || nums[len - 1] == ',')
+		return (UNKNOWN_SPECIFIER);
+	return (SUCCESS);
+}
+
 int	main(int ac, char **av)
 {
 	t_miniRT	*rt;
@@ -44,5 +57,5 @@ int	main(int ac, char **av)
 	if (flag)
 		return (free_all(rt), errormsg(flag), 1);
 	start(rt);
-	ft_putendl_fd("Finished!\n", 1);
+	ft_putendl_fd("Finished!", 1);
 }

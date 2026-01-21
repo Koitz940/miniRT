@@ -6,36 +6,76 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 18:56:46 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/01/21 00:12:53 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/01/21 12:47:01 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
+int	add_decimals(char *str, size_t dot, double sign, double *x)
+{
+	double	decimal;
+	size_t	i;
+
+	i = ft_strlen(str);
+	decimal = 0;
+	while (--i != dot)
+	{
+		if (str[i] < '0' || str[i] > '9')
+			return (UNKNOWN_SPECIFIER);
+		decimal = decimal / 10 + str[i] - '0';
+	}
+	decimal /= 10;
+	*x += decimal;
+	*x *= sign;
+	return (SUCCESS);
+}
+
 int	ft_atod(char *str, double *x)
 {
-	(void)str;
-	(void)x;
-	*x = 1.0;
+	size_t	i;
+	double	sign;
+
+	if (!str || !str[0] || !ft_strncmp(".", str, 2)
+		|| !ft_strncmp("+.", str, 3) || !ft_strncmp("-.", str, 3))
+		return (UNKNOWN_SPECIFIER);
+	i = 0;
+	sign = 1.0;
+	if (str[0] == '+' || str[0] == '-')
+	{
+		if (str[i++] == '-')
+			sign = -1.0;
+	}
+	while (str[i] && str[i] != '.')
+	{
+		if (str[i] < '0' || str[i] > '9')
+			return (UNKNOWN_SPECIFIER);
+		*x = *x * 10.0 + (double)(str[i++] - '0');
+		if (*x == INFINITY)
+			return (WRONG_SPECIFIER);
+	}
+	if (str[i])
+		return (add_decimals(str, i, sign, x));
+	*x *= sign;
 	return (SUCCESS);
 }
 
 int	ft_ft_atoi(char *str, int *n)
 {
-	(void)str;
-	(void)n;
-	*n = 1;
-	return (SUCCESS);
-}
-
-size_t	split_len(char **split)
-{
 	size_t	i;
 
+	if (!str || !str[0])
+		return (UNKNOWN_SPECIFIER);
 	i = 0;
-	while (split[i])
-		i++;
-	return (i);
+	while (str[i])
+	{
+		if (str[i] < '0' || str[i] > '9')
+			return (UNKNOWN_SPECIFIER);
+		*n = *n * 10 + str[i++] - '0';
+		if (*n > 255)
+			return (WRONG_SPECIFIER);
+	}
+	return (SUCCESS);
 }
 
 double	mod(double x, double y, double z)

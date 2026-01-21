@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 18:06:15 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/01/20 19:40:03 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/01/21 11:43:47 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	parse_sphere(t_miniRT *rt, char **split)
 	char		**nums;
 	t_sphere	sphere;
 
-	if (!split[1])
+	if (validate_nums(split[1]))
 		return (free_split(split), UNKNOWN_SPECIFIER);
 	nums = ft_split(split[1], ',');
 	if (!nums[0] || !nums[1] || !nums[2] || nums[3]
@@ -36,7 +36,7 @@ int	parse_sphere(t_miniRT *rt, char **split)
 		return (free_split(split), UNKNOWN_SPECIFIER);
 	if (ft_atod(split[2], &(sphere.d)))
 		return (free_split(split), UNKNOWN_SPECIFIER);
-	if (!split[3] || sphere.d < 0)
+	if (validate_nums(split[3]) || sphere.d < 0)
 		return (free_split(split), UNKNOWN_SPECIFIER);
 	nums = ft_split(split[3], ',');
 	if (!nums[0] || !nums[1] || !nums[2] || nums[3] || split[4]

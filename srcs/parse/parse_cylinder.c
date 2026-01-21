@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 19:58:12 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/01/20 20:20:15 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/01/21 11:40:00 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	parse_cylinder2(t_miniRT *rt, char **nums, char **split,
 		return (free_split(split), UNKNOWN_SPECIFIER);
 	if (cylinder.h < 0)
 		return (free_split(split), UNKNOWN_SPECIFIER);
-	if (!split[5])
+	if (validate_nums(split[5]))
 		return (free_split(split), UNKNOWN_SPECIFIER);
 	nums = ft_split(split[5], ',');
 	if (!nums[0] || !nums[1] || !nums[2] || nums[3]
@@ -47,7 +47,7 @@ int	parse_cylinder(t_miniRT *rt, char **split)
 	char		**nums;
 	t_cylinder	cylinder;
 
-	if (!split[1])
+	if (validate_nums(split[1]))
 		return (free_split(split), UNKNOWN_SPECIFIER);
 	nums = ft_split(split[1], ',');
 	if (!nums[0] || !nums[1] || !nums[2] || nums[3]
@@ -55,7 +55,7 @@ int	parse_cylinder(t_miniRT *rt, char **split)
 		|| ft_atod(nums[2], &(cylinder.z)))
 		return (free_split(split), free_split(nums), UNKNOWN_SPECIFIER);
 	free_split(nums);
-	if (!split[2])
+	if (validate_nums(split[2]))
 		return (free_split(split), UNKNOWN_SPECIFIER);
 	nums = ft_split(split[2], ',');
 	if (!nums[0] || !nums[1] || !nums[2] || nums[3]
@@ -64,7 +64,7 @@ int	parse_cylinder(t_miniRT *rt, char **split)
 		|| ft_atod(nums[2], &(cylinder.zdir)))
 		return (free_split(split), free_split(nums), UNKNOWN_SPECIFIER);
 	free_split(nums);
-	if (!split[3] || ft_atod(split[4], &(cylinder.d)))
+	if (!split[3] || ft_atod(split[3], &(cylinder.d)))
 		return (free_split(split), UNKNOWN_SPECIFIER);
 	if (cylinder.d < 0)
 		return (free_split(split), UNKNOWN_SPECIFIER);

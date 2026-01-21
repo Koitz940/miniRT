@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 19:19:58 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/01/20 19:57:57 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/01/21 11:43:03 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	parse_plane(t_miniRT *rt, char **split)
 	char	**nums;
 	t_plane	plane;
 
-	if (!split[1])
+	if (validate_nums(split[1]))
 		return (free_split(split), UNKNOWN_SPECIFIER);
 	nums = ft_split(split[1], ',');
 	if (!nums[0] || !nums[1] || !nums[2] || nums[3]
@@ -48,7 +48,7 @@ int	parse_plane(t_miniRT *rt, char **split)
 		|| ft_atod(nums[2], &(plane.z)))
 		return (free_split(split), free_split(nums), UNKNOWN_SPECIFIER);
 	free_split(nums);
-	if (!split[2])
+	if (validate_nums(split[2]))
 		return (free_split(split), UNKNOWN_SPECIFIER);
 	nums = ft_split(split[2], ',');
 	if (!nums[0] || !nums[1] || !nums[2] || nums[3]
@@ -56,7 +56,7 @@ int	parse_plane(t_miniRT *rt, char **split)
 		|| ft_atod(nums[2], &(plane.zdir)))
 		return (free_split(split), free_split(nums), UNKNOWN_SPECIFIER);
 	free_split(nums);
-	if (!split[3])
+	if (validate_nums(split[3]))
 		return (free_split(split), UNKNOWN_SPECIFIER);
 	nums = ft_split(split[3], ',');
 	return (parse_plane2(rt, nums, split, plane));

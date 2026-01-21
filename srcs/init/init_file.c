@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/18 18:55:16 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/01/21 00:18:05 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/01/21 12:40:42 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,8 @@ static int	init2(t_miniRT *rt, int flag, char *filename)
 		return (EMPTY);
 	while (line)
 	{
-		if (!line)
-			return (flag);
+		if (line[ft_strlen(line) - 1] == '\n')
+			line[ft_strlen(line) - 1] = 0;
 		flag = parse(rt, line);
 		free(line);
 		if (flag)

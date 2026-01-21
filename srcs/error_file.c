@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 22:43:26 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/01/21 00:10:34 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/01/21 12:41:00 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +16,24 @@ void	errormsg(int flag)
 {
 	if (flag == IN_AM)
 		ft_putendl_fd("Error: can only input the name of a single\
- .rt file\n", 2);
+ .rt file", 2);
 	else if (flag == FILE_NAME)
-		ft_putendl_fd("Error: Input file must have .rt format\n", 2);
+		ft_putendl_fd("Error: Input file must have .rt format", 2);
 	else if (flag == FILE_NOT_FOUND)
 		ft_putendl_fd("Error: GIven file doesn't exist or could\
-			 not be opened\n", 2);
+			 not be opened", 2);
 	else if (flag == MALLOC)
-		ft_putendl_fd("Error: A memory allocation failed\n", 2);
+		ft_putendl_fd("Error: A memory allocation failed", 2);
 	else if (flag == UNKNOWN_SPECIFIER)
-		ft_putendl_fd("Error: unknown character given in file\n", 2);
+		ft_putendl_fd("Error: unknown character given in file", 2);
 	else if (flag == WRONG_SPECIFIER)
-		ft_putendl_fd("Error: Some number does not fit in its range\n", 2);
+		ft_putendl_fd("Error: Some number does not fit in its range", 2);
 	else if (flag == MULTIPLE_MANDATORY)
 		ft_putendl_fd("Error: Camera, light or ambient light was defined\
- more than once\n", 2);
+ more than once", 2);
 	else if (flag == NO_MANDATORY)
 		ft_putendl_fd("Error: Camera, light or ambient\
- light was not defined\n", 2);
+ light was not defined", 2);
 	else if (flag == NO_MANDATORY)
-		ft_putendl_fd("Error: Missing mandatory elements or empty file\n", 2);
+		ft_putendl_fd("Error: Missing mandatory elements or empty file", 2);
 }

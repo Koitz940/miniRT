@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 20:14:57 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/01/20 23:06:58 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/01/21 12:48:42 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	parse_ambient_lighting(t_miniRT *rt, char **split)
 		return (free_split(split), UNKNOWN_SPECIFIER);
 	if (rt->ambient_light->bright < 0 || rt->ambient_light->bright > 1)
 		return (free_split(split), WRONG_SPECIFIER);
-	if (!split[2])
+	if (validate_nums(split[2]))
 		return (free_split(split), UNKNOWN_SPECIFIER);
 	nums = ft_split(split[2], ',');
 	if (!nums)

@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 21:55:09 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/01/21 00:13:30 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/01/21 12:03:34 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,8 +103,8 @@ int		ft_strcmp(const char *s1, const char *s2);
 int		ft_atod(char *str, double *x);
 int		ft_ft_atoi(char *str, int *n);
 int		is_color(int r, int g, int b);
-size_t	split_len(char **split);
 double	mod(double x, double y, double z);
+int		validate_nums(char *nums);
 
 void	errormsg(int flag);
 void	start(t_miniRT *rt);
