@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 19:19:58 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/01/21 13:31:05 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/01/25 19:01:18 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,13 @@
 
 static int	parse_plane2(t_miniRT *rt, char **nums, char **split, t_plane plane)
 {
-	double	vec_mod;
-
 	if (!nums[0] || !nums[1] || !nums[2] || nums[3]
 		|| ft_ft_atoi(nums[0], &(plane.r)) || ft_ft_atoi(nums[1], &(plane.g))
 		|| ft_ft_atoi(nums[2], &(plane.b)))
 		return (free_split(split), free_split(nums), UNKNOWN_SPECIFIER);
 	free_split(nums);
-	vec_mod = sqrt(mod(plane.xdir, plane.ydir, plane.zdir));
-	plane.xdir /= vec_mod;
-	plane.ydir /= vec_mod;
-	plane.zdir /= vec_mod;
+	if (validate_dir(&(plane.xdir), &(plane.ydir), &(plane.zdir)))
+		return (free_split(split), NO_DIR);
 	if (!is_color(plane.r, plane.b, plane.g))
 		return (free_split(split), WRONG_SPECIFIER);
 	if (split[4])

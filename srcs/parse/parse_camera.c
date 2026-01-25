@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 18:22:53 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/01/21 13:32:56 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/01/25 18:58:50 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ char	**ft_reall(char **nums, char *line)
 
 static int	parse_camera2(t_miniRT *rt, char **split, char **nums)
 {
-	double	vec_mod;
-
 	if (!nums[0] || ft_atod(nums[0], &(rt->camera->xdir)))
 		return (free_split(nums), free_split(split), UNKNOWN_SPECIFIER);
 	if (!nums[1] || ft_atod(nums[1], &(rt->camera->ydir)))
@@ -30,11 +28,10 @@ static int	parse_camera2(t_miniRT *rt, char **split, char **nums)
 		return (free_split(nums), free_split(split), UNKNOWN_SPECIFIER);
 	if (nums[3])
 		return (free_split(nums), free_split(split), UNKNOWN_SPECIFIER);
-	vec_mod = sqrt(mod(rt->camera->xdir, rt->camera->ydir, rt->camera->zdir));
-	rt->camera->xdir /= vec_mod;
-	rt->camera->ydir /= vec_mod;
-	rt->camera->zdir /= vec_mod;
 	free_split(nums);
+	if (validate_dir(&(rt->camera->xdir), &(rt->camera->ydir),
+			&(rt->camera->zdir)))
+		return (free_split(split), NO_DIR);
 	if (!split[3] || ft_atod(split[3], &(rt->camera->fov)))
 		return (free_split(split), UNKNOWN_SPECIFIER);
 	if (rt->camera->fov > 180 || rt->camera->fov < 0)

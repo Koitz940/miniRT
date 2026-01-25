@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 21:55:09 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/01/21 12:03:34 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/01/25 19:01:35 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ enum
 	WRONG_SPECIFIER,
 	MULTIPLE_MANDATORY,
 	NO_MANDATORY,
+	NO_DIR,
 	EMPTY,
 };
 
@@ -105,6 +106,7 @@ int		ft_ft_atoi(char *str, int *n);
 int		is_color(int r, int g, int b);
 double	mod(double x, double y, double z);
 int		validate_nums(char *nums);
+int		validate_dir(double *x, double *y, double *z);
 
 void	errormsg(int flag);
 void	start(t_miniRT *rt);

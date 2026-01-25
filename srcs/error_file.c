@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 22:43:26 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/01/21 12:41:00 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/01/25 19:01:53 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,6 @@ void	errormsg(int flag)
  light was not defined", 2);
 	else if (flag == NO_MANDATORY)
 		ft_putendl_fd("Error: Missing mandatory elements or empty file", 2);
+	else if (flag == NO_DIR)
+		ft_putendl_fd("Error: Direction 0,0,0 given", 2);
 }

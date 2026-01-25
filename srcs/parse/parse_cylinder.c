@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 19:58:12 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/01/21 13:38:01 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/01/25 19:00:02 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,8 @@ static int	parse_cylinder3(char **split, t_cylinder *cylinder)
 static int	parse_cylinder2(t_miniRT *rt, char **nums, char **split,
 		t_cylinder cylinder)
 {
-	double	vec_mod;
-
-	vec_mod = sqrt(mod(cylinder.xdir, cylinder.ydir, cylinder.zdir));
-	cylinder.xdir /= vec_mod;
-	cylinder.ydir /= vec_mod;
-	cylinder.zdir /= vec_mod;
+	if (validate_dir(&(cylinder.xdir), &(cylinder.ydir), &(cylinder.zdir)))
+		return (free_split(split), NO_DIR);
 	if (!split[4] || ft_atod(split[4], &(cylinder.h)))
 		return (free_split(split), UNKNOWN_SPECIFIER);
 	if (cylinder.h <= 0)
