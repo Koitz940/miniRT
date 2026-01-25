@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 21:55:09 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/01/25 19:01:35 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/01/25 20:17:25 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,5 +114,12 @@ void	start(t_miniRT *rt);
 int		add_plane(t_planes *planes, t_plane plane);
 int		add_sphere(t_spheres *spheres, t_sphere sphere);
 int		add_cylinder(t_cylinders *cylinders, t_cylinder cylinder);
+
+int		move_cam(t_camera *camera);
+int		place_cam(t_camera *camera);
+int		move_plane(t_plane *plane);
+int		place_plane(t_plane *plane);
+
+int		ask_coords(double *x, double *y, double *z);
 
 #endif
