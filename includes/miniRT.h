@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 21:55:09 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/01/25 20:17:25 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/02/09 20:22:10 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,13 @@ int		move_cam(t_camera *camera);
 int		place_cam(t_camera *camera);
 int		move_plane(t_plane *plane);
 int		place_plane(t_plane *plane);
+int		move_cylinder(t_cylinder *cylinder);
+int		place_cylinder(t_cylinder *cylinder);
+int		move_sphere(t_sphere *sphere);
+int		place_sphere(t_sphere *sphere);
+int		move_light(t_light *light);
+int		place_light(t_light *light);
+
 
 int		ask_coords(double *x, double *y, double *z);
 
