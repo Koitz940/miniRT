@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 20:15:39 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/01/25 20:22:04 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/02/11 19:31:06 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,13 @@ static int	ask_coords3(double *z, char *str)
 		str = get_next_line(0);
 		if (ft_atod(str, z))
 		{
-			if (str)
-				free(str);
+			if (!str)
+			{
+				ft_putendl_fd("Either ctrl d\
+					 or malloc error happened, stopping:", 1);
+				return (MALLOC);
+			}
+			free(str);
 			ft_putendl_fd("Incorrect decimal number, try again:", 1);
 		}
 		else
@@ -38,8 +43,13 @@ static int	ask_coords2(double *y, double *z, char *str)
 		str = get_next_line(0);
 		if (ft_atod(str, y))
 		{
-			if (str)
-				free(str);
+			if (!str)
+			{
+				ft_putendl_fd("Either ctrl d\
+					 or malloc error happened, stopping:", 1);
+				return (MALLOC);
+			}
+			free(str);
 			ft_putendl_fd("Incorrect decimal number, try again:", 1);
 		}
 		else
@@ -58,12 +68,42 @@ int	ask_coords(double *x, double *y, double *z)
 		str = get_next_line(0);
 		if (ft_atod(str, x))
 		{
-			if (str)
-				free(str);
+			if (!str)
+			{
+				ft_putendl_fd("Either ctrl d\
+					 or malloc error happened, stopping:", 1);
+				return (MALLOC);
+			}
+			free(str);
 			ft_putendl_fd("Incorrect decimal number, try again:", 1);
 		}
 		else
 			break ;
 	}
 	ask_coords2(y, z, str);
+}
+
+int	ask_factor(double *x)
+{
+	char	*str;
+
+	ft_putendl_fd("Write the sclaing factor:", 1);
+	while (1)
+	{
+		str = get_next_line(0);
+		if (ft_atod(str, x))
+		{
+			if (!str)
+			{
+				ft_putendl_fd("Either ctrl d\
+					 or malloc error happened, stopping:", 1);
+				return (MALLOC);
+			}
+			free(str);
+			ft_putendl_fd("Incorrect decimal number, try again:", 1);
+		}
+		else
+			break ;
+	}
+	return (SUCCESS);
 }

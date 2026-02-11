@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 21:55:09 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/02/09 20:22:10 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/02/11 19:31:20 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,5 +128,6 @@ int		place_light(t_light *light);
 
 
 int		ask_coords(double *x, double *y, double *z);
+int		ask_factor(double *x);
 
 #endif
