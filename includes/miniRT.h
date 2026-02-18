@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 21:55:09 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/02/18 19:08:51 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/02/18 20:54:26 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,17 +125,28 @@ int		add_cylinder(t_cylinders *cylinders, t_cylinder cylinder);
 
 int		move_cam(t_camera *camera);
 int		place_cam(t_camera *camera);
+int		move_cam_from(t_camera *camera, t_vec dir);
 int		move_plane(t_plane *plane);
 int		place_plane(t_plane *plane);
+int		move_plane_from(t_plane *plane, t_vec dir);
 int		move_cylinder(t_cylinder *cylinder);
 int		place_cylinder(t_cylinder *cylinder);
+int		move_cylinder_from(t_cylinder *cylinder, t_vec dir);
 int		move_sphere(t_sphere *sphere);
 int		place_sphere(t_sphere *sphere);
+int		move_sphere_from(t_sphere *sphere, t_vec dir);
 int		move_light(t_light *light);
 int		place_light(t_light *light);
-
+int		move_light_from(t_light *light, t_vec dir);
 
 int		ask_coords(double *x, double *y, double *z);
 int		ask_factor(double *x);
+
+t_vec	vec_prod(t_vec a, t_vec b);
+double	doc_prod(t_vec a, t_vec b);
+t_vec	new_vec(double x, double y, double z);
+t_vec	get_right(t_vec a);
+void	translate_base(t_vec vec, t_vec dir, t_vec coefs);
+void	move_by(t_vec vec, t_vec dir, double coef);
 
 #endif

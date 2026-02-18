@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 19:58:55 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/02/11 19:16:16 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/02/18 20:38:59 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ int	move_cam(t_camera *camera)
 
 	if (ask_coords(&x, &y, &z))
 		return (MALLOC);
-	camera->x -= x;
-	camera->y -= y;
-	camera->z -= z;
+	camera->pos.x -= x;
+	camera->pos.y -= y;
+	camera->pos.z -= z;
 	return (SUCCESS);
 }
 
@@ -34,9 +34,19 @@ int	place_cam(t_camera *camera)
 
 	if (ask_coords(&x, &y, &z))
 		return (MALLOC);
-	camera->x = x;
-	camera->y = y;
-	camera->z = z;
+	camera->pos.x = x;
+	camera->pos.y = y;
+	camera->pos.z = z;
+	return (SUCCESS);
+}
+
+int	move_cam_from(t_camera *camera, t_vec dir)
+{
+	t_vec	coefs;
+
+	if (ask_coords(&(coefs.x), &(coefs.y), &(coefs.z)))
+		return (MALLOC);
+	translate_base(camera->pos, dir, coefs);
 	return (SUCCESS);
 }
 
@@ -48,9 +58,9 @@ int	move_plane(t_plane *plane)
 
 	if (ask_coords(&x, &y, &z))
 		return (MALLOC);
-	plane->x -= x;
-	plane->y -= y;
-	plane->z -= z;
+	plane->pos.x -= x;
+	plane->pos.y -= y;
+	plane->pos.z -= z;
 	return (SUCCESS);
 }
 
@@ -62,8 +72,8 @@ int	place_plane(t_plane *plane)
 
 	if (ask_coords(&x, &y, &z))
 		return (MALLOC);
-	plane->x = x;
-	plane->y = y;
-	plane->z = z;
+	plane->pos.x = x;
+	plane->pos.y = y;
+	plane->pos.z = z;
 	return (SUCCESS);
 }
