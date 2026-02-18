@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 18:22:53 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/01/25 18:58:50 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/02/18 19:16:08 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,17 @@ char	**ft_reall(char **nums, char *line)
 
 static int	parse_camera2(t_miniRT *rt, char **split, char **nums)
 {
-	if (!nums[0] || ft_atod(nums[0], &(rt->camera->xdir)))
+	if (!nums[0] || ft_atod(nums[0], &(rt->camera->dir.x)))
 		return (free_split(nums), free_split(split), UNKNOWN_SPECIFIER);
-	if (!nums[1] || ft_atod(nums[1], &(rt->camera->ydir)))
+	if (!nums[1] || ft_atod(nums[1], &(rt->camera->dir.y)))
 		return (free_split(nums), free_split(split), UNKNOWN_SPECIFIER);
-	if (!nums[2] || ft_atod(nums[2], &(rt->camera->zdir)))
+	if (!nums[2] || ft_atod(nums[2], &(rt->camera->dir.z)))
 		return (free_split(nums), free_split(split), UNKNOWN_SPECIFIER);
 	if (nums[3])
 		return (free_split(nums), free_split(split), UNKNOWN_SPECIFIER);
 	free_split(nums);
-	if (validate_dir(&(rt->camera->xdir), &(rt->camera->ydir),
-			&(rt->camera->zdir)))
+	if (validate_dir(&(rt->camera->dir.x), &(rt->camera->dir.y),
+			&(rt->camera->dir.z)))
 		return (free_split(split), NO_DIR);
 	if (!split[3] || ft_atod(split[3], &(rt->camera->fov)))
 		return (free_split(split), UNKNOWN_SPECIFIER);
@@ -54,11 +54,11 @@ int	parse_camera(t_miniRT *rt, char **split)
 	nums = ft_split(split[1], ',');
 	if (!nums)
 		return (free_split(split), free_split(nums), MALLOC);
-	if (!nums[0] || ft_atod(nums[0], &(rt->camera->x)))
+	if (!nums[0] || ft_atod(nums[0], &(rt->camera->pos.x)))
 		return (free_split(nums), free_split(split), UNKNOWN_SPECIFIER);
-	if (!nums[1] || ft_atod(nums[1], &(rt->camera->y)))
+	if (!nums[1] || ft_atod(nums[1], &(rt->camera->pos.y)))
 		return (free_split(nums), free_split(split), UNKNOWN_SPECIFIER);
-	if (!nums[2] || ft_atod(nums[2], &(rt->camera->z)) || nums[3])
+	if (!nums[2] || ft_atod(nums[2], &(rt->camera->pos.z)) || nums[3])
 		return (free_split(nums), free_split(split), UNKNOWN_SPECIFIER);
 	free_split(nums);
 	if (validate_nums(split[2]))

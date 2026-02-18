@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 21:55:09 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/02/11 19:31:20 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/02/18 19:08:51 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,14 @@ typedef struct s_miniRT
 	t_planes		*planes;
 	t_spheres		*spheres;
 }	t_miniRT;
+
+typedef struct s_vec
+{
+	double	x;
+	double	y;
+	double	z;
+}	t_vec;
+
 
 void	free_all(t_miniRT *rt);
 void	free_screen(t_screen *screen);

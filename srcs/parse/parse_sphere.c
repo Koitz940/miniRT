@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 18:06:15 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/01/21 13:31:16 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/02/18 19:19:54 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,9 @@ int	parse_sphere(t_miniRT *rt, char **split)
 		return (free_split(split), UNKNOWN_SPECIFIER);
 	nums = ft_split(split[1], ',');
 	if (!nums[0] || !nums[1] || !nums[2] || nums[3]
-		|| ft_atod(nums[0], &(sphere.x)) || ft_atod(nums[1], &(sphere.y))
-		|| ft_atod(nums[2], &(sphere.z)))
+		|| ft_atod(nums[0], &(sphere.pos.x))
+		|| ft_atod(nums[1], &(sphere.pos.y))
+		|| ft_atod(nums[2], &(sphere.pos.z)))
 		return (free_split(split), free_split(nums), UNKNOWN_SPECIFIER);
 	free_split(nums);
 	if (!split[2])

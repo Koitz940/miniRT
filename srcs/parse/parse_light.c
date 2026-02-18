@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 20:15:42 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/01/21 13:30:28 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/02/18 19:18:29 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,11 @@ int	parse_light(t_miniRT *rt, char **split)
 	nums = ft_split(split[1], ',');
 	if (!nums)
 		return (free_split(split), MALLOC);
-	if (!nums[0] || ft_atod(nums[0], &(rt->light->x)))
+	if (!nums[0] || ft_atod(nums[0], &(rt->light->pos.x)))
 		return (free_split(nums), free_split(split), UNKNOWN_SPECIFIER);
-	if (!nums[1] || ft_atod(nums[1], &(rt->light->y)))
+	if (!nums[1] || ft_atod(nums[1], &(rt->light->pos.y)))
 		return (free_split(nums), free_split(split), UNKNOWN_SPECIFIER);
-	if (!nums[2] || ft_atod(nums[2], &(rt->light->z)))
+	if (!nums[2] || ft_atod(nums[2], &(rt->light->pos.z)))
 		return (free_split(nums), free_split(split), UNKNOWN_SPECIFIER);
 	if (nums[3])
 		return (free_split(nums), free_split(split), UNKNOWN_SPECIFIER);

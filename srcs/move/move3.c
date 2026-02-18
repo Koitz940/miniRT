@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/09 20:15:37 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/02/11 19:15:59 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/02/18 18:56:10 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,3 +39,4 @@ int	place_sphere(t_sphere *sphere)
 	sphere->z = z;
 	return (SUCCESS);
 }
+

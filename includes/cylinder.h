@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 21:47:27 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/01/14 22:28:28 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/02/18 19:15:43 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,8 @@
 
 typedef struct s_cylinder
 {
-	double	x;
-	double	y;
-	double	z;
-	double	xdir;
-	double	ydir;
-	double	zdir;
+	t_vec	pos;
+	t_vec	dir;
 	double	d;
 	double	h;
 	int		r;

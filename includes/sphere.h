@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 18:48:19 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/01/19 18:49:33 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/02/18 19:19:37 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,7 @@
 
 typedef struct s_sphere
 {
-	double	x;
-	double	y;
-	double	z;
+	t_vec	pos;
 	double	d;
 	int		r;
 	int		g;
