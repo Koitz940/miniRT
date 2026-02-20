@@ -6,13 +6,14 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 21:55:09 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/02/18 20:56:49 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/02/20 19:54:31 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINIRT_H
 # define MINIRT_H
 
+# include "t_vec.h"
 # include <math.h>
 # include "ambientlighting.h"
 # include "camera.h"
@@ -84,23 +85,18 @@ typedef struct s_miniRT
 	t_spheres		*spheres;
 }	t_miniRT;
 
-typedef struct s_vec
-{
-	double	x;
-	double	y;
-	double	z;
-}	t_vec;
-
-
+/* FREE */
 void	free_all(t_miniRT *rt);
 void	free_screen(t_screen *screen);
 void	free_split(char **split);
 
+/* INIT */
 int		init(t_miniRT *rt, char *filename);
 void	init_spheres(t_miniRT *rt, int *flag);
 void	init_cylinders(t_miniRT *rt, int *flag);
 void	init_planes(t_miniRT *rt, int *flag);
 
+/* PARSING */
 int		parse(t_miniRT *rt, char *line);
 int		parse_camera(t_miniRT *rt, char **split);
 int		parse_ambient_lighting(t_miniRT *rt, char **split);
@@ -109,6 +105,7 @@ int		parse_sphere(t_miniRT *rt, char **split);
 int		parse_plane(t_miniRT *rt, char **split);
 int		parse_cylinder(t_miniRT *rt, char **split);
 
+/* UTILS */
 int		ft_strcmp(const char *s1, const char *s2);
 int		ft_atod(char *str, double *x);
 int		ft_ft_atoi(char *str, int *n);
@@ -117,37 +114,48 @@ double	mod(double x, double y, double z);
 int		validate_nums(char *nums);
 int		validate_dir(double *x, double *y, double *z);
 
+/* TESTING/ERROR */
 void	errormsg(int flag);
 void	start(t_miniRT *rt);
 
+/* VECTORS */
 int		add_plane(t_planes *planes, t_plane plane);
 int		add_sphere(t_spheres *spheres, t_sphere sphere);
 int		add_cylinder(t_cylinders *cylinders, t_cylinder cylinder);
 
-int		move_cam(t_camera *camera);
-int		place_cam(t_camera *camera);
-int		move_cam_from(t_camera *camera, t_vec dir);
-int		move_plane(t_plane *plane);
-int		place_plane(t_plane *plane);
-int		move_plane_from(t_plane *plane, t_vec dir);
-int		move_cylinder(t_cylinder *cylinder);
-int		place_cylinder(t_cylinder *cylinder);
-int		move_cylinder_from(t_cylinder *cylinder, t_vec dir);
-int		move_sphere(t_sphere *sphere);
-int		place_sphere(t_sphere *sphere);
-int		move_sphere_from(t_sphere *sphere, t_vec dir);
-int		move_light(t_light *light);
-int		place_light(t_light *light);
-int		move_light_from(t_light *light, t_vec dir);
+/* MOVING */
+int		move_cam(t_camera *camera, t_miniRT *rt);
+int		place_cam(t_camera *camera, t_miniRT *rt);
+int		move_cam_from(t_camera *camera, t_miniRT *rt);
+int		move_plane(t_plane *plane, t_miniRT *rt);
+int		place_plane(t_plane *plane, t_miniRT *rt);
+int		move_plane_from(t_plane *plane, t_miniRT *rt);
+int		move_cylinder(t_cylinder *cylinder, t_miniRT *rt);
+int		place_cylinder(t_cylinder *cylinder, t_miniRT *rt);
+int		move_cylinder_from(t_cylinder *cylinder, t_miniRT *rt);
+int		move_sphere(t_sphere *sphere, t_miniRT *rt);
+int		place_sphere(t_sphere *sphere, t_miniRT *rt);
+int		move_sphere_from(t_sphere *sphere, t_miniRT *rt);
+int		move_light(t_light *light, t_miniRT *rt);
+int		place_light(t_light *light, t_miniRT *rt);
+int		move_light_from(t_light *light, t_miniRT *rt);
 
+/* UI */
 int		ask_coords(double *x, double *y, double *z);
 int		ask_factor(double *x);
 
+/* MATH */
 t_vec	vec_prod(t_vec a, t_vec b);
-double	doc_prod(t_vec a, t_vec b);
+double	dot_prod(t_vec a, t_vec b);
 t_vec	new_vec(double x, double y, double z);
 t_vec	get_right(t_vec a);
-void	translate_base(t_vec vec, t_vec dir, t_vec coefs);
+void	translate_base(t_vec pos, t_camera *cam, t_vec coefs);
 void	move_by(t_vec vec, t_vec dir, double coef);
+
+/* RESIZE */
+int		resize_sphere(t_sphere *sphere);
+int		resize_cylinder(t_cylinder *cylinder);
+int		resize_cylinder_plus(t_cylinder *cylinder, int mode);
+int		resize_cylinder_minus(t_cylinder *cylinder, int mode);
 
 #endif

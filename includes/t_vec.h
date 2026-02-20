@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   base_change.c                                      :+:      :+:    :+:   */
+/*   t_vec.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/18 20:08:31 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/02/20 19:17:58 by gcassi-d         ###   ########.fr       */
+/*   Created: 2026/02/20 19:46:58 by gcassi-d          #+#    #+#             */
+/*   Updated: 2026/02/20 19:47:39 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniRT.h"
+#ifndef T_VEC_H
+# define T_VEC_H
 
-void	move_by(t_vec vec, t_vec dir, double coef)
+typedef struct s_vec
 {
-	vec.x += coef * dir.x;
-	vec.y += coef * dir.y;
-	vec.z += coef * dir.z;
-}
+	double	x;
+	double	y;
+	double	z;
+}	t_vec;
 
-void	translate_base(t_vec pos, t_camera *cam, t_vec coefs)
-{
-	move_by(pos, cam->right, coefs.x);
-	move_by(pos, cam->dir, coefs.y);
-	move_by(pos, cam->up, coefs.z);
-}
+#endif

@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 18:22:53 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/02/18 19:16:08 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/02/20 19:09:29 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,12 @@ char	**ft_reall(char **nums, char *line)
 {
 	free_split(nums);
 	return (ft_split(line, ','));
+}
+
+static void	generate_base(t_camera *camera)
+{
+	camera->right = get_right(camera->dir);
+	camera->up = vec_prod(camera->right, camera->dir);
 }
 
 static int	parse_camera2(t_miniRT *rt, char **split, char **nums)
@@ -40,6 +46,7 @@ static int	parse_camera2(t_miniRT *rt, char **split, char **nums)
 		return (UNKNOWN_SPECIFIER);
 	free_split(split);
 	rt->camera->isdef = 1;
+	generate_base(rt->camera);
 	return (SUCCESS);
 }
 

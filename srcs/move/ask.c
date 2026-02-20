@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 20:15:39 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/02/11 19:31:06 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/02/20 19:49:02 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int	ask_coords(double *x, double *y, double *z)
 		else
 			break ;
 	}
-	ask_coords2(y, z, str);
+	return (ask_coords2(y, z, str));
 }
 
 int	ask_factor(double *x)
