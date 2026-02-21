@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 21:55:09 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/02/20 19:54:31 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/02/21 11:33:11 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,5 +157,14 @@ int		resize_sphere(t_sphere *sphere);
 int		resize_cylinder(t_cylinder *cylinder);
 int		resize_cylinder_plus(t_cylinder *cylinder, int mode);
 int		resize_cylinder_minus(t_cylinder *cylinder, int mode);
+
+/* ROTATE */
+t_vec	rotate_x(t_vec vec, double angle);
+t_vec	rotate_y(t_vec vec, double angle);
+t_vec	rotate_z(t_vec vec, double angle);
+t_vec	rotate_dir(t_vec vec, t_camera *camera, t_vec coefs);
+t_vec	apply_x(t_vec vec, t_camera *camera, double c, double s);
+t_vec	apply_y(t_vec vec, t_camera *camera, double c, double s);
+t_vec	apply_z(t_vec vec, t_camera *camera, double c, double s);
 
 #endif
