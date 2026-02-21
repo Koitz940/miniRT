@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 20:16:27 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/02/21 12:53:47 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/02/21 12:59:02 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ int	rotate_plane_cam(t_plane *plane, t_miniRT *rt)
 		 axis of the camera\n", 1);
 	if (ask_factor(&(coefs.z)))
 		return (MALLOC);
-	new_dir = rotate_dir(plane->dir, plane, coefs);
+	new_dir = rotate_dir(plane->dir,rt->camera, coefs);
 	plane->dir = new_dir;
 	return (SUCCESS);
 }

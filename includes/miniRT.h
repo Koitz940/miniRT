@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 21:55:09 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/02/21 12:53:26 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/02/21 13:32:33 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,5 +174,11 @@ t_vec	apply_y(t_vec vec, t_camera *camera, double c, double s);
 t_vec	apply_z(t_vec vec, t_camera *camera, double c, double s);
 int		rotate_cam_cam(t_camera *camera, t_miniRT *rt);
 int		rotate_cam(t_camera *camera, t_miniRT *rt);
+int		rotate_plane(t_plane *plane, t_miniRT *rt);
+int		rotate_plane_cam(t_plane *plane, t_miniRT *rt);
+int		rotate_cylinder(t_cylinder *cylinder, t_miniRT *rt);
+int		rotate_cylinder_cam(t_cylinder *cylinder, t_miniRT *rt);
+
+/* MAIN_LOOP */
 
 #endif
