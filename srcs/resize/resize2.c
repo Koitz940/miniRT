@@ -1,37 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   base_change.c                                      :+:      :+:    :+:   */
+/*   resize2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/18 20:08:31 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/02/21 11:54:04 by gcassi-d         ###   ########.fr       */
+/*   Created: 2026/02/21 12:18:14 by gcassi-d          #+#    #+#             */
+/*   Updated: 2026/02/21 12:26:49 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-void	move_by(t_vec vec, t_vec dir, double coef)
+int	plus_fov(t_camera *cam)
 {
-	vec.x += coef * dir.x;
-	vec.y += coef * dir.y;
-	vec.z += coef * dir.z;
+	int	new_fov;
+
+	new_fov = cam->fov + FOV;
+	if (new_fov > 180)
+		return (SUCCESS);
+	cam->fov = new_fov;
+	return (SUCCESS);
 }
 
-void	translate_base(t_vec pos, t_camera *cam, t_vec coefs)
+int	minus_fov(t_camera *cam)
 {
-	move_by(pos, cam->right, coefs.x);
-	move_by(pos, cam->dir, coefs.y);
-	move_by(pos, cam->up, coefs.z);
-}
+	int	new_fov;
 
-void	normalise(t_vec *vec)
-{
-	double	norm;
-
-	norm = sqrt(mod(vec->x, vec->y, vec->z));
-	vec->x /= norm;
-	vec->y /= norm;
-	vec->z /= norm;
+	new_fov = cam->fov - FOV;
+	if (new_fov <= 0)
+		return (SUCCESS);
+	cam->fov = new_fov;
+	return (SUCCESS);
 }

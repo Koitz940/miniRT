@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 22:43:26 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/01/25 19:01:53 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/02/21 12:09:35 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ void	errormsg(int flag)
 		ft_putendl_fd("Error: GIven file doesn't exist or could\
 			 not be opened", 2);
 	else if (flag == MALLOC)
-		ft_putendl_fd("Error: A memory allocation failed", 2);
+		ft_putendl_fd("Error: A memory allocation failed\
+			 or ctrl d was pressed", 2);
 	else if (flag == UNKNOWN_SPECIFIER)
 		ft_putendl_fd("Error: unknown character given in file", 2);
 	else if (flag == WRONG_SPECIFIER)

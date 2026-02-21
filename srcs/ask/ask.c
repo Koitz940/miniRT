@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 20:15:39 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/02/20 19:49:02 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/02/21 12:27:41 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,46 +14,44 @@
 
 static int	ask_coords3(double *z, char *str)
 {
-	ft_putendl_fd("Write the z coordinate:", 1);
+	ft_putendl_fd("Write the z coordinate: ", 1);
 	while (1)
 	{
 		str = get_next_line(0);
 		if (ft_atod(str, z))
 		{
 			if (!str)
-			{
-				ft_putendl_fd("Either ctrl d\
-					 or malloc error happened, stopping:", 1);
 				return (MALLOC);
-			}
 			free(str);
 			ft_putendl_fd("Incorrect decimal number, try again:", 1);
 		}
 		else
+		{
+			free(str);
 			break ;
+		}
 	}
 	return (SUCCESS);
 }
 
 static int	ask_coords2(double *y, double *z, char *str)
 {
-	ft_putendl_fd("Write the y coordinate:", 1);
+	ft_putendl_fd("Write the y coordinate: ", 1);
 	while (1)
 	{
 		str = get_next_line(0);
 		if (ft_atod(str, y))
 		{
 			if (!str)
-			{
-				ft_putendl_fd("Either ctrl d\
-					 or malloc error happened, stopping:", 1);
 				return (MALLOC);
-			}
 			free(str);
 			ft_putendl_fd("Incorrect decimal number, try again:", 1);
 		}
 		else
+		{
+			free(str);
 			break ;
+		}
 	}
 	return (ask_coords3(z, str));
 }
@@ -62,23 +60,22 @@ int	ask_coords(double *x, double *y, double *z)
 {
 	char	*str;
 
-	ft_putendl_fd("Write the x coordinate:", 1);
+	ft_putendl_fd("Write the x coordinate: ", 1);
 	while (1)
 	{
 		str = get_next_line(0);
 		if (ft_atod(str, x))
 		{
 			if (!str)
-			{
-				ft_putendl_fd("Either ctrl d\
-					 or malloc error happened, stopping:", 1);
 				return (MALLOC);
-			}
 			free(str);
 			ft_putendl_fd("Incorrect decimal number, try again:", 1);
 		}
 		else
+		{
+			free(str);
 			break ;
+		}
 	}
 	return (ask_coords2(y, z, str));
 }
@@ -87,23 +84,50 @@ int	ask_factor(double *x)
 {
 	char	*str;
 
-	ft_putendl_fd("Write the sclaing factor:", 1);
+	ft_putendl_fd("Write the factor: ", 1);
 	while (1)
 	{
 		str = get_next_line(0);
 		if (ft_atod(str, x))
 		{
 			if (!str)
-			{
-				ft_putendl_fd("Either ctrl d\
-					 or malloc error happened, stopping:", 1);
 				return (MALLOC);
-			}
 			free(str);
-			ft_putendl_fd("Incorrect decimal number, try again:", 1);
+			ft_putendl_fd("Incorrect decimal number, try again: ", 1);
 		}
 		else
+		{
+			free(str);
 			break ;
+		}
+	}
+	return (SUCCESS);
+}
+
+int	ask_fov(int *x)
+{
+	char	*str;
+
+	ft_putendl_fd("Write the fov: ", 1);
+	while (1)
+	{
+		str = get_next_line(0);
+		if (ft_ft_atoi(str, x))
+		{
+			if (!str)
+				return (MALLOC);
+			free(str);
+			ft_putendl_fd("Incorrect decimal number, try again: ", 1);
+		}
+		else
+		{
+			free(str);
+			if (x > 0)
+				break ;
+			else
+				ft_putendl_fd("FOV is a number in\
+					 the range [1, 180], try again: ", 1);
+		}
 	}
 	return (SUCCESS);
 }

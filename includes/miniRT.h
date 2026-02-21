@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 21:55:09 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/02/21 11:33:11 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/02/21 12:23:57 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@
 # define ROTANG 0.00872664625997164788
 # define TOL 0.00000000000001
 # define SCALE 1.1
+# define FOV 1
 
 enum
 {
@@ -143,6 +144,7 @@ int		move_light_from(t_light *light, t_miniRT *rt);
 /* UI */
 int		ask_coords(double *x, double *y, double *z);
 int		ask_factor(double *x);
+int		ask_fov(double *x);
 
 /* MATH */
 t_vec	vec_prod(t_vec a, t_vec b);
@@ -151,6 +153,7 @@ t_vec	new_vec(double x, double y, double z);
 t_vec	get_right(t_vec a);
 void	translate_base(t_vec pos, t_camera *cam, t_vec coefs);
 void	move_by(t_vec vec, t_vec dir, double coef);
+void	normalise(t_vec *vec);
 
 /* RESIZE */
 int		resize_sphere(t_sphere *sphere);
@@ -166,5 +169,7 @@ t_vec	rotate_dir(t_vec vec, t_camera *camera, t_vec coefs);
 t_vec	apply_x(t_vec vec, t_camera *camera, double c, double s);
 t_vec	apply_y(t_vec vec, t_camera *camera, double c, double s);
 t_vec	apply_z(t_vec vec, t_camera *camera, double c, double s);
+int		rotate_cam_cam(t_camera *camera, t_miniRT *rt);
+int		rotate_cam(t_camera *camera, t_miniRT *rt);
 
 #endif

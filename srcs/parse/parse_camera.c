@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 18:22:53 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/02/20 19:09:29 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/02/21 12:25:25 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,10 @@ static int	parse_camera2(t_miniRT *rt, char **split, char **nums)
 	if (validate_dir(&(rt->camera->dir.x), &(rt->camera->dir.y),
 			&(rt->camera->dir.z)))
 		return (free_split(split), NO_DIR);
-	if (!split[3] || ft_atod(split[3], &(rt->camera->fov)))
+	if (!split[3] || ft_ft_atoi(split[3], &(rt->camera->fov))
+		|| rt->camera->fov <= 0 || rt->camera->fov > 180)
 		return (free_split(split), UNKNOWN_SPECIFIER);
-	if (rt->camera->fov > 180 || rt->camera->fov < 0)
+	if (rt->camera->fov > 180 || rt->camera->fov <= 0)
 		return (free_split(split), WRONG_SPECIFIER);
 	if (split[4])
 		return (UNKNOWN_SPECIFIER);
