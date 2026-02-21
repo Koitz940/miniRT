@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/18 18:55:16 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/01/21 13:34:19 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/02/21 17:35:06 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	init_camera(t_miniRT *rt)
 {
-	rt->camera = calloc(sizeof(t_camera), 1);
+	rt->camera = ft_calloc(sizeof(t_camera), 1);
 	if (!rt->camera)
 		return (MALLOC);
 	rt->camera->isdef = 0;
@@ -23,7 +23,7 @@ static int	init_camera(t_miniRT *rt)
 
 static int	init_screen(t_screen *screen)
 {
-	screen->screen = calloc(sizeof(t_pixel), WIDTH * HEIGHT);
+	screen->screen = ft_calloc(sizeof(t_pixel), WIDTH * HEIGHT);
 	if (!screen)
 		return (MALLOC);
 	screen->mlx = mlx_init();

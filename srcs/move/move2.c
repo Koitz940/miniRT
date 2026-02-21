@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/08 18:56:07 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/02/20 19:51:03 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/02/21 17:43:01 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	move_plane_from(t_plane *plane, t_miniRT *rt)
 
 	if (ask_coords(&(coefs.x), &(coefs.y), &(coefs.z)))
 		return (MALLOC);
-	translate_base(plane->pos, rt->camera, coefs);
+	translate_base(&(plane->pos), rt->camera, coefs);
 	return (SUCCESS);
 }
 

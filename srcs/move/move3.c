@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/09 20:15:37 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/02/20 19:51:11 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/02/21 17:43:18 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	move_light_from(t_light *light, t_miniRT *rt)
 
 	if (ask_coords(&(coefs.x), &(coefs.y), &(coefs.z)))
 		return (MALLOC);
-	translate_base(light->pos, rt->camera, coefs);
+	translate_base(&(light->pos), rt->camera, coefs);
 	return (SUCCESS);
 }
 
@@ -58,7 +58,7 @@ int	move_cylinder_from(t_cylinder *cylinder, t_miniRT *rt)
 
 	if (ask_coords(&(coefs.x), &(coefs.y), &(coefs.z)))
 		return (MALLOC);
-	translate_base(cylinder->pos, rt->camera, coefs);
+	translate_base(&(cylinder->pos), rt->camera, coefs);
 	return (SUCCESS);
 }
 
@@ -68,6 +68,6 @@ int	move_sphere_from(t_sphere *sphere, t_miniRT *rt)
 
 	if (ask_coords(&(coefs.x), &(coefs.y), &(coefs.z)))
 		return (MALLOC);
-	translate_base(sphere->pos, rt->camera, coefs);
+	translate_base(&(sphere->pos), rt->camera, coefs);
 	return (SUCCESS);
 }

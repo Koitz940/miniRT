@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 19:58:55 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/02/20 19:18:17 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/02/21 17:42:51 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	move_cam_from(t_camera *camera, t_miniRT *rt)
 	(void)rt;
 	if (ask_coords(&(coefs.x), &(coefs.y), &(coefs.z)))
 		return (MALLOC);
-	translate_base(camera->pos, camera, coefs);
+	translate_base(&(camera->pos), camera, coefs);
 	return (SUCCESS);
 }
 

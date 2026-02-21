@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 21:55:09 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/02/21 13:32:33 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/02/21 18:50:49 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # include "libft.h"
 # include "mlx.h"
 # include <X11/keysym.h>
+# include <sys/time.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
@@ -35,9 +36,10 @@
 # define PI2 1.57079632679489661923
 # define PI4 0.78539816339744830962
 # define ROTANG 0.00872664625997164788
-# define TOL 0.00000000000001
+# define TOL 0.0001
 # define SCALE 1.1
 # define FOV 1
+# define MAX_ITERS 80000
 
 enum
 {
@@ -152,8 +154,8 @@ t_vec	vec_prod(t_vec a, t_vec b);
 double	dot_prod(t_vec a, t_vec b);
 t_vec	new_vec(double x, double y, double z);
 t_vec	get_right(t_vec a);
-void	translate_base(t_vec pos, t_camera *cam, t_vec coefs);
-void	move_by(t_vec vec, t_vec dir, double coef);
+void	translate_base(t_vec *pos, t_camera *cam, t_vec coefs);
+void	move_by(t_vec *vec, t_vec dir, double coef);
 void	normalise(t_vec *vec);
 
 /* RESIZE */
@@ -180,5 +182,11 @@ int		rotate_cylinder(t_cylinder *cylinder, t_miniRT *rt);
 int		rotate_cylinder_cam(t_cylinder *cylinder, t_miniRT *rt);
 
 /* MAIN_LOOP */
+t_vec	choose_dir(t_pixel *pixel, t_camera *camera);
+void	choose_color(t_screen *screen, t_pixel *pixel, t_vec dir, t_miniRT *rt);
+int		loop(t_miniRT *rt);
+int		intersect(t_vec pos, t_miniRT *rt, t_screen *screen, t_pixel *pixel);
+t_vec	choose_dir(t_pixel *pixel, t_camera *camera);
+void	paint(t_screen *t_screen, t_pixel *pixel);
 
 #endif

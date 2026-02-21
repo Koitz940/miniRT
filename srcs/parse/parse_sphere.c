@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 18:06:15 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/02/18 19:19:54 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/02/21 18:13:16 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ static int	parse_sphere2(t_miniRT *rt, t_sphere sphere,
 	free_split(split);
 	if (!is_color(sphere.r, sphere.g, sphere.b))
 		return (WRONG_SPECIFIER);
+	sphere.d /= 2.0;
 	return (add_sphere(rt->spheres, sphere));
 }
 

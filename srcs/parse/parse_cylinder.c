@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 19:58:12 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/02/18 19:18:13 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/02/21 18:24:01 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ static int	parse_cylinder2(t_miniRT *rt, char **nums, char **split,
 	free_split(split);
 	if (!is_color(cylinder.r, cylinder.g, cylinder.b))
 		return (WRONG_SPECIFIER);
+	cylinder.d /= 2.0;
 	if (add_cylinder(rt->cylinders, cylinder))
 		return (MALLOC);
 	return (SUCCESS);
