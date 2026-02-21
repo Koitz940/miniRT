@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 20:24:00 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/02/18 19:25:47 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/02/21 12:41:41 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	start(t_miniRT *rt)
 {
-	printf("%f %f %f  %f %f %f  %f\n", rt->camera->pos.x, rt->camera->pos.y, rt->camera->pos.z, rt->camera->dir.x, rt->camera->dir.y, rt->camera->dir.z, rt->camera->fov);
+	printf("%f %f %f  %f %f %f  %i\n", rt->camera->pos.x, rt->camera->pos.y, rt->camera->pos.z, rt->camera->dir.x, rt->camera->dir.y, rt->camera->dir.z, rt->camera->fov);
 	printf("%f %f %f  %i %i %i  %f\n", rt->light->pos.x, rt->light->pos.y, rt->light->pos.z, rt->light->r, rt->light->g, rt->light->b, rt->light->bright);
 	printf("%i %i %i  %f\n", rt->ambient_light->r, rt->ambient_light->g, rt->ambient_light->b, rt->ambient_light->bright);
 	printf("%u %f %f %i\n", rt->spheres->length, rt->spheres->spheres[0].pos.x, rt->spheres->spheres[1].d, rt->spheres->spheres[2].b);

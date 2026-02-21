@@ -1,27 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   camera.h                                           :+:      :+:    :+:   */
+/*   ask2.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/14 21:45:11 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/02/21 12:30:26 by gcassi-d         ###   ########.fr       */
+/*   Created: 2026/02/21 12:32:36 by gcassi-d          #+#    #+#             */
+/*   Updated: 2026/02/21 12:33:23 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAMERA_H
-# define CAMERA_H
+#include "miniRT.h"
 
-/* FOV of 0 doesn't make any sense, won't be allowed */
-typedef struct s_camera
+int	ask_change_fov(int *x)
 {
-	t_vec	pos;
-	t_vec	dir;
-	t_vec	right;
-	t_vec	up;
-	int		fov;
-	char	isdef;
-}	t_camera;
+	char	*str;
 
-#endif
+	ft_putendl_fd("Write the fov: ", 1);
+	while (1)
+	{
+		str = get_next_line(0);
+		if (ft_ft_atoi(str, x))
+		{
+			if (!str)
+				return (MALLOC);
+			free(str);
+			ft_putendl_fd("Incorrect decimal number, try again: ", 1);
+		}
+		else
+		{
+			free(str);
+			break ;
+		}
+	}
+	return (SUCCESS);
+}

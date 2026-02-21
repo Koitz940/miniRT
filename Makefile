@@ -15,9 +15,9 @@ INCLUDES	= -I$(INCLUDE_DIR) \
 SRC = main.c free_file.c utils.c init/init_file.c init/init_vecs.c\
 	parse/parse_ambient_light.c parse/parse_light.c parse/parse_sphere.c\
 	parse/parse_cylinder.c parse/parse_camera.c parse/parse_plane.c\
-	error_file.c append.c parse/parse1.c start.c ask/ask.c move/move1.c\
-	move/move2.c move/move3.c resize/resize.c math/base_change.c math/cross_product.c\
-	math/rotate.c math/rotate_base.c rotate/rotate.c
+	error_file.c append.c parse/parse1.c start.c ask/ask.c ask/ask2.c move/move1.c\
+	move/move2.c move/move3.c resize/resize.c resize/resize2.c math/base_change.c math/cross_product.c\
+	math/rotate.c math/rotate_base.c rotate/rotate.c rotate/rotate2.c
 
 OBJ_DIR = objs
 

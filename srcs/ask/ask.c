@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 20:15:39 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/02/21 12:27:41 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/02/21 12:42:20 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ int	ask_fov(int *x)
 		else
 		{
 			free(str);
-			if (x > 0)
+			if (*x > 0 && *x <= 180)
 				break ;
 			else
 				ft_putendl_fd("FOV is a number in\

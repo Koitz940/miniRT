@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 21:55:09 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/02/21 12:23:57 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/02/21 12:53:26 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,7 +144,8 @@ int		move_light_from(t_light *light, t_miniRT *rt);
 /* UI */
 int		ask_coords(double *x, double *y, double *z);
 int		ask_factor(double *x);
-int		ask_fov(double *x);
+int		ask_fov(int *x);
+int		ask_change_fov(int *x);
 
 /* MATH */
 t_vec	vec_prod(t_vec a, t_vec b);
@@ -157,6 +158,8 @@ void	normalise(t_vec *vec);
 
 /* RESIZE */
 int		resize_sphere(t_sphere *sphere);
+int		resize_sphere_plus(t_sphere *sphere);
+int		resize_sphere_minus(t_sphere *sphere);
 int		resize_cylinder(t_cylinder *cylinder);
 int		resize_cylinder_plus(t_cylinder *cylinder, int mode);
 int		resize_cylinder_minus(t_cylinder *cylinder, int mode);
