@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 21:55:09 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/02/21 18:50:49 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/02/22 18:55:10 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,12 @@ enum
 
 typedef struct s_pixel
 {
-	int	r;
-	int	g;
-	int	b;
-	int	x;
-	int	y;
+	int		r;
+	int		g;
+	int		b;
+	int		x;
+	int		y;
+	double	t;
 }	t_pixel;
 
 typedef struct s_screen
@@ -157,6 +158,7 @@ t_vec	get_right(t_vec a);
 void	translate_base(t_vec *pos, t_camera *cam, t_vec coefs);
 void	move_by(t_vec *vec, t_vec dir, double coef);
 void	normalise(t_vec *vec);
+t_vec	points_vec(t_vec a, t_vec b);
 
 /* RESIZE */
 int		resize_sphere(t_sphere *sphere);
@@ -185,8 +187,13 @@ int		rotate_cylinder_cam(t_cylinder *cylinder, t_miniRT *rt);
 t_vec	choose_dir(t_pixel *pixel, t_camera *camera);
 void	choose_color(t_screen *screen, t_pixel *pixel, t_vec dir, t_miniRT *rt);
 int		loop(t_miniRT *rt);
-int		intersect(t_vec pos, t_miniRT *rt, t_screen *screen, t_pixel *pixel);
-t_vec	choose_dir(t_pixel *pixel, t_camera *camera);
-void	paint(t_screen *t_screen, t_pixel *pixel);
+void	paint(t_miniRT *rt, t_pixel *point, int p);
+int		get_col(t_pixel *pixel)
+int		intersect_plane(t_plane *plane, t_vec dir,
+			t_pixel *pixel, t_camera *camera);
+int		intersect_sphere(t_sphere *sphere, t_vec dir,
+			t_pixel *pixel, t_camera *camera);
+int		intersect_cylinder(t_cylinder *cylinder, t_vec dir,
+			t_pixel *pixel, t_camera *camera);
 
 #endif

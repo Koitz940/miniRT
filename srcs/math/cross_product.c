@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cross-product.c                                    :+:      :+:    :+:   */
+/*   cross_product.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/18 19:05:02 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/02/20 19:31:53 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/02/22 18:23:32 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,16 @@ t_vec	vec_prod(t_vec a, t_vec b)
 double	dot_prod(t_vec a, t_vec b)
 {
 	return (a.x * b.x + a.y * b.y + a.z * b.z);
+}
+
+t_vec	points_vec(t_vec a, t_vec b)
+{
+	t_vec	new;
+
+	new.x = b.x - a.x;
+	new.y = b.y - a.y;
+	new.z = b.z - a.z;
+	return (new);
 }
 
 t_vec	new_vec(double x, double y, double z)

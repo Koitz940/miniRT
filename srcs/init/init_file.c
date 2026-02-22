@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/18 18:55:16 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/02/21 17:35:06 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/02/22 18:12:30 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ static void	init_screen2(t_screen *screen)
 			screen->screen[pos].b = 0;
 			screen->screen[pos].x = i;
 			screen->screen[pos].y = j;
+			screen->screen[pos].t = INFINITY;
 		}
 	}
 }

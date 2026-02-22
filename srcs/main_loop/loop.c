@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/21 13:05:43 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/02/21 17:52:25 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/02/22 18:55:54 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,45 +17,33 @@ t_vec	choose_dir(t_pixel *pixel, t_camera *camera)
 	return (camera->dir);
 }
 
-int	intersect(t_vec pos, t_miniRT *rt, t_screen *screen, t_pixel *pixel)
+void	choose_color(t_screen *screen, t_pixel *pixel, t_vec dir, t_miniRT *rt)
 {
 	size_t	i;
 
 	i = -1;
-	while (rt->planes + ++i)
+	while (rt->cylinders + ++i)
 	{
-		if (intersect_plane(rt->planes + i, pixel))
-		{
-			paint(screen, pixel);
-			return (1);
-		}
+		if (intersect_plane(rt->planes->planes + i, dir, pixel, rt->camera)
+			&& should_paint_plane(rt->planes->planes + i, pixel, dir, rt))
+			set_col(pixel, rt->planes->planes[i].r,
+				rt->planes->planes[i].g, rt->planes->planes[i].b);
 	}
 	i = -1;
 	while (rt->spheres + ++i)
 	{
-		if (intersect_sphere(rt->spheres + i, pixel))
-		{
-			paint(screen, pixel);
-			return (1);
-		}
+		if (intersect_sphere(rt->spheres + i, dir, pixel, rt->camera)
+			&& should_paint_sphere(rt->spheres->spheres + i, pixel, dir, rt))
+			set_col_sphere(pixel, rt->spheres + i);
 	}
-	return (intersect2());
-}
-
-void	choose_color(t_screen *screen, t_pixel *pixel, t_vec dir, t_miniRT *rt)
-{
-	size_t	i;
-	t_vec	pos;
-
 	i = -1;
-	pos = rt->camera->pos;
-	while (++i < MAX_ITERS)
+	while (rt->cylinders + ++i)
 	{
-		move_by(&pos, dir, TOL);
-		if (intersect(pos, rt, screen, pixel))
-			break ;
+		if (intersect_cylinder(rt->cylinders + i, dir, pixel, rt->camera)
+			&& should_paint_cylinder(rt->cylinders->cylinders + i, pixel, dir, rt))
+			set_col_cylinder(pixel, rt->cylinders->cylinders + i);
 	}
-	paint(screen, pixel);
+	paint(rt, pixel, get_col(pixel));
 }
 
 int	loop(t_miniRT *rt)
