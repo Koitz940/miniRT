@@ -23,26 +23,14 @@ void	choose_color(t_screen *screen, t_pixel *pixel, t_vec dir, t_miniRT *rt)
 
 	i = -1;
 	while (rt->cylinders + ++i)
-	{
-		if (intersect_plane(rt->planes->planes + i, dir, pixel, rt->camera)
-			&& should_paint_plane(rt->planes->planes + i, pixel, dir, rt))
-			set_col(pixel, rt->planes->planes[i].r,
-				rt->planes->planes[i].g, rt->planes->planes[i].b);
-	}
+		intersect_plane(rt->planes->planes + i, dir, pixel, rt->camera)
 	i = -1;
 	while (rt->spheres + ++i)
-	{
-		if (intersect_sphere(rt->spheres + i, dir, pixel, rt->camera)
-			&& should_paint_sphere(rt->spheres->spheres + i, pixel, dir, rt))
-			set_col_sphere(pixel, rt->spheres + i);
-	}
+		intersect_sphere(rt->spheres + i, dir, pixel, rt->camera)
 	i = -1;
 	while (rt->cylinders + ++i)
-	{
-		if (intersect_cylinder(rt->cylinders + i, dir, pixel, rt->camera)
-			&& should_paint_cylinder(rt->cylinders->cylinders + i, pixel, dir, rt))
-			set_col_cylinder(pixel, rt->cylinders->cylinders + i);
-	}
+		intersect_cylinder(rt->cylinders + i, dir, pixel, rt->camera)
+	set_col(pixel, rt, dir, rt->light);
 	paint(rt, pixel, get_col(pixel));
 }
 
@@ -64,5 +52,6 @@ int	loop(t_miniRT *rt)
 		}
 		j++;
 	}
+	mlx_put_image_to_window(rt->screen->mlx, mlx->screen->win, rt->screen->img ...);
 	return (SUCCESS);
 }
