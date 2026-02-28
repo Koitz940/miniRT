@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 21:45:11 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/02/21 12:30:26 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/02/28 16:26:25 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef struct s_camera
 	t_vec	up;
 	int		fov;
 	char	isdef;
+	double	f;
 }	t_camera;
 
 #endif

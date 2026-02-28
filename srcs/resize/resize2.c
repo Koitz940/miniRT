@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/21 12:18:14 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/02/21 12:49:12 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/02/28 16:29:35 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	plus_fov(t_camera *cam)
 	if (new_fov > 180)
 		return (SUCCESS);
 	cam->fov = new_fov;
+	cam->f = WIDTH / (2 * tan((double)(cam->fov) / 2.0));
 	return (SUCCESS);
 }
 
@@ -31,6 +32,7 @@ int	minus_fov(t_camera *cam)
 	if (new_fov <= 0)
 		return (SUCCESS);
 	cam->fov = new_fov;
+	cam->f = WIDTH / (2 * tan((double)(cam->fov) / 2.0));
 	return (SUCCESS);
 }
 
@@ -49,6 +51,7 @@ int	add_fov(t_camera *cam)
 		return (SUCCESS);
 	}
 	cam->fov = new_fov;
+	cam->f = WIDTH / (2 * tan((double)(cam->fov) / 2.0));
 	return (SUCCESS);
 }
 
