@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 21:55:09 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/02/28 16:26:40 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/02/28 17:09:14 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -189,6 +189,7 @@ void	choose_color(t_screen *screen, t_pixel *pixel, t_vec dir, t_miniRT *rt);
 int		loop(t_miniRT *rt);
 void	paint(t_miniRT *rt, t_pixel *point, int p);
 int		get_col(t_pixel *pixel);
+void	set_col(t_pixel *pixel, int r, int g, int b);
 int		intersect_plane(t_plane *plane, t_vec dir,
 			t_pixel *pixel, t_camera *camera);
 int		intersect_sphere(t_sphere *sphere, t_vec dir,

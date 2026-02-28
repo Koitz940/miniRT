@@ -6,20 +6,11 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/21 17:52:12 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/02/22 18:48:09 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/02/28 17:11:04 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
-
-//needs a LOT more work...
-void	set_col(t_pixel *pixel, int r, int g, int b)
-{
-	
-	pixel->r = r;
-	pixel->g = g;
-	pixel->b = b;
-}
 
 int	intersect_plane(t_plane *plane,
 		t_vec dir, t_pixel *pixel, t_camera *camera)

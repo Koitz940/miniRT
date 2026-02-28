@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/21 17:06:36 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/02/21 19:28:58 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/02/28 17:11:11 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,12 @@ void	paint(t_miniRT *rt, t_pixel *point, int p)
 int	get_col(t_pixel *pixel)
 {
 	return (pixel->b + 256 * (pixel->g + 256 * pixel->r));
+}
+
+//needs a LOT more work...
+void	set_col(t_pixel *pixel, int r, int g, int b)
+{
+	pixel->r = r;
+	pixel->g = g;
+	pixel->b = b;
 }
