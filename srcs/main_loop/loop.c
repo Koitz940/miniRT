@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/21 13:05:43 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/02/28 16:39:24 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/02/28 17:06:43 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ t_vec	choose_dir(t_pixel *pixel, t_camera *camera)
 	double	b;
 	t_vec	dir;
 
-	a = ((double)(pixel->x - WIDTH / 2)) / camera->f;
-	b = ((double)(-pixel->y + HEIGHT / 2)) / camera->f;
+	a = (((double)pixel->x + 0.5 - (double)WIDTH / 2)) / camera->f;
+	b = ((-(double)pixel->y - 0.5 + (double)HEIGHT / 2)) / camera->f;
 	dir.x = a * camera->right.x + b * camera->up.x + camera->dir.x;
 	dir.y = a * camera->right.y + b * camera->up.y + camera->dir.y;
 	dir.z = a * camera->right.z + b * camera->up.z + camera->dir.z;

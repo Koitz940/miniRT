@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 18:22:53 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/02/28 16:28:36 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/02/28 16:51:09 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ static int	parse_camera2(t_miniRT *rt, char **split, char **nums)
 	if (!split[3] || ft_ft_atoi(split[3], &(rt->camera->fov))
 		|| rt->camera->fov <= 0 || rt->camera->fov > 180)
 		return (free_split(split), UNKNOWN_SPECIFIER);
-	rt->camera->f = WIDTH / (2 * tan((double)(rt->camera->fov) / 2.0));
+	rt->camera->f = WIDTH / (2 * tan((double)(rt->camera->fov
+					* PI / 180.0) / 2.0));
 	if (rt->camera->fov > 180 || rt->camera->fov <= 0)
 		return (free_split(split), WRONG_SPECIFIER);
 	if (split[4])

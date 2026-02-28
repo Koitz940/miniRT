@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 19:16:42 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/02/28 16:29:13 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/02/28 16:51:43 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,6 @@ int	replace_fov(t_camera *cam)
 	if (ask_fov(&x))
 		return (MALLOC);
 	cam->fov = x;
-	cam->f = WIDTH / (2 * tan((double)(cam->fov) / 2.0));
+	cam->f = WIDTH / (2 * tan((double)(cam->fov * PI / 180.0) / 2.0));
 	return (SUCCESS);
 }
