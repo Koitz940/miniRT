@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/21 17:52:12 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/02/28 17:11:04 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/03/01 14:33:16 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int	intersect_plane(t_plane *plane,
 	if (t < pixel->t && t > TOL)
 	{
 		pixel->t = t;
+		set_col(pixel, plane->r, plane->g, plane->b);
 		return (1);
 	}
 	return (0);
@@ -53,6 +54,7 @@ int	intersect_sphere(t_sphere *sphere, t_vec dir,
 	if (t < pixel->t && t > TOL)
 	{
 		pixel->t = t;
+		set_col(pixel, sphere->r, sphere->g, sphere->b);
 		return (1);
 	}
 	return (0);

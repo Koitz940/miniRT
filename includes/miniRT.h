@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 21:55:09 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/02/28 17:09:14 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/03/01 14:53:13 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@
 # define TOL 0.0001
 # define SCALE 1.1
 # define FOV 1
-# define MAX_ITERS 80000
 
 enum
 {
