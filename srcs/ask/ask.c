@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ask.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
+/*   By: xwu <xwu@student.42urduliz.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 20:15:39 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/02/21 12:42:20 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/03/08 20:21:28 by xwu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ int	ask_fov(int *x)
 {
 	char	*str;
 
-	ft_putendl_fd("Write the fov: ", 1);
+	write_ask_fov(x);
 	while (1)
 	{
 		str = get_next_line(0);
