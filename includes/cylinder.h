@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 21:47:27 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/02/28 16:26:00 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/03/08 13:39:13 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,16 @@ typedef struct s_cylinder_vec
 	unsigned int	capacity;
 	unsigned int	length;
 }	t_cylinders;
+
+typedef struct s_why
+{
+	t_vec	vt;
+	t_vec	wt;
+	t_vec	u;
+	t_vec	dir;
+	t_vec	w;
+}	t_why;
+
 
 void	free_cylinders(t_cylinders *cylinders);
 

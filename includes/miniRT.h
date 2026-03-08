@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 21:55:09 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/03/01 14:53:13 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/03/08 13:47:39 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,6 +158,9 @@ void	translate_base(t_vec *pos, t_camera *cam, t_vec coefs);
 void	move_by(t_vec *vec, t_vec dir, double coef);
 void	normalise(t_vec *vec);
 t_vec	points_vec(t_vec a, t_vec b);
+void	update(t_vec *vec, double coef);
+t_vec	add(t_vec vec, t_vec vec2);
+double	norm(t_vec vec);
 
 /* RESIZE */
 int		resize_sphere(t_sphere *sphere);

@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/18 20:08:31 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/02/21 18:50:42 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/03/08 13:44:32 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,21 @@ void	normalise(t_vec *vec)
 	vec->x /= norm;
 	vec->y /= norm;
 	vec->z /= norm;
+}
+
+void	update(t_vec *vec, double coef)
+{
+	vec->x *= coef;
+	vec->y *= coef;
+	vec->z *= coef;
+}
+
+t_vec	add(t_vec vec, t_vec vec2)
+{
+	t_vec	sum;
+
+	sum.x = vec.x + vec2.x;
+	sum.y = vec.y + vec2.y;
+	sum.z = vec.z + vec2.z;
+	return (sum);
 }

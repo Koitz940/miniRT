@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/21 17:06:36 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/03/01 14:32:36 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/03/08 13:58:23 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,3 +32,5 @@ void	set_col(t_pixel *pixel, int r, int g, int b)
 	pixel->g = g;
 	pixel->b = b;
 }
+
+void	set_true_col();

@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/21 11:24:49 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/02/21 11:40:46 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/03/08 13:47:30 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,9 @@ t_vec	apply_z(t_vec vec, t_camera *camera, double c, double s)
 	aux.z = camera->up.z;
 	new.z = dot_prod(aux, vec);
 	return (new);
+}
+
+double	norm(t_vec vec)
+{
+	return (sqrt(mod(vec.x, vec.y, vec.z)));
 }
