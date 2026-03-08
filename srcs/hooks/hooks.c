@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   start.c                                            :+:      :+:    :+:   */
+/*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/20 20:24:00 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/03/08 18:53:50 by gcassi-d         ###   ########.fr       */
+/*   Created: 2026/03/08 17:35:16 by gcassi-d          #+#    #+#             */
+/*   Updated: 2026/03/08 17:39:08 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-void	start(t_miniRT *rt)
+int	key_hook(int keycode, t_miniRT *rt)
 {
-	loop(rt);
-	mlx_hook(rt->screen->window, 17, 0, free_all, rt);
-	mlx_key_hook(rt->screen->window, key_hook, rt);
-	mlx_loop(rt->screen->mlx);
+	if (keycode == XK_Escape)
+		free_all(rt);
+	return (0);
 }
+

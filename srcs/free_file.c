@@ -6,16 +6,16 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 22:21:01 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/01/21 00:00:13 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/03/08 17:41:34 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-void	free_all(t_miniRT *rt)
+int	free_all(t_miniRT *rt)
 {
 	if (!rt)
-		return ;
+		return (0);
 	free_cylinders(rt->cylinders);
 	free_planes(rt->planes);
 	free_spheres(rt->spheres);
@@ -27,6 +27,7 @@ void	free_all(t_miniRT *rt)
 	if (rt->light)
 		free(rt->light);
 	free(rt);
+	exit(0);
 }
 
 void	free_cylinders(t_cylinders *cylinders)
