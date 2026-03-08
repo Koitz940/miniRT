@@ -6,13 +6,13 @@
 /*   By: xwu <xwu@student.42urduliz.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/21 12:32:36 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/03/08 20:21:39 by xwu              ###   ########.fr       */
+/*   Updated: 2026/03/08 20:22:25 by xwu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-void	write_ask_fov(int *x);
+void	write_ask_fov(int *x)
 {
 	ft_putstr_fd("Write the FOV [Current FOV: ", 1);
 	ft_putstr_fd(ft_itoa(*x), 1);
