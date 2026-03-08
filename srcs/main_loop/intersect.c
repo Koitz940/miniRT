@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/21 17:52:12 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/03/08 13:53:44 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/03/08 19:15:21 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,7 @@ int	intersect_plane(t_plane *plane,
 	if (denom != 0.0)
 		t = numer / denom;
 	else
-	{
-		if (numer == 0)
-			t = 2 * TOL;
-		else
-			return (0);
-	}
+		return (0);
 	if (t < pixel->t && t > TOL)
 	{
 		pixel->t = t;
@@ -48,9 +43,9 @@ int	intersect_sphere(t_sphere *sphere, t_vec dir,
 	double	t;
 
 	m = -dot_prod(dir, points_vec(camera->pos, sphere->pos));
-	c = pow(dot_prod(points_vec(camera->pos, sphere->pos),
-				points_vec(camera->pos,
-					sphere->pos)), 2) - sphere->d * sphere->d;
+	c = fabs(dot_prod(points_vec(camera->pos, sphere->pos),
+			points_vec(camera->pos,
+				sphere->pos))) - sphere->d * sphere->d;
 	dis = m * m - c;
 	if (dis < 0.0)
 		return (0);
@@ -97,6 +92,32 @@ static int	shell(t_cylinder *cylinder, t_why why, t_pixel *pixel)
 	return (0);
 }
 
+static int	caps(t_cylinder *cylinder, t_why why, t_pixel *pixel)
+{
+	double	denom;
+	double	numer;
+	double	t;
+	int		check;
+	double	old;
+
+	old = pixel->t;
+	denom = dot_prod(why.dir, cylinder->dir);
+	if (denom == 0.0)
+		return (0);
+	numer = -dot_prod(why.w, cylinder->dir);
+	t = (numer + cylinder->h / 2.0) / denom;
+	check = norm(add(why.w, times(why.dir, t))) <= cylinder->d;
+	if (check && t < pixel->t && t > TOL)
+		pixel->t = t;
+	t = (numer - cylinder->h / 2.0) / denom;
+	check = norm(add(why.w, times(why.dir, t))) <= cylinder->d;
+	if (check && t < pixel->t && t > TOL)
+		pixel->t = t;
+	if (old != pixel->t)
+		set_col(pixel, cylinder->r, cylinder->g, cylinder->b);
+	return (old != pixel->t);
+}
+
 int	intersect_cylinder(t_cylinder *cylinder, t_vec dir,
 		t_pixel *pixel, t_camera *camera)
 {
@@ -115,7 +136,7 @@ int	intersect_cylinder(t_cylinder *cylinder, t_vec dir,
 	why.u = cylinder->dir;
 	if (shell(cylinder, why, pixel))
 		check = 1;
-	if (hats())
+	if (caps(cylinder, why, pixel))
 		check = 1;
 	return (check);
 }

@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/18 18:07:12 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/02/21 12:53:36 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/03/08 18:59:50 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,6 @@ int	main(int ac, char **av)
 	if (flag)
 		return (free_all(rt), errormsg(flag), 1);
 	start(rt);
-	free_all(rt);
 	ft_putendl_fd("Finished!", 1);
+	free_all(rt);
 }

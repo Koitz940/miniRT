@@ -6,7 +6,7 @@
 /*   By: xwu <xwu@student.42urduliz.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 21:55:09 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/03/08 20:22:16 by xwu              ###   ########.fr       */
+/*   Updated: 2026/03/08 20:22:58 by xwu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ typedef struct s_miniRT
 }	t_miniRT;
 
 /* FREE */
-void	free_all(t_miniRT *rt);
+int		free_all(t_miniRT *rt);
 void	free_screen(t_screen *screen);
 void	free_split(char **split);
 
@@ -174,6 +174,7 @@ t_vec	points_vec(t_vec a, t_vec b);
 void	update(t_vec *vec, double coef);
 t_vec	add(t_vec vec, t_vec vec2);
 double	norm(t_vec vec);
+t_vec	times(t_vec vec, double coef);
 
 /* RESIZE */
 int		resize_sphere(t_sphere *sphere);
@@ -211,5 +212,10 @@ int		intersect_sphere(t_sphere *sphere, t_vec dir,
 			t_pixel *pixel, t_camera *camera);
 int		intersect_cylinder(t_cylinder *cylinder, t_vec dir,
 			t_pixel *pixel, t_camera *camera);
+int		loop(t_miniRT *rt);
+
+
+/* MLX HOOKS */
+int		key_hook(int keycode, t_miniRT *rt);
 
 #endif

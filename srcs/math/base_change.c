@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/18 20:08:31 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/03/08 13:44:32 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/03/08 17:44:25 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ void	move_by(t_vec *vec, t_vec dir, double coef)
 
 void	translate_base(t_vec *pos, t_camera *cam, t_vec coefs)
 {
-	move_by(&pos, cam->right, coefs.x);
-	move_by(&pos, cam->dir, coefs.y);
-	move_by(&pos, cam->up, coefs.z);
+	move_by(pos, cam->right, coefs.x);
+	move_by(pos, cam->dir, coefs.y);
+	move_by(pos, cam->up, coefs.z);
 }
 
 void	normalise(t_vec *vec)
