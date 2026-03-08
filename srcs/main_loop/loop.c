@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/21 13:05:43 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/03/01 14:33:23 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/03/08 17:22:30 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	choose_color(t_screen *screen, t_pixel *pixel, t_vec dir, t_miniRT *rt)
 	i = -1;
 	while (rt->cylinders + ++i)
 		intersect_cylinder(rt->cylinders + i, dir, pixel, rt->camera);
-	set_col(pixel, rt, dir, rt->light);
+	//set_col(pixel, rt, dir, rt->light);
 	paint(rt, pixel, get_col(pixel));
 }
 

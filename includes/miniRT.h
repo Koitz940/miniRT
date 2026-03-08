@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 21:55:09 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/03/08 13:47:39 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/03/08 17:28:17 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,6 +161,7 @@ t_vec	points_vec(t_vec a, t_vec b);
 void	update(t_vec *vec, double coef);
 t_vec	add(t_vec vec, t_vec vec2);
 double	norm(t_vec vec);
+t_vec	times(t_vec vec, double coef);
 
 /* RESIZE */
 int		resize_sphere(t_sphere *sphere);

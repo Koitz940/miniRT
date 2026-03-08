@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/21 11:24:49 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/03/08 13:47:30 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/03/08 17:27:43 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,4 +75,14 @@ t_vec	apply_z(t_vec vec, t_camera *camera, double c, double s)
 double	norm(t_vec vec)
 {
 	return (sqrt(mod(vec.x, vec.y, vec.z)));
+}
+
+t_vec	times(t_vec vec, double coef)
+{
+	t_vec	new;
+
+	new.x = vec.x * coef;
+	new.y = vec.y * coef;
+	new.z = vec.z * coef;
+	return (new);
 }
