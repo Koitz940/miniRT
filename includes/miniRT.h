@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 21:55:09 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/03/09 21:10:03 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/03/10 00:05:51 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@
 # include <stdlib.h>
 # include <stdio.h>
 
-# define WIDTH 2160
-# define HEIGHT 1080
+# define WIDTH 800
+# define HEIGHT 600
 # define CAPACITY 256
 # define PI 3.14159265358979323846
 # define PI2 1.57079632679489661923

@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/21 17:52:12 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/03/09 22:26:25 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/03/09 23:49:27 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,58 +63,68 @@ int	intersect_sphere(t_sphere *sphere, t_vec dir,
 	return (0);
 }
 
-static int	shell(t_cylinder *cylinder, t_why why, t_pixel *pixel)
+static int	shell(t_cylinder *cyl, t_why why, t_pixel *px)
 {
 	double	a;
 	double	b;
-	double	c;
 	double	t;
 	double	dis;
 
-	a = mod(why.vt.x, why.vt.y, why.vt.z);
-	if (a == 0.0)
-		return (0);
+	a = dot_prod(why.vt, why.vt);
 	b = 2 * dot_prod(why.vt, why.wt);
-	c = mod(why.wt.x, why.wt.y, why.wt.z) - cylinder->d * cylinder->d;
-	dis = b * b - 4 * a * c;
-	if (dis < 0.0)
+	dis = b * b - 4 * a * (dot_prod(why.wt, why.wt) - cyl->d * cyl->d);
+	if (dis < 0)
 		return (0);
 	dis = sqrt(dis);
-	t = (-b - sqrt(dis)) / (2 * a);
-	if (t <= TOL)
-		t = (-b + sqrt(dis)) / (2 * a);
-	update(&(why.dir), t);
-	if (t < pixel->t && t > TOL && cylinder->h / 2.0
-		>= norm(points_vec(why.u, add(why.w, why.dir))))
-		return (pixel->t = t,
-			set_col(pixel, cylinder->r, cylinder->g, cylinder->b), 1);
+	t = (-b - dis) / (2 * a);
+	if (t > TOL && t < px->t && cyl->h / 2
+		>= fabs(dot_prod(cyl->dir, add(why.w, times(why.dir, t)))))
+	{
+		px->t = t;
+		set_col(px, cyl->r, cyl->g, cyl->b);
+		return (1);
+	}
+	t = (-b + dis) / (2 * a);
+	if (t > TOL && t < px->t && cyl->h / 2
+		>= fabs(dot_prod(cyl->dir, add(why.w, times(why.dir, t)))))
+	{
+		px->t = t;
+		set_col(px, cyl->r, cyl->g, cyl->b);
+		return (1);
+	}
 	return (0);
 }
 
-static int	caps(t_cylinder *cylinder, t_why why, t_pixel *pixel)
+static int	caps(t_cylinder *cyl, t_why why, t_pixel *px)
 {
-	double	denom;
-	double	numer;
 	double	t;
+	t_vec	p;
+	double	denom;
 	int		check;
-	double	old;
 
-	old = pixel->t;
-	denom = dot_prod(why.dir, cylinder->dir);
+	denom = dot_prod(why.dir, cyl->dir);
+	check = 0;
 	if (denom == 0.0)
 		return (0);
-	numer = -dot_prod(why.w, cylinder->dir);
-	t = (numer + cylinder->h / 2.0) / denom;
-	check = norm(add(why.w, times(why.dir, t))) <= cylinder->d;
-	if (check && t < pixel->t && t > TOL)
-		pixel->t = t;
-	t = (numer - cylinder->h / 2.0) / denom;
-	check = norm(add(why.w, times(why.dir, t))) <= cylinder->d;
-	if (check && t < pixel->t && t > TOL)
-		pixel->t = t;
-	if (old != pixel->t)
-		set_col(pixel, cylinder->r, cylinder->g, cylinder->b);
-	return (old != pixel->t);
+	p = add(cyl->pos, times(cyl->dir, cyl->h / 2));
+	t = dot_prod(points_vec(why.q, p), cyl->dir) / denom;
+	if (t > TOL && t < px->t && cyl->d
+		>= norm(points_vec(p, add(why.q, times(why.dir, t)))))
+	{
+		check = 1;
+		px->t = t;
+		set_col(px, cyl->r, cyl->g, cyl->b);
+	}
+	p = points_vec(times(cyl->dir, cyl->h / 2), cyl->pos);
+	t = dot_prod(points_vec(why.q, p), cyl->dir) / denom;
+	if (t > TOL && t < px->t && cyl->d
+		>= norm(points_vec(p, add(why.q, times(why.dir, t)))))
+	{
+		check = 1;
+		px->t = t;
+		set_col(px, cyl->r, cyl->g, cyl->b);
+	}
+	return (check);
 }
 
 int	intersect_cylinder(t_cylinder *cylinder, t_vec dir,
@@ -125,17 +135,16 @@ int	intersect_cylinder(t_cylinder *cylinder, t_vec dir,
 
 	check = 0;
 	why.w = points_vec(cylinder->pos, camera->pos);
-	why.vt = cylinder->dir;
-	why.wt = cylinder->dir;
-	update(&(why.vt), dot_prod(dir, cylinder->dir));
-	update(&(why.wt), dot_prod(why.w, cylinder->dir));
+	why.vt = times(cylinder->dir, dot_prod(dir, cylinder->dir));
+	why.wt = times(cylinder->dir, dot_prod(why.w, cylinder->dir));
 	why.vt = points_vec(why.vt, dir);
 	why.wt = points_vec(why.wt, why.w);
 	why.dir = dir;
-	why.u = cylinder->dir;
+	why.q = camera->pos;
 	if (shell(cylinder, why, pixel))
 		check = 1;
 	if (caps(cylinder, why, pixel))
 		check = 1;
 	return (check);
 }
+

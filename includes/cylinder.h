@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 21:47:27 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/03/08 13:39:13 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/03/09 23:39:32 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ typedef struct s_why
 {
 	t_vec	vt;
 	t_vec	wt;
-	t_vec	u;
+	t_vec	q;
 	t_vec	dir;
 	t_vec	w;
 }	t_why;
