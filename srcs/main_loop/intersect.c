@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/21 17:52:12 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/03/08 19:15:21 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/03/08 20:03:40 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	intersect_plane(t_plane *plane,
 	double	t;
 
 	denom = dot_prod(plane->dir, dir);
-	numer = dot_prod(plane->dir, points_vec(camera->pos, plane->pos));
+	numer = -dot_prod(plane->dir, points_vec(plane->pos, camera->pos));
 	if (denom != 0.0)
 		t = numer / denom;
 	else
@@ -43,9 +43,9 @@ int	intersect_sphere(t_sphere *sphere, t_vec dir,
 	double	t;
 
 	m = -dot_prod(dir, points_vec(camera->pos, sphere->pos));
-	c = fabs(dot_prod(points_vec(camera->pos, sphere->pos),
+	c = dot_prod(points_vec(camera->pos, sphere->pos),
 			points_vec(camera->pos,
-				sphere->pos))) - sphere->d * sphere->d;
+				sphere->pos)) - sphere->d * sphere->d;
 	dis = m * m - c;
 	if (dis < 0.0)
 		return (0);
