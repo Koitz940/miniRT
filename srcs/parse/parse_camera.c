@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 18:22:53 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/02/28 16:51:09 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/03/09 22:17:06 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	**ft_reall(char **nums, char *line)
 static void	generate_base(t_camera *camera)
 {
 	camera->right = get_right(camera->dir);
-	camera->up = vec_prod(camera->right, camera->dir);
+	camera->up = vec_prod(camera->dir, camera->right);
 }
 
 static int	parse_camera2(t_miniRT *rt, char **split, char **nums)

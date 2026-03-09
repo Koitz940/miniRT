@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   error_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xwu <xwu@student.42urduliz.com>            +#+  +:+       +#+        */
+/*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 22:43:26 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/03/08 19:42:33 by xwu              ###   ########.fr       */
+/*   Updated: 2026/03/09 21:27:39 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-int	exit_rt(t_miniRT *rt)
+void	exit_rt(t_miniRT *rt)
 {
 	free_all(rt);
 	ft_putendl_fd("Finished!", 1);

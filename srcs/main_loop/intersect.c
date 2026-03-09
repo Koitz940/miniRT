@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/21 17:52:12 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/03/08 20:03:40 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/03/09 22:26:25 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	intersect_sphere(t_sphere *sphere, t_vec dir,
 	double	dis;
 	double	t;
 
-	m = -dot_prod(dir, points_vec(camera->pos, sphere->pos));
+	m = dot_prod(dir, points_vec(camera->pos, sphere->pos));
 	c = dot_prod(points_vec(camera->pos, sphere->pos),
 			points_vec(camera->pos,
 				sphere->pos)) - sphere->d * sphere->d;
@@ -80,10 +80,9 @@ static int	shell(t_cylinder *cylinder, t_why why, t_pixel *pixel)
 	if (dis < 0.0)
 		return (0);
 	dis = sqrt(dis);
-	if (-b - dis > TOL)
-		t = -(b + dis) / (2 * a);
-	else
-		t = (-b + dis) / (2 * a);
+	t = (-b - sqrt(dis)) / (2 * a);
+	if (t <= TOL)
+		t = (-b + sqrt(dis)) / (2 * a);
 	update(&(why.dir), t);
 	if (t < pixel->t && t > TOL && cylinder->h / 2.0
 		>= norm(points_vec(why.u, add(why.w, why.dir))))
@@ -131,7 +130,7 @@ int	intersect_cylinder(t_cylinder *cylinder, t_vec dir,
 	update(&(why.vt), dot_prod(dir, cylinder->dir));
 	update(&(why.wt), dot_prod(why.w, cylinder->dir));
 	why.vt = points_vec(why.vt, dir);
-	why.vt = points_vec(why.wt, why.w);
+	why.wt = points_vec(why.wt, why.w);
 	why.dir = dir;
 	why.u = cylinder->dir;
 	if (shell(cylinder, why, pixel))

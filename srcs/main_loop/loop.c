@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/21 13:05:43 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/03/08 19:28:49 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/03/09 21:43:14 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	choose_color(t_screen *screen, t_pixel *pixel, t_vec dir, t_miniRT *rt)
 		intersect_plane(rt->planes->planes + i, dir, pixel, rt->camera);
 	i = -1;
 	while (++i < rt->spheres->length)
-		if (intersect_sphere(rt->spheres->spheres + i, dir, pixel, rt->camera))
+		intersect_sphere(rt->spheres->spheres + i, dir, pixel, rt->camera);
 	i = -1;
 	while (++i < rt->cylinders->length)
 		intersect_cylinder(rt->cylinders->cylinders + i, dir, pixel, rt->camera);
