@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 21:55:09 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/03/08 19:58:14 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/03/09 21:10:03 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@
 # define SCALE 1.1
 # define FOV 1
 
-enum
+enum e_errors
 {
 	SUCCESS,
 	IN_AM,
@@ -53,6 +53,17 @@ enum
 	NO_MANDATORY,
 	NO_DIR,
 	EMPTY,
+};
+
+enum e_mlx_events
+{
+	ON_KEYDOWN = 2,
+	ON_KEYUP = 3,
+	ON_MOUSEDOWN = 4,
+	ON_MOUSEUP = 5,
+	ON_MOUSEMOVE = 6,
+	ON_EXPOSE = 12,
+	ON_DESTROY = 17
 };
 
 typedef struct s_pixel
@@ -116,6 +127,7 @@ int		is_color(int r, int g, int b);
 double	mod(double x, double y, double z);
 int		validate_nums(char *nums);
 int		validate_dir(double *x, double *y, double *z);
+void	exit_rt(t_miniRT *rt);
 
 /* TESTING/ERROR */
 void	errormsg(int flag);
@@ -148,6 +160,7 @@ int		ask_coords(double *x, double *y, double *z);
 int		ask_factor(double *x);
 int		ask_fov(int *x);
 int		ask_change_fov(int *x);
+void	write_ask_fov(int *x);
 
 /* MATH */
 t_vec	vec_prod(t_vec a, t_vec b);
