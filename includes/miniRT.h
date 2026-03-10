@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 21:55:09 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/03/10 11:03:37 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/03/10 11:19:05 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,21 +66,21 @@ enum e_mlx_events
 	ON_DESTROY = 17
 };
 
-enum e_obj
+typedef enum e_obj
 {
 	NONE,
 	PLANE,
 	SPHERE,
 	CYL_BODY,
 	CYL_CAP,
-};
+}	t_obj;
 
 typedef struct s_pixel
 {
 	int		x;
 	int		y;
 	double	t;
-	int		type;
+	t_obj	type;
 	void	*obj;
 }	t_pixel;
 
