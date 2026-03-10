@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/21 17:52:12 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/03/09 23:49:27 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/03/10 11:06:56 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ int	intersect_plane(t_plane *plane,
 	if (t < pixel->t && t > TOL)
 	{
 		pixel->t = t;
-		set_col(pixel, plane->r, plane->g, plane->b);
+		pixel->obj = plane;
+		pixel->type = PLANE;
 		return (1);
 	}
 	return (0);
@@ -57,7 +58,8 @@ int	intersect_sphere(t_sphere *sphere, t_vec dir,
 	if (t < pixel->t && t > TOL)
 	{
 		pixel->t = t;
-		set_col(pixel, sphere->r, sphere->g, sphere->b);
+		pixel->obj = sphere;
+		pixel->type = SPHERE;
 		return (1);
 	}
 	return (0);
@@ -79,19 +81,11 @@ static int	shell(t_cylinder *cyl, t_why why, t_pixel *px)
 	t = (-b - dis) / (2 * a);
 	if (t > TOL && t < px->t && cyl->h / 2
 		>= fabs(dot_prod(cyl->dir, add(why.w, times(why.dir, t)))))
-	{
-		px->t = t;
-		set_col(px, cyl->r, cyl->g, cyl->b);
-		return (1);
-	}
+		return (set_cyl_body(px, cyl, t));
 	t = (-b + dis) / (2 * a);
 	if (t > TOL && t < px->t && cyl->h / 2
 		>= fabs(dot_prod(cyl->dir, add(why.w, times(why.dir, t)))))
-	{
-		px->t = t;
-		set_col(px, cyl->r, cyl->g, cyl->b);
-		return (1);
-	}
+		return (set_cyl_body(px, cyl, t));
 	return (0);
 }
 
@@ -110,20 +104,12 @@ static int	caps(t_cylinder *cyl, t_why why, t_pixel *px)
 	t = dot_prod(points_vec(why.q, p), cyl->dir) / denom;
 	if (t > TOL && t < px->t && cyl->d
 		>= norm(points_vec(p, add(why.q, times(why.dir, t)))))
-	{
-		check = 1;
-		px->t = t;
-		set_col(px, cyl->r, cyl->g, cyl->b);
-	}
+		check = set_cyl_cap(px, cyl, t);
 	p = points_vec(times(cyl->dir, cyl->h / 2), cyl->pos);
 	t = dot_prod(points_vec(why.q, p), cyl->dir) / denom;
 	if (t > TOL && t < px->t && cyl->d
 		>= norm(points_vec(p, add(why.q, times(why.dir, t)))))
-	{
-		check = 1;
-		px->t = t;
-		set_col(px, cyl->r, cyl->g, cyl->b);
-	}
+		check = set_cyl_cap(px, cyl, t);
 	return (check);
 }
 
@@ -147,4 +133,3 @@ int	intersect_cylinder(t_cylinder *cylinder, t_vec dir,
 		check = 1;
 	return (check);
 }
-

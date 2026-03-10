@@ -6,13 +6,13 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 20:24:00 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/03/09 21:17:04 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/03/10 11:11:25 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-static void print_vec(t_vec vec)
+static void	print_vec(t_vec vec)
 {
 	printf("%lf %lf %lf\n", vec.x, vec.y, vec.z);
 }

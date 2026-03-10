@@ -18,7 +18,7 @@ SRC = main.c free_file.c utils.c init/init_file.c init/init_vecs.c\
 	error_file.c append.c parse/parse1.c start.c ask/ask.c ask/ask2.c move/move1.c\
 	move/move2.c move/move3.c resize/resize.c resize/resize2.c math/base_change.c math/cross_product.c\
 	math/rotate.c math/rotate_base.c rotate/rotate.c rotate/rotate2.c hooks/hooks.c main_loop/loop.c main_loop/intersect.c\
-	main_loop/paint.c
+	main_loop/paint.c main_loop/paint2.c
 
 OBJ_DIR = objs
 

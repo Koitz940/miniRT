@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/18 18:55:16 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/03/09 22:42:05 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/03/10 10:58:59 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,8 @@ static void	init_screen2(t_screen *screen)
 		while (++i < WIDTH)
 		{
 			pos = j * WIDTH + i;
-			screen->screen[pos].r = 0;
-			screen->screen[pos].g = 0;
-			screen->screen[pos].b = 0;
+			screen->screen[pos].type = NONE;
+			screen->screen[pos].obj = NULL;
 			screen->screen[pos].x = i;
 			screen->screen[pos].y = j;
 			screen->screen[pos].t = INFINITY;

@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 21:55:09 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/03/10 00:05:51 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/03/10 11:03:37 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,14 +66,22 @@ enum e_mlx_events
 	ON_DESTROY = 17
 };
 
+enum e_obj
+{
+	NONE,
+	PLANE,
+	SPHERE,
+	CYL_BODY,
+	CYL_CAP,
+};
+
 typedef struct s_pixel
 {
-	int		r;
-	int		g;
-	int		b;
 	int		x;
 	int		y;
 	double	t;
+	int		type;
+	void	*obj;
 }	t_pixel;
 
 typedef struct s_screen
@@ -205,7 +213,9 @@ void	choose_color(t_screen *screen, t_pixel *pixel, t_vec dir, t_miniRT *rt);
 int		loop(t_miniRT *rt);
 void	paint(t_miniRT *rt, t_pixel *point, int p);
 int		get_col(t_pixel *pixel);
-void	set_col(t_pixel *pixel, int r, int g, int b);
+int		get_cyl_col(t_cylinder *cylinder);
+int		get_sphere_col(t_sphere *sphere);
+int		get_plane_col(t_plane *plane);
 int		intersect_plane(t_plane *plane, t_vec dir,
 			t_pixel *pixel, t_camera *camera);
 int		intersect_sphere(t_sphere *sphere, t_vec dir,
@@ -213,7 +223,8 @@ int		intersect_sphere(t_sphere *sphere, t_vec dir,
 int		intersect_cylinder(t_cylinder *cylinder, t_vec dir,
 			t_pixel *pixel, t_camera *camera);
 int		loop(t_miniRT *rt);
-
+int		set_cyl_body(t_pixel *px, t_cylinder *cyl, double t);
+int		set_cyl_cap(t_pixel *px, t_cylinder *cyl, double t);
 
 /* MLX HOOKS */
 int		key_hook(int keycode, t_miniRT *rt);
