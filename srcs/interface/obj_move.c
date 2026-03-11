@@ -56,3 +56,16 @@ void	move_figure_from(t_obj type, void *object, t_miniRT *rt)
 	rt->mouse_select.type = NONE;
 	reset_screen(rt);
 }
+
+void	resize_figure(t_obj type, void *obj, t_miniRT *rt)
+{
+	(void)type;
+	(void)obj;
+	(void)rt;
+}
+void	rotate_figure(t_obj type, void *obj, t_miniRT *rt)
+{
+	(void)type;
+	(void)obj;
+	(void)rt;
+}

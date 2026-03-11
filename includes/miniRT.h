@@ -6,7 +6,7 @@
 /*   By: xwu <xwu@student.42urduliz.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 21:55:09 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/03/11 21:31:57 by xwu              ###   ########.fr       */
+/*   Updated: 2026/03/11 22:45:50 by xwu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -198,12 +198,16 @@ double	norm(t_vec vec);
 t_vec	times(t_vec vec, double coef);
 
 /* RESIZE */
+void	resize_figure(t_obj type, void *obj, t_miniRT *rt);
 int		resize_sphere(t_sphere *sphere);
 int		resize_sphere_plus(t_sphere *sphere);
 int		resize_sphere_minus(t_sphere *sphere);
 int		resize_cylinder(t_cylinder *cylinder);
 int		resize_cylinder_plus(t_cylinder *cylinder, int mode);
 int		resize_cylinder_minus(t_cylinder *cylinder, int mode);
+int		resize_light(void *light, int ambience);
+int		resize_light_plus(void *light, int ambience);
+int		resize_light_minus(void *light, int ambience);
 
 /* ROTATE */
 t_vec	rotate_x(t_vec vec, double angle);
@@ -215,6 +219,7 @@ t_vec	apply_y(t_vec vec, t_camera *camera, double c, double s);
 t_vec	apply_z(t_vec vec, t_camera *camera, double c, double s);
 int		rotate_cam_cam(t_camera *camera, t_miniRT *rt);
 int		rotate_cam(t_camera *camera, t_miniRT *rt);
+void	rotate_figure(t_obj type, void *obj, t_miniRT *rt);
 int		rotate_plane(t_plane *plane, t_miniRT *rt);
 int		rotate_plane_cam(t_plane *plane, t_miniRT *rt);
 int		rotate_cylinder(t_cylinder *cylinder, t_miniRT *rt);
@@ -243,6 +248,8 @@ int		set_cyl_cap(t_pixel *px, t_cylinder *cyl, double t);
 int		mlx_hooks(t_miniRT *rt);
 int		key_hook(int keycode, t_miniRT *rt);
 int		mouse_hook(int key, int x, int y, t_miniRT *rt);
+int		key_press(int key_code, t_miniRT *rt);
+int		key_release(int key_code, t_miniRT *rt);
 void	current_obj_msg(t_obj type);
 
 #endif

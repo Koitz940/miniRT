@@ -17,7 +17,7 @@ SRC = main.c free_file.c utils.c error_file.c append.c start.c\
 	parse/parse_ambient_light.c parse/parse_light.c parse/parse_sphere.c parse/parse_cylinder.c parse/parse_camera.c parse/parse_plane.c parse/parse1.c \
 	ask/ask.c ask/ask2.c \
 	move/move1.c move/move2.c move/move3.c \
-	resize/resize.c resize/resize2.c \
+	resize/resize.c resize/resize2.c resize/resize3.c \
 	math/base_change.c math/cross_product.c math/rotate.c math/rotate_base.c \
 	rotate/rotate.c rotate/rotate2.c \
 	interface/hooks.c interface/key_hook.c interface/mouse.c interface/obj_move.c\

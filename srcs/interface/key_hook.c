@@ -58,6 +58,7 @@ int	key_press(int key_code, t_miniRT *rt)
 
 int	key_release(int key_code, t_miniRT *rt)
 {
+	(void)key_code;
 	loop(rt);
 	return (0);
 }
