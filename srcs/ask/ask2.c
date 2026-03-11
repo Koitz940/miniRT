@@ -6,13 +6,13 @@
 /*   By: xwu <xwu@student.42urduliz.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/21 12:32:36 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/03/11 01:26:58 by xwu              ###   ########.fr       */
+/*   Updated: 2026/03/11 19:53:39 by xwu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-void	write_ask(char *msg, int *x)
+void	write_ask(char *msg, double *x)
 {
 	ft_putstr_fd(msg, 1);
 	ft_putstr_fd(" [Current value: ", 1);
@@ -24,7 +24,7 @@ int	ask_change_fov(int *x)
 {
 	char	*str;
 
-	write_ask("Write the FOV change", x);
+	write_ask("Write the FOV change", (double *)x);
 	while (1)
 	{
 		str = get_next_line(0);

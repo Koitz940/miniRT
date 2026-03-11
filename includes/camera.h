@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   camera.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
+/*   By: xwu <xwu@student.42urduliz.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 21:45:11 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/02/28 16:26:25 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/03/11 20:11:22 by xwu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CAMERA_H
 # define CAMERA_H
+# define SPEED 1
 
 /* FOV of 0 doesn't make any sense, won't be allowed */
 typedef struct s_camera

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_vecs.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
+/*   By: xwu <xwu@student.42urduliz.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/18 19:48:39 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/01/20 23:51:03 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/03/11 19:51:25 by xwu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	init_spheres(t_miniRT *rt, int *flag)
 
 void	init_cylinders(t_miniRT *rt, int *flag)
 {
-	rt->cylinders = calloc(sizeof(t_cylinders), 1);
+	rt->cylinders = ft_calloc(sizeof(t_cylinders), 1);
 	if (!rt->cylinders)
 	{
 		*flag = MALLOC;

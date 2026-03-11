@@ -6,7 +6,7 @@
 /*   By: xwu <xwu@student.42urduliz.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 21:55:09 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/03/11 02:15:33 by xwu              ###   ########.fr       */
+/*   Updated: 2026/03/11 21:31:57 by xwu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ typedef enum e_obj
 	SPHERE,
 	CYL_BODY,
 	CYL_CAP,
+	LIGHT,
 }	t_obj;
 
 typedef struct s_pixel
@@ -144,6 +145,7 @@ int		is_color(int r, int g, int b);
 double	mod(double x, double y, double z);
 int		validate_nums(char *nums);
 int		validate_dir(double *x, double *y, double *z);
+void	reset_screen(t_miniRT *rt);
 
 /* TESTING/ERROR */
 void	errormsg(int flag);
@@ -155,6 +157,9 @@ int		add_sphere(t_spheres *spheres, t_sphere sphere);
 int		add_cylinder(t_cylinders *cylinders, t_cylinder cylinder);
 
 /* MOVING */
+void	move_figure(t_obj type, void *object, t_miniRT *rt);
+void	place_figure(t_obj type, void *object, t_miniRT *rt);
+void	move_figure_from(t_obj type, void *object, t_miniRT *rt);
 int		move_cam(t_camera *camera, t_miniRT *rt);
 int		place_cam(t_camera *camera, t_miniRT *rt);
 int		move_cam_from(t_camera *camera, t_miniRT *rt);
@@ -176,7 +181,7 @@ int		ask_coords(double *x, double *y, double *z);
 int		ask_factor(double *x);
 int		ask_fov(int *x);
 int		ask_change_fov(int *x);
-void	write_ask(char *msg, int *x);
+void	write_ask(char *msg, double *x);
 
 /* MATH */
 t_vec	vec_prod(t_vec a, t_vec b);
@@ -235,6 +240,9 @@ int		set_cyl_body(t_pixel *px, t_cylinder *cyl, double t);
 int		set_cyl_cap(t_pixel *px, t_cylinder *cyl, double t);
 
 /* MLX HOOKS */
+int		mlx_hooks(t_miniRT *rt);
 int		key_hook(int keycode, t_miniRT *rt);
+int		mouse_hook(int key, int x, int y, t_miniRT *rt);
+void	current_obj_msg(t_obj type);
 
 #endif

@@ -12,13 +12,16 @@ INCLUDES	= -I$(INCLUDE_DIR) \
 			  -I$(MLX_DIR) \
 			  -I$(LIBFT_DIR) \
 
-SRC = main.c free_file.c utils.c init/init_file.c init/init_vecs.c\
-	parse/parse_ambient_light.c parse/parse_light.c parse/parse_sphere.c\
-	parse/parse_cylinder.c parse/parse_camera.c parse/parse_plane.c\
-	error_file.c append.c parse/parse1.c start.c ask/ask.c ask/ask2.c move/move1.c\
-	move/move2.c move/move3.c resize/resize.c resize/resize2.c math/base_change.c math/cross_product.c\
-	math/rotate.c math/rotate_base.c rotate/rotate.c rotate/rotate2.c hooks/hooks.c main_loop/loop.c main_loop/intersect.c\
-	main_loop/paint.c main_loop/paint2.c
+SRC = main.c free_file.c utils.c error_file.c append.c start.c\
+	init/init_file.c init/init_vecs.c\
+	parse/parse_ambient_light.c parse/parse_light.c parse/parse_sphere.c parse/parse_cylinder.c parse/parse_camera.c parse/parse_plane.c parse/parse1.c \
+	ask/ask.c ask/ask2.c \
+	move/move1.c move/move2.c move/move3.c \
+	resize/resize.c resize/resize2.c \
+	math/base_change.c math/cross_product.c math/rotate.c math/rotate_base.c \
+	rotate/rotate.c rotate/rotate2.c \
+	interface/hooks.c interface/key_hook.c interface/mouse.c interface/obj_move.c\
+	main_loop/loop.c main_loop/intersect.c main_loop/paint.c main_loop/paint2.c 
 
 OBJ_DIR = objs
 
@@ -33,6 +36,7 @@ MLX = mlx/libmlx.a
 LIBFT = libft/libft.a
 
 objs/%.o: srcs/%.c
+	@mkdir -p objs objs/ask objs/hooks objs/init objs/interface objs/main_loop objs/math objs/move objs/parse objs/resize objs/rotate
 	$(CC) $(CFLAGS) -c $< -o $@ $(MLXFLAGS) $(INCLUDES)
 
 $(NAME): $(MLX) $(LIBFT) $(OBJECTS)
@@ -54,6 +58,7 @@ clean:
 	$(RM) $(OBJECTS) $(OBJS_BONUS)
 
 fclean: clean
+	rm -r objs
 	$(RM) $(NAME) $(NAME_BONUS)
 	$(MAKE) clean -C mlx
 	$(MAKE) fclean -C libft

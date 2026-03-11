@@ -6,7 +6,7 @@
 /*   By: xwu <xwu@student.42urduliz.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 20:15:39 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/03/11 01:28:13 by xwu              ###   ########.fr       */
+/*   Updated: 2026/03/11 19:53:20 by xwu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ static int	ask_coords3(double *z, char *str)
 		else
 		{
 			free(str);
+			str = NULL;
 			break ;
 		}
 	}
@@ -50,6 +51,7 @@ static int	ask_coords2(double *y, double *z, char *str)
 		else
 		{
 			free(str);
+			str = NULL;
 			break ;
 		}
 	}
@@ -74,6 +76,7 @@ int	ask_coords(double *x, double *y, double *z)
 		else
 		{
 			free(str);
+			str = NULL;
 			break ;
 		}
 	}
@@ -108,7 +111,7 @@ int	ask_fov(int *x)
 {
 	char	*str;
 
-	write_ask("Write the FOV", x);
+	write_ask("Write the FOV", (double *)x);
 	while (1)
 	{
 		str = get_next_line(0);
