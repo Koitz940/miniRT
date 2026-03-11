@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
+/*   By: xwu <xwu@student.42urduliz.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 21:55:09 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/03/10 11:19:05 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/03/11 02:15:33 by xwu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,15 +55,23 @@ enum e_errors
 	EMPTY,
 };
 
-enum e_mlx_events
+enum e_mlx_key_events
 {
 	ON_KEYDOWN = 2,
 	ON_KEYUP = 3,
-	ON_MOUSEDOWN = 4,
-	ON_MOUSEUP = 5,
-	ON_MOUSEMOVE = 6,
-	ON_EXPOSE = 12,
 	ON_DESTROY = 17
+};
+
+enum e_mlx_mouse_events
+{
+	ZERO,
+	RIGHT_CLICK,
+	CENTER_CLICK,
+	LEFT_CLICK,
+	SCROLL_UP,
+	SCROLL_DOWN,
+	SCROLL_LEFT,
+	SCROLL_RIGHT
 };
 
 typedef enum e_obj
@@ -105,6 +113,7 @@ typedef struct s_miniRT
 	t_light			*light;
 	t_planes		*planes;
 	t_spheres		*spheres;
+	t_pixel			mouse_select;
 }	t_miniRT;
 
 /* FREE */
@@ -135,7 +144,6 @@ int		is_color(int r, int g, int b);
 double	mod(double x, double y, double z);
 int		validate_nums(char *nums);
 int		validate_dir(double *x, double *y, double *z);
-void	exit_rt(t_miniRT *rt);
 
 /* TESTING/ERROR */
 void	errormsg(int flag);
@@ -168,7 +176,7 @@ int		ask_coords(double *x, double *y, double *z);
 int		ask_factor(double *x);
 int		ask_fov(int *x);
 int		ask_change_fov(int *x);
-void	write_ask_fov(int *x);
+void	write_ask(char *msg, int *x);
 
 /* MATH */
 t_vec	vec_prod(t_vec a, t_vec b);

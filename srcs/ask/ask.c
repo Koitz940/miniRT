@@ -6,7 +6,7 @@
 /*   By: xwu <xwu@student.42urduliz.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 20:15:39 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/03/08 20:21:28 by xwu              ###   ########.fr       */
+/*   Updated: 2026/03/11 01:28:13 by xwu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	ask_coords3(double *z, char *str)
 {
-	ft_putendl_fd("Write the z coordinate: ", 1);
+	write_ask("Write the z coordinate", z);
 	while (1)
 	{
 		str = get_next_line(0);
@@ -36,7 +36,7 @@ static int	ask_coords3(double *z, char *str)
 
 static int	ask_coords2(double *y, double *z, char *str)
 {
-	ft_putendl_fd("Write the y coordinate: ", 1);
+	write_ask("Write the y coordinate", y);
 	while (1)
 	{
 		str = get_next_line(0);
@@ -60,7 +60,7 @@ int	ask_coords(double *x, double *y, double *z)
 {
 	char	*str;
 
-	ft_putendl_fd("Write the x coordinate: ", 1);
+	write_ask("Write the x coordinate", x);
 	while (1)
 	{
 		str = get_next_line(0);
@@ -84,7 +84,7 @@ int	ask_factor(double *x)
 {
 	char	*str;
 
-	ft_putendl_fd("Write the factor: ", 1);
+	write_ask("Write the factor", x);
 	while (1)
 	{
 		str = get_next_line(0);
@@ -108,7 +108,7 @@ int	ask_fov(int *x)
 {
 	char	*str;
 
-	write_ask_fov(x);
+	write_ask("Write the FOV", x);
 	while (1)
 	{
 		str = get_next_line(0);
