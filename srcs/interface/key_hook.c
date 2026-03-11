@@ -41,9 +41,11 @@ static void	camera_changes(int key_code, t_miniRT *rt)
 		ask_fov(&rt->camera->fov);
 	else if (key_code == XK_F)
 		ask_change_fov(&rt->camera->fov);
-	else if (key_code == XK_F || key_code == XK_f)
-		ask_factor(&rt->camera->f);
-	else if (key_code == XK_Left)
+}
+
+int	key_press(int key_code, t_miniRT *rt)
+{
+	if (key_code == XK_Left)
 		move_by(&rt->camera->pos, rt->camera->right, -SPEED);
 	else if (key_code == XK_Right)
 		move_by(&rt->camera->pos, rt->camera->right, SPEED);
@@ -51,19 +53,29 @@ static void	camera_changes(int key_code, t_miniRT *rt)
 		move_by(&rt->camera->pos, rt->camera->up, SPEED);
 	else if (key_code == XK_Down)
 		move_by(&rt->camera->pos, rt->camera->up, -SPEED);
+	return (0);
 }
 
-static void	obj_pos_changes(int key_code, t_miniRT *rt)
+int	key_release(int key_code, t_miniRT *rt)
 {
-	if ((key_code == XK_m || key_code == XK_M)
-		&& rt->mouse_select.type != NONE)
+	loop(rt);
+	return (0);
+}
+
+static void	object_changes(int key_code, t_miniRT *rt)
+{
+	if (rt->mouse_select.type == NONE)
+		return ;
+	if (key_code == XK_m || key_code == XK_M)
 		move_figure(rt->mouse_select.type, rt->mouse_select.obj, rt);
-	else if ((key_code == XK_p || key_code == XK_P)
-		&& rt->mouse_select.type != NONE)
+	else if (key_code == XK_p || key_code == XK_P)
 		place_figure(rt->mouse_select.type, rt->mouse_select.obj, rt);
-	else if ((key_code == XK_c || key_code == XK_C)
-		&& rt->mouse_select.type != NONE)
+	else if (key_code == XK_c || key_code == XK_C)
 		move_figure_from(rt->mouse_select.type, rt->mouse_select.obj, rt);
+	else if (key_code == XK_F || key_code == XK_f)
+		resize_figure(rt->mouse_select.type, rt->mouse_select.obj, rt);
+	else if (key_code == XK_r || key_code == XK_R)
+		rotate_figure(rt->mouse_select.type, rt->mouse_select.obj, rt);
 }
 
 int	key_hook(int key_code, t_miniRT *rt)
@@ -82,7 +94,7 @@ int	key_hook(int key_code, t_miniRT *rt)
 		rt->mouse_select.type = LIGHT;
 		current_obj_msg(LIGHT);
 	}
-	obj_pos_changes(key_code, rt);
+	object_changes(key_code, rt);
 	camera_changes(key_code, rt);
 	loop(rt);
 	return (0);
