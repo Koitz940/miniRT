@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/18 18:07:12 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/03/12 21:33:06 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/03/13 00:35:30 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,14 @@ int	main(int ac, char **av)
 	flag = validate_file(ac, av);
 	rt = ft_calloc(sizeof(t_miniRT), 1);
 	if (!rt)
-		return (errormsg(flag), 1);
-	if (flag)
-		return (free_all(rt), errormsg(flag), 1);
+		return (errormsg(MALLOC), 1);
 	flag = init(rt, av[1]);
 	if (flag)
-		return (free_all(rt), errormsg(flag), 1);
+	{
+		errormsg(flag);
+		free_all(rt);
+		return (1);
+	}
 	start(rt);
 	ft_putendl_fd("Finished!", 1);
 	free_all(rt);
