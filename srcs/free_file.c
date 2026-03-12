@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
+/*   By: xwu <xwu@student.42urduliz.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 22:21:01 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/03/08 17:41:34 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/03/12 20:41:09 by xwu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ void	free_screen(t_screen *screen)
 		mlx_destroy_image(screen->mlx, screen->img);
 	if (screen->window)
 		mlx_destroy_window(screen->mlx, screen->window);
-	mlx_destroy_display(screen->mlx);
 	free(screen->mlx);
 	free(screen);
 }

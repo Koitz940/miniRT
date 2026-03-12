@@ -20,6 +20,7 @@
 - [p] && [obj selected]	move obj (absolute)
 - [c] && [obj selected]	move obj (relative to camera)
 - [r] && [obj selected]	rotate obj
+- [s] && [obj selected]	rotate obj
 - [m]	move obj (relative)
 - [p]	move camera (absolute)
 - [c]	move camera (relative to camera)
