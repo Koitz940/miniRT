@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 17:55:22 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/03/12 22:54:29 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/03/12 23:00:16 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ int	parse(t_miniRT *rt, char *line)
 		line++;
 	if (!line[0])
 		return (SUCCESS);
-	ft_putendl_fd(line, 1);
 	split = ft_split(line, ' ');
 	if (!split)
 		return (MALLOC);
