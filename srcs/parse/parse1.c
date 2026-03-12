@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 17:55:22 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/01/20 19:19:18 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/03/12 23:00:16 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,9 @@ int	parse(t_miniRT *rt, char *line)
 {
 	char	**split;
 
-	if (!line[0] || line[0] == '\n')
+	while (*line == ' ')
+		line++;
+	if (!line[0])
 		return (SUCCESS);
 	split = ft_split(line, ' ');
 	if (!split)

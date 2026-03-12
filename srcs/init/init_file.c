@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/18 18:55:16 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/03/10 10:58:59 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/03/12 22:48:33 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,6 @@ static int	init2(t_miniRT *rt, int flag, char *filename)
 	int		fd;
 	char	*line;
 
-	if (flag)
-		return (flag);
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
 		return (FILE_NOT_FOUND);
@@ -86,9 +84,10 @@ static int	init2(t_miniRT *rt, int flag, char *filename)
 		return (EMPTY);
 	while (line)
 	{
-		if (line[ft_strlen(line) - 1] == '\n')
-			line[ft_strlen(line) - 1] = 0;
-		flag = parse(rt, line);
+		if (sanitize_line(line))
+			flag = parse(rt, line);
+		else
+			flag = 0;
 		free(line);
 		if (flag)
 			return (flag);
@@ -122,5 +121,7 @@ int	init(t_miniRT *rt, char *filename)
 	if (!rt->ambient_light || init_camera(rt))
 		return (MALLOC);
 	rt->ambient_light->isdef = 0;
+	if (flag)
+		return (flag);
 	return (init2(rt, flag, filename));
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_vecs.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xwu <xwu@student.42urduliz.com>            +#+  +:+       +#+        */
+/*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/18 19:48:39 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/03/11 19:51:25 by xwu              ###   ########.fr       */
+/*   Updated: 2026/03/12 22:53:57 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,21 @@ void	init_planes(t_miniRT *rt, int *flag)
 	rt->planes->planes = ft_calloc(sizeof(t_cylinder), CAPACITY);
 	if (!rt->planes->planes)
 		*flag = MALLOC;
+}
+
+int	sanitize_line(char *line)
+{
+	int	i;
+
+	if ((line[0] && line[0] == '\n')
+		|| (line[0] && line[0] == '\r' && line[1] && line[1] == '\n'))
+		return (0);
+	if ((line[0] && line[0] == '#')
+		|| (line[0] && line[0] == '/' && line[1] && line[1] == '/'))
+		return (0);
+	i = -1;
+	while (line && line[++i])
+		if (line[i] == '\t' || line[i] == '\n' || line[i] == '\r')
+			line[i] = ' ';
+	return (1);
 }
