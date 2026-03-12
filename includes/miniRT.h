@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xwu <xwu@student.42urduliz.com>            +#+  +:+       +#+        */
+/*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 21:55:09 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/03/11 22:45:50 by xwu              ###   ########.fr       */
+/*   Updated: 2026/03/12 22:35:43 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,6 +136,7 @@ int		parse_light(t_miniRT *rt, char **split);
 int		parse_sphere(t_miniRT *rt, char **split);
 int		parse_plane(t_miniRT *rt, char **split);
 int		parse_cylinder(t_miniRT *rt, char **split);
+int		sanitize_line(char *line);
 
 /* UTILS */
 int		ft_strcmp(const char *s1, const char *s2);
