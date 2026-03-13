@@ -42,9 +42,11 @@ static void	camera_changes(int key_code, t_miniRT *rt)
 		ask_fov(&rt->camera->fov);
 	else if (key_code == XK_F)
 		ask_change_fov(&rt->camera->fov);
+	reset_screen(rt);
+	loop(rt);
 }
 
-int	key_press(int key_code, t_miniRT *rt)
+/* int	key_press(int key_code, t_miniRT *rt)
 {
 	if (key_code == XK_Left)
 		move_by(&rt->camera->pos, rt->camera->right, -SPEED);
@@ -55,12 +57,12 @@ int	key_press(int key_code, t_miniRT *rt)
 	else if (key_code == XK_Down)
 		move_by(&rt->camera->pos, rt->camera->up, -SPEED);
 	return (0);
-}
+} */
 
 int	key_release(int key_code, t_miniRT *rt)
 {
 	(void)key_code;
-	loop(rt);
+	(void)rt;
 	return (0);
 }
 
@@ -78,10 +80,13 @@ static void	object_changes(int key_code, t_miniRT *rt)
 		resize_figure(rt->mouse_select.type, rt->mouse_select.obj, rt);
 	else if (key_code == XK_r || key_code == XK_R)
 		rotate_figure(rt->mouse_select.type, rt->mouse_select.obj, rt);
+	reset_screen(rt);
+	loop(rt);
 }
 
-int	key_hook(int key_code, t_miniRT *rt)
+int	key_press(int key_code, t_miniRT *rt)
 {
+	printf("Keyhook detected: %d\n", key_code);
 	if (key_code == XK_Escape)
 		free_all(rt);
 	else if (key_code == XK_BackSpace)
@@ -98,6 +103,5 @@ int	key_hook(int key_code, t_miniRT *rt)
 	}
 	object_changes(key_code, rt);
 	camera_changes(key_code, rt);
-	loop(rt);
 	return (0);
 }

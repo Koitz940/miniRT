@@ -6,7 +6,7 @@
 /*   By: xwu <xwu@student.42urduliz.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/11 00:35:06 by xwu               #+#    #+#             */
-/*   Updated: 2026/03/11 20:44:29 by xwu              ###   ########.fr       */
+/*   Updated: 2026/03/13 11:34:10 by xwu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int	mouse_hook(int key, int x, int y, t_miniRT *rt)
 	{
 		rt->mouse_select.obj = NULL;
 		rt->mouse_select.type = NONE;
+		ft_putendl_fd("Object deselected", 1);
 	}
 	return (0);
 }

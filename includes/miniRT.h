@@ -6,7 +6,7 @@
 /*   By: xwu <xwu@student.42urduliz.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 21:55:09 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/03/13 02:24:59 by xwu              ###   ########.fr       */
+/*   Updated: 2026/03/13 11:38:35 by xwu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@
 # include "sphere.h"
 # include "libft.h"
 # include "mlx.h"
-# ifndef __linux__
-#  include "keycodes.h"
-# else
+# ifndef __APPLE__
 #  include <X11/keysym.h>
+# else
+#  include "keycodes.h"
 # endif
 # include <sys/time.h>
 # include <unistd.h>
@@ -69,9 +69,9 @@ enum e_mlx_key_events
 enum e_mlx_mouse_events
 {
 	ZERO,
-	RIGHT_CLICK,
-	CENTER_CLICK,
 	LEFT_CLICK,
+	CENTER_CLICK,
+	RIGHT_CLICK,
 	SCROLL_UP,
 	SCROLL_DOWN,
 	SCROLL_LEFT,
@@ -250,7 +250,7 @@ int		set_cyl_body(t_pixel *px, t_cylinder *cyl, double t);
 int		set_cyl_cap(t_pixel *px, t_cylinder *cyl, double t);
 
 /* MLX HOOKS */
-int		mlx_hooks(t_miniRT *rt);
+void	mlx_hooks(t_miniRT *rt);
 int		key_hook(int keycode, t_miniRT *rt);
 int		mouse_hook(int key, int x, int y, t_miniRT *rt);
 int		key_press(int key_code, t_miniRT *rt);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
+/*   By: xwu <xwu@student.42urduliz.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 18:56:46 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/03/12 21:53:29 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/03/13 12:38:11 by xwu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,9 @@ int	add_decimals(char *str, size_t dot, double sign, double *x)
 	double	decimal;
 	size_t	i;
 
-	i = ft_strlen(str);
-	decimal = 0;
+	i = ft_strlen(str) - 1;
+	printf("%s",str);
+	decimal = 0.0;
 	while (--i != dot)
 	{
 		if (str[i] < '0' || str[i] > '9')
@@ -31,29 +32,40 @@ int	add_decimals(char *str, size_t dot, double sign, double *x)
 	return (SUCCESS);
 }
 
+int	add_wholeparts(char *str, size_t i, double n)
+{
+	while (str[i] && str[i] != '.')
+	{
+		if (str[i] < '0' || str[i] > '9')
+			return (UNKNOWN_SPECIFIER);
+		n= n * 10.0 + (double)(str[i++] - '0');
+		if (n == INFINITY)
+			return (WRONG_SPECIFIER);
+	}
+	return (SUCCESS);
+}
+
 int	ft_atod(char *str, double *x)
 {
 	size_t	i;
 	double	sign;
-
+	double	n;
+	int		status;
 	if (!str || !str[0] || !ft_strncmp(".", str, 2)
 		|| !ft_strncmp("+.", str, 3) || !ft_strncmp("-.", str, 3))
 		return (UNKNOWN_SPECIFIER);
 	i = 0;
 	sign = 1.0;
+	n = 0.0;
 	if (str[0] == '+' || str[0] == '-')
 	{
 		if (str[i++] == '-')
 			sign = -1.0;
 	}
-	while (str[i] && str[i] != '.')
-	{
-		if (str[i] < '0' || str[i] > '9')
-			return (UNKNOWN_SPECIFIER);
-		*x = *x * 10.0 + (double)(str[i++] - '0');
-		if (*x == INFINITY)
-			return (WRONG_SPECIFIER);
-	}
+	status = add_wholeparts(str, i, n);
+	if (status)
+		return (status);
+	*x = n;
 	if (str[i])
 		return (add_decimals(str, i, sign, x));
 	*x *= sign;
@@ -77,11 +89,6 @@ int	ft_ft_atoi(char *str, int *n)
 			return (WRONG_SPECIFIER);
 	}
 	return (SUCCESS);
-}
-
-double	mod(double x, double y, double z)
-{
-	return (x * x + y * y + z * z);
 }
 
 int	is_color(int r, int g, int b)
