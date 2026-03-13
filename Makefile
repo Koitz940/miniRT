@@ -31,12 +31,13 @@ OBJECTS	= $(addprefix $(OBJ_DIR)/, $(OBJS))
 OBJS_BONUS = $(SRC_BONUS:.c=.o)
 
 ifeq ($(shell uname), Darwin)
-	MLXFLAGS = -Lmlx -Llibft -lmlx -lft -framework OpenGL -framework AppKit
+	MLX_DIR = mlx_mac
+	MLXFLAGS = -L$(MLX_DIR) -Llibft -lmlx -lft -framework OpenGL -framework AppKit
 else
 	MLXFLAGS = -Lmlx -lmlx -lX11 -lXext -lm -lbsd -lft -Llibft
 endif
 
-MLX = mlx/libmlx.a
+MLX = $(MLX_DIR)/libmlx.a
 LIBFT = libft/libft.a
 
 objs/%.o: srcs/%.c
@@ -48,7 +49,7 @@ $(NAME): $(MLX) $(LIBFT) $(OBJECTS)
 	$(CC) $(CFLAGS) $(OBJECTS) $(MLXFLAGS) -o $@ 
 
 $(MLX):
-	$(MAKE) -C mlx
+	$(MAKE) -C $(MLX_DIR)
 	$(MAKE) -C libft
 
 all: $(NAME) 
@@ -62,9 +63,9 @@ clean:
 	$(RM) $(OBJECTS) $(OBJS_BONUS)
 
 fclean: clean
-	rm -r objs
+	rm -rf objs
 	$(RM) $(NAME) $(NAME_BONUS)
-	$(MAKE) clean -C mlx
+	$(MAKE) clean -C $(MLX_DIR)
 	$(MAKE) fclean -C libft
 
 re: fclean all

@@ -6,7 +6,7 @@
 /*   By: xwu <xwu@student.42urduliz.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 21:55:09 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/03/13 00:57:04 by xwu              ###   ########.fr       */
+/*   Updated: 2026/03/13 02:24:59 by xwu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,11 @@
 # include "sphere.h"
 # include "libft.h"
 # include "mlx.h"
-# include <X11/keysym.h>
+# ifndef __linux__
+#  include "keycodes.h"
+# else
+#  include <X11/keysym.h>
+# endif
 # include <sys/time.h>
 # include <unistd.h>
 # include <stdlib.h>

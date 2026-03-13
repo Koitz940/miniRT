@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   start.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
+/*   By: xwu <xwu@student.42urduliz.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 20:24:00 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/03/10 11:11:25 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/03/13 02:29:08 by xwu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,5 @@ void	start(t_miniRT *rt)
 			printf("%lf %i %i", rt->screen->screen->t, rt->screen->screen->x, rt->screen->screen->y);
 	}
 	loop(rt);
-	mlx_hook(rt->screen->window, 17, 0, free_all, rt);
-	mlx_key_hook(rt->screen->window, key_hook, rt);
-	mlx_loop(rt->screen->mlx);
+	mlx_hooks(rt);
 }
