@@ -16,6 +16,9 @@ int	move_plane_from(t_plane *plane, t_miniRT *rt)
 {
 	t_vec	coefs;
 
+	coefs.x = 0;
+	coefs.y = 0;
+	coefs.z = 0;
 	if (ask_coords(&(coefs.x), &(coefs.y), &(coefs.z)))
 		return (MALLOC);
 	translate_base(&(plane->pos), rt->camera, coefs);
@@ -28,6 +31,9 @@ int	move_light(t_light *light, t_miniRT *rt)
 	double	y;
 	double	z;
 
+	x = 0;
+	y = 0;
+	z = 0;
 	(void)rt;
 	if (ask_coords(&x, &y, &z))
 		return (MALLOC);
@@ -43,6 +49,9 @@ int	place_light(t_light *light, t_miniRT *rt)
 	double	y;
 	double	z;
 
+	x = 0;
+	y = 0;
+	z = 0;
 	(void)rt;
 	if (ask_coords(&x, &y, &z))
 		return (MALLOC);
@@ -58,6 +67,9 @@ int	move_cylinder(t_cylinder *cylinder, t_miniRT *rt)
 	double	y;
 	double	z;
 
+	x = 0;
+	y = 0;
+	z = 0;
 	(void)rt;
 	if (ask_coords(&x, &y, &z))
 		return (MALLOC);
@@ -73,6 +85,9 @@ int	place_cylinder(t_cylinder *cylinder, t_miniRT *rt)
 	double	y;
 	double	z;
 
+	x = 0;
+	y = 0;
+	z = 0;
 	(void)rt;
 	if (ask_coords(&x, &y, &z))
 		return (MALLOC);
