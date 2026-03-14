@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 19:58:55 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/02/21 17:42:51 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/03/14 18:56:19 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ int	move_cam(t_camera *camera, t_miniRT *rt)
 	(void)rt;
 	if (ask_coords(&x, &y, &z))
 		return (MALLOC);
-	camera->pos.x -= x;
-	camera->pos.y -= y;
-	camera->pos.z -= z;
+	camera->pos.x += x;
+	camera->pos.y += y;
+	camera->pos.z += z;
 	return (SUCCESS);
 }
 
@@ -74,9 +74,9 @@ int	move_plane(t_plane *plane, t_miniRT *rt)
 	(void)rt;
 	if (ask_coords(&x, &y, &z))
 		return (MALLOC);
-	plane->pos.x -= x;
-	plane->pos.y -= y;
-	plane->pos.z -= z;
+	plane->pos.x += x;
+	plane->pos.y += y;
+	plane->pos.z += z;
 	return (SUCCESS);
 }
 

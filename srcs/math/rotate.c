@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 20:21:56 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/03/09 23:47:12 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/03/14 19:27:09 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,19 +46,15 @@ t_vec	rotate_dir(t_vec vec, t_camera *camera, t_vec coefs)
 {
 	double	c;
 	double	s;
-	t_vec	new;
 
-	new.x = dot_prod(camera->right, vec);
-	new.y = dot_prod(camera->dir, vec);
-	new.z = dot_prod(camera->up, vec);
 	c = cos(coefs.x);
 	s = sin(coefs.x);
-	new = apply_x(new, camera, c, s);
+	vec = rotate_axis(vec, camera->right, c, s);
 	c = cos(coefs.y);
 	s = sin(coefs.y);
-	new = apply_y(new, camera, c, s);
+	vec = rotate_axis(vec, camera->dir, c, s);
 	c = cos(coefs.z);
 	s = sin(coefs.z);
-	new = apply_z(new, camera, c, s);
-	return (new);
+	vec = rotate_axis(vec, camera->up, c, s);
+	return (vec);
 }

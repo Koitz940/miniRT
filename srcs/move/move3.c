@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move3.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xwu <xwu@student.42urduliz.com>            +#+  +:+       +#+        */
+/*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/09 20:15:37 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/03/11 20:52:47 by xwu              ###   ########.fr       */
+/*   Updated: 2026/03/14 18:55:40 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ int	move_sphere(t_sphere *sphere, t_miniRT *rt)
 	(void)rt;
 	if (ask_coords(&x, &y, &z))
 		return (MALLOC);
-	sphere->pos.x -= x;
-	sphere->pos.y -= y;
-	sphere->pos.z -= z;
+	sphere->pos.x += x;
+	sphere->pos.y += y;
+	sphere->pos.z += z;
 	return (SUCCESS);
 }
 

@@ -6,41 +6,49 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 20:16:27 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/03/10 11:07:43 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/03/14 19:20:47 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
+static void	apply(t_camera *cam, t_vec coefs)
+{
+	cam->dir = rotate_x(cam->dir, coefs.x);
+	cam->right = rotate_x(cam->right, coefs.x);
+	cam->up = rotate_x(cam->up, coefs.x);
+	cam->dir = rotate_y(cam->dir, coefs.y);
+	cam->right = rotate_y(cam->right, coefs.y);
+	cam->up = rotate_y(cam->up, coefs.y);
+	cam->dir = rotate_z(cam->dir, coefs.z);
+	cam->right = rotate_z(cam->right, coefs.z);
+	cam->up = rotate_z(cam->up, coefs.z);
+}
+
 int	rotate_cam(t_camera *camera, t_miniRT *rt)
 {
-	double	x;
-	t_vec	new_dir;
+	t_vec	coefs;
 
 	(void)rt;
 	ft_putendl_fd("Asking for rotation angle over the x axis\n", 1);
-	if (ask_factor(&x))
+	if (ask_factor(&(coefs.x)))
 		return (MALLOC);
-	new_dir = rotate_x(camera->dir, x);
 	ft_putendl_fd("Asking for rotation angle over the y axis\n", 1);
-	if (ask_factor(&x))
+	if (ask_factor(&(coefs.y)))
 		return (MALLOC);
-	new_dir = rotate_y(new_dir, x);
-	ft_putendl_fd("Asking for rotation angle over the y axis\n", 1);
-	if (ask_factor(&x))
+	ft_putendl_fd("Asking for rotation angle over the z axis\n", 1);
+	if (ask_factor(&(coefs.z)))
 		return (MALLOC);
-	new_dir = rotate_z(new_dir, x);
-	camera->dir = new_dir;
-	normalise(&new_dir);
-	camera->right = get_right(camera->right);
-	camera->up = vec_prod(camera->right, camera->dir);
+	apply(camera, coefs);
+	normalise(&(camera->dir));
+	normalise(&(camera->up));
+	normalise(&(camera->right));
 	return (SUCCESS);
 }
 
 int	rotate_cam_cam(t_camera *camera, t_miniRT *rt)
 {
 	t_vec	coefs;
-	t_vec	new_dir;
 
 	(void)rt;
 	ft_putendl_fd("Asking for rotation angle over the x\
@@ -55,11 +63,10 @@ int	rotate_cam_cam(t_camera *camera, t_miniRT *rt)
 		 axis of the camera\n", 1);
 	if (ask_factor(&(coefs.z)))
 		return (MALLOC);
-	new_dir = rotate_dir(camera->dir, camera, coefs);
-	camera->dir = new_dir;
-	normalise(&new_dir);
-	camera->right = get_right(camera->right);
-	camera->up = vec_prod(camera->right, camera->dir);
+	apply_cam(camera, coefs);
+	normalise(&(camera->dir));
+	normalise(&(camera->up));
+	normalise(&(camera->right));
 	return (SUCCESS);
 }
 
