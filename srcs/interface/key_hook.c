@@ -131,4 +131,3 @@ int	key_hook(int keycode, t_miniRT *rt)
 	}
 	return (0);
 }
-

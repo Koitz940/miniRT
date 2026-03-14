@@ -6,7 +6,7 @@
 /*   By: xwu <xwu@student.42urduliz.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/21 17:06:36 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/03/14 13:48:28 by xwu              ###   ########.fr       */
+/*   Updated: 2026/03/14 16:24:26 by xwu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,11 @@ int	get_col(t_pixel *pixel, double intens)
 	return (0);
 }
 
-/* double	get_lamp2(t_miniRT *rt, t_vec point, t_pixel *px)
+double	get_lamp2(t_miniRT *rt, t_vec point, t_pixel *px)
 {
-	unsigned int	i;
-	double			len;
-	t_vec			dir;
+	size_t	i;
+	double	len;
+	t_vec	dir;
 
 	dir = points_vec(point, rt->light->pos);
 	len = norm(dir);
@@ -50,14 +50,14 @@ int	get_col(t_pixel *pixel, double intens)
 		if (px->t + TOL < len)
 			return (0);
 	}
-	return (1);
+	return (rt->light->bright / (C + len * (L + len * K)));
 }
 
-double	get_lamp(double intens, t_vec point, t_miniRT *rt, t_pixel *px)
+double	get_lamp(t_vec point, t_miniRT *rt, t_pixel *px, t_vec grad)
 {
-	unsigned int	i;
-	t_vec			dir;
-	double			len;
+	size_t	i;
+	t_vec	dir;
+	double	len;
 
 	dir = points_vec(point, rt->light->pos);
 	len = norm(dir);
@@ -67,34 +67,35 @@ double	get_lamp(double intens, t_vec point, t_miniRT *rt, t_pixel *px)
 	{
 		intersect_plane(rt->planes->planes + i, dir, px, point);
 		if (px->t + TOL < len)
-			return (intens);
+			return (0);
 	}
 	i = -1;
 	while (++i < rt->spheres->length)
 	{
 		intersect_sphere(rt->spheres->spheres + i, dir, px, point);
 		if (px->t + TOL < len)
-			return (intens);
+			return (0);
 	}
-	return (min(1, intens + intenseget_lamp2(rt, dir, point, px)));
-} */
+	return (get_lamp2(rt, point, px) * fmax(0, dot_prod(dir, grad)));
+}
 
-int	get_true_col(t_screen *screen, t_miniRT *rt, t_pixel *px, t_vec vec)
+int	get_true_col(t_miniRT *rt, t_pixel *px, t_vec vec)
 {
 	double	intens;
 	t_vec	point;
 	t_pixel	pixel;
+	t_vec	grad;
+	double	lamp;
 
+	if (px->type == NONE)
+		return (0);
 	pixel.t = INFINITY;
 	pixel.type = NONE;
 	pixel.obj = NULL;
 	intens = rt->ambient_light->bright;
 	point = add(rt->camera->pos, times(vec, px->t));
-
-	(void)point;
-	(void)pixel;
-	(void)screen;
-
-	//intens = get_lamp(intens, point, rt, &pixel);
+	grad = get_grad(px, rt->camera, point);
+	lamp = get_lamp(point, rt, &pixel, grad);
+	intens = fmin(1, intens + lamp);
 	return (get_col(px, intens));
 }

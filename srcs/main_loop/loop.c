@@ -6,58 +6,31 @@
 /*   By: xwu <xwu@student.42urduliz.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/21 13:05:43 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/03/14 13:22:44 by xwu              ###   ########.fr       */
+/*   Updated: 2026/03/14 16:24:38 by xwu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-void	allow_light2(double len, t_pixel *pixel, t_vec dir, t_miniRT *rt)
+t_vec	get_grad(t_pixel *px, t_camera *cam, t_vec pos)
 {
-	unsigned int	i;
+	t_vec	grad;
 
-	i = -1;
-	while (++i < rt->spheres->length)
-	{
-		intersect_sphere(rt->spheres->spheres + i, dir, pixel, rt->camera->pos);
-		(rt->spheres->spheres + i)->light = 1;
-		if (pixel->t + TOL < len)
-			(rt->spheres->spheres + i)->light = 0;
-		pixel->t = INFINITY;
-	}
-	i = -1;
-	while (++i < rt->cylinders->length)
-	{
-		intersect_cylinder(rt->cylinders->cylinders + i,
-			dir, pixel, rt->camera->pos);
-		(rt->cylinders->cylinders + i)->light = 1;
-		if (pixel->t + TOL < len)
-			(rt->cylinders->cylinders + i)->light = 0;
-		pixel->t = INFINITY;
-	}
-}
-
-void	allow_light(t_light *light, t_camera *cam, t_miniRT *rt)
-{
-	t_pixel			pixel;
-	t_vec			dir;
-	unsigned int	i;
-	double			len;
-
-	pixel.t = INFINITY;
-	dir = points_vec(light->pos, cam->pos);
-	len = norm(dir);
-	normalise(&dir);
-	i = -1;
-	while (++i < rt->planes->length)
-	{
-		intersect_plane(rt->planes->planes + i, dir, &pixel, rt->camera->pos);
-		(rt->planes->planes + i)->light = 1;
-		if (pixel.t < len)
-			(rt->planes->planes + i)->light = 0;
-		pixel.t = INFINITY;
-	}
-	allow_light2(len, &pixel, dir, rt);
+	if (px->type == PLANE)
+		grad = ((t_plane *)px->obj)->dir;
+	else if (px->type == CYL_CAP)
+		grad = ((t_cylinder *)px->obj)->dir;
+	else if (px->type == SPHERE)
+		grad = points_vec(pos, ((t_sphere *)px->obj)->pos);
+	else if (px->type == CYL_BODY)
+		grad = points_vec(points_vec(((t_cylinder *)px->obj)->pos, pos),
+				times(((t_cylinder *)px->obj)->dir,
+					dot_prod(points_vec(((t_cylinder *)px->obj)->pos, pos),
+						((t_cylinder *)px->obj)->dir)));
+	if (dot_prod(grad, cam->dir) >= 0)
+		grad = times(grad, -1.0);
+	normalise(&grad);
+	return (grad);
 }
 
 t_vec	choose_dir(t_pixel *pixel, t_camera *camera)
@@ -89,7 +62,7 @@ void	choose_color(t_screen *screen, t_pixel *pixel, t_vec dir, t_miniRT *rt)
 	while (++i < rt->cylinders->length)
 		intersect_cylinder
 			(rt->cylinders->cylinders + i, dir, pixel, rt->camera->pos);
-	paint(screen, pixel, get_true_col(screen, rt, pixel, dir));
+	paint(screen, pixel, get_true_col(rt, pixel, dir));
 }
 
 int	loop(t_miniRT *rt)

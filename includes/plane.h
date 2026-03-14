@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 21:52:18 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/03/14 10:59:24 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/03/14 12:52:30 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ typedef struct s_plane
 	int		r;
 	int		g;
 	int		b;
-	char	light;
 }	t_plane;
 
 typedef struct s_plane_vec
