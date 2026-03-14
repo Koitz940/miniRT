@@ -31,6 +31,21 @@
 - [R]	rotate camera (relative to camera)
 */
 
+/* 
+int	rotate_cam_keys(int keycode, t_miniRT *rt)
+{
+	t_vec	coefs;
+	t_vec	new_dir;
+
+	coefs = rt->camera->dir;
+	if (ft_tolower(keycode) == XK_a)
+		
+	else if (ft_tolower(keycode) == XK_d)
+	else if (ft_tolower(keycode) == XK_w)
+	else if (ft_tolower(keycode) == XK_s)
+	//rotar respecto a la base de la cámara y establecer nueva base
+}*/
+
 static int	camera_changes(int keycode, t_miniRT *rt)
 {
 	if (keycode == XK_m)

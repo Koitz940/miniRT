@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
+/*   By: xwu <xwu@student.42urduliz.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 20:16:27 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/03/10 11:07:43 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/03/14 16:46:05 by xwu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	rotate_cam(t_camera *camera, t_miniRT *rt)
 	if (ask_factor(&x))
 		return (MALLOC);
 	new_dir = rotate_y(new_dir, x);
-	ft_putendl_fd("Asking for rotation angle over the y axis\n", 1);
+	ft_putendl_fd("Asking for rotation angle over the z axis\n", 1);
 	if (ask_factor(&x))
 		return (MALLOC);
 	new_dir = rotate_z(new_dir, x);
@@ -77,7 +77,7 @@ int	rotate_plane(t_plane *plane, t_miniRT *rt)
 	if (ask_factor(&x))
 		return (MALLOC);
 	new_dir = rotate_y(new_dir, x);
-	ft_putendl_fd("Asking for rotation angle over the y axis\n", 1);
+	ft_putendl_fd("Asking for rotation angle over the z axis\n", 1);
 	if (ask_factor(&x))
 		return (MALLOC);
 	new_dir = rotate_z(new_dir, x);

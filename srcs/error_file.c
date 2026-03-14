@@ -6,7 +6,7 @@
 /*   By: xwu <xwu@student.42urduliz.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 22:43:26 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/03/13 02:26:44 by xwu              ###   ########.fr       */
+/*   Updated: 2026/03/14 16:27:25 by xwu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	errormsg(int flag)
 	else if (flag == FILE_NAME)
 		ft_putendl_fd("Error: Input file must have .rt format", 2);
 	else if (flag == FILE_NOT_FOUND)
-		ft_putendl_fd("Error: GIven file doesn't exist or could\
+		ft_putendl_fd("Error: Given file doesn't exist or could\
  not be opened", 2);
 	else if (flag == MALLOC)
 		ft_putendl_fd("Error: A memory allocation failed\

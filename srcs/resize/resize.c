@@ -6,7 +6,7 @@
 /*   By: xwu <xwu@student.42urduliz.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 19:16:42 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/03/14 16:18:19 by xwu              ###   ########.fr       */
+/*   Updated: 2026/03/14 16:33:11 by xwu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	resize_sphere(t_sphere *sphere)
 {
 	double	x;
 
-	ft_putendl_fd("Resizing sphere's diametre, asking for scaling factor\n", 1);
+	ft_putendl_fd("Resizing sphere's diameter, asking for scaling factor\n", 1);
 	if (ask_factor(&x))
 		return (MALLOC);
 	sphere->d *= x;
@@ -27,7 +27,7 @@ int	resize_cylinder(t_cylinder *cylinder)
 {
 	double	x;
 
-	ft_putendl_fd("Resizing cylinder's diametre,\
+	ft_putendl_fd("Resizing cylinder's diameter, \
 asking for scaling factor\n", 1);
 	if (ask_factor(&x))
 		return (MALLOC);
