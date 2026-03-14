@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   resize.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
+/*   By: xwu <xwu@student.42urduliz.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 19:16:42 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/02/28 16:51:43 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/03/14 16:18:19 by xwu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	resize_cylinder(t_cylinder *cylinder)
 	double	x;
 
 	ft_putendl_fd("Resizing cylinder's diametre,\
-		 asking for scaling factor\n", 1);
+asking for scaling factor\n", 1);
 	if (ask_factor(&x))
 		return (MALLOC);
 	cylinder->d *= x;

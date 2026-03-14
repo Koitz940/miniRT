@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loop.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
+/*   By: xwu <xwu@student.42urduliz.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/21 13:05:43 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/03/14 11:52:04 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/03/14 13:22:44 by xwu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	allow_light2(double len, t_pixel *pixel, t_vec dir, t_miniRT *rt)
 {
-	int	i;
+	unsigned int	i;
 
 	i = -1;
 	while (++i < rt->spheres->length)
@@ -39,10 +39,10 @@ void	allow_light2(double len, t_pixel *pixel, t_vec dir, t_miniRT *rt)
 
 void	allow_light(t_light *light, t_camera *cam, t_miniRT *rt)
 {
-	t_pixel	pixel;
-	t_vec	dir;
-	int		i;
-	double	len;
+	t_pixel			pixel;
+	t_vec			dir;
+	unsigned int	i;
+	double			len;
 
 	pixel.t = INFINITY;
 	dir = points_vec(light->pos, cam->pos);

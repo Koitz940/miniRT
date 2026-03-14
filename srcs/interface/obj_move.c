@@ -54,15 +54,32 @@ void	move_figure_from(t_obj type, void *object, t_miniRT *rt)
 	rt->mouse_select.type = NONE;
 }
 
-void	resize_figure(t_obj type, void *obj, t_miniRT *rt)
+void	resize_figure(t_obj type, void *object, t_miniRT *rt)
 {
-	(void)type;
-	(void)obj;
-	(void)rt;
+	if (type == SPHERE)
+		resize_sphere(object);
+	else if (type == CYL_BODY || type == CYL_CAP)
+		resize_cylinder(object);
+	else if (type == LIGHT)
+		resize_light(object, 0);
+	else
+		return ;
+	rt->mouse_select.obj = NULL;
+	rt->mouse_select.type = NONE;
 }
-void	rotate_figure(t_obj type, void *obj, t_miniRT *rt)
+
+void	rotate_figure(t_obj type, void *object, t_miniRT *rt, int keycode)
 {
-	(void)type;
-	(void)obj;
-	(void)rt;
+	if (type == PLANE && keycode == XK_r)
+		rotate_plane(object, rt);
+	else if ((type == CYL_BODY || type == CYL_CAP) && keycode == XK_r)
+		rotate_cylinder(object, rt);
+	else if (type == PLANE && keycode == XK_R)
+		rotate_plane_cam(object, rt);
+	else if ((type == CYL_BODY || type == CYL_CAP) && keycode == XK_R)
+		rotate_cylinder_cam(object, rt);
+	else
+		return ;
+	rt->mouse_select.obj = NULL;
+	rt->mouse_select.type = NONE;
 }

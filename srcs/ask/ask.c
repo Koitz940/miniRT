@@ -6,7 +6,7 @@
 /*   By: xwu <xwu@student.42urduliz.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 20:15:39 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/03/13 13:59:28 by xwu              ###   ########.fr       */
+/*   Updated: 2026/03/14 16:18:38 by xwu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ int	ask_factor(double *x)
 	while (1)
 	{
 		str = get_next_line(0);
+		remove_nl(str);
 		if (ft_atod(str, x))
 		{
 			if (!str)
@@ -118,6 +119,7 @@ int	ask_fov(int *x)
 	while (1)
 	{
 		str = get_next_line(0);
+		remove_nl(str);
 		if (ft_ft_atoi(str, x))
 		{
 			if (!str)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   paint.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
+/*   By: xwu <xwu@student.42urduliz.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/21 17:06:36 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/03/14 11:58:54 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/03/14 13:48:28 by xwu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,11 @@ int	get_col(t_pixel *pixel, double intens)
 	return (0);
 }
 
-double	get_lamp2(t_miniRT *rt, t_vec point, t_pixel *px)
+/* double	get_lamp2(t_miniRT *rt, t_vec point, t_pixel *px)
 {
-	int		i;
-	double	len;
-	t_vec	dir;
+	unsigned int	i;
+	double			len;
+	t_vec			dir;
 
 	dir = points_vec(point, rt->light->pos);
 	len = norm(dir);
@@ -50,14 +50,14 @@ double	get_lamp2(t_miniRT *rt, t_vec point, t_pixel *px)
 		if (px->t + TOL < len)
 			return (0);
 	}
-	return ();
+	return (1);
 }
 
 double	get_lamp(double intens, t_vec point, t_miniRT *rt, t_pixel *px)
 {
-	int		i;
-	t_vec	dir;
-	double	len;
+	unsigned int	i;
+	t_vec			dir;
+	double			len;
 
 	dir = points_vec(point, rt->light->pos);
 	len = norm(dir);
@@ -77,7 +77,7 @@ double	get_lamp(double intens, t_vec point, t_miniRT *rt, t_pixel *px)
 			return (intens);
 	}
 	return (min(1, intens + intenseget_lamp2(rt, dir, point, px)));
-}
+} */
 
 int	get_true_col(t_screen *screen, t_miniRT *rt, t_pixel *px, t_vec vec)
 {
@@ -90,6 +90,11 @@ int	get_true_col(t_screen *screen, t_miniRT *rt, t_pixel *px, t_vec vec)
 	pixel.obj = NULL;
 	intens = rt->ambient_light->bright;
 	point = add(rt->camera->pos, times(vec, px->t));
-	intens = get_lamp(intens, point, rt, &pixel);
+
+	(void)point;
+	(void)pixel;
+	(void)screen;
+
+	//intens = get_lamp(intens, point, rt, &pixel);
 	return (get_col(px, intens));
 }

@@ -20,7 +20,7 @@ SRC = main.c free_file.c utils.c error_file.c append.c start.c\
 	resize/resize.c resize/resize2.c resize/resize3.c \
 	math/base_change.c math/cross_product.c math/rotate.c math/rotate_base.c \
 	rotate/rotate.c rotate/rotate2.c \
-	interface/hooks.c interface/key_hook.c interface/mouse.c interface/obj_move.c\
+	interface/hooks.c interface/key_hook.c interface/mouse.c interface/obj_move.c interface/obj_move2.c\
 	main_loop/loop.c main_loop/intersect.c main_loop/paint.c main_loop/paint2.c 
 
 OBJ_DIR = objs
