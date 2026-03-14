@@ -27,7 +27,7 @@
 - [r]	rotate camera
 */
 
-static void	camera_changes(int key_code, t_miniRT *rt)
+static int	camera_changes(int key_code, t_miniRT *rt)
 {
 	if ((key_code == XK_c || key_code == XK_C)
 		&& rt->mouse_select.type == NONE)
@@ -44,6 +44,7 @@ static void	camera_changes(int key_code, t_miniRT *rt)
 		ask_change_fov(&rt->camera->fov);
 	reset_screen(rt);
 	loop(rt);
+	return (1);
 }
 
 static int	object_changes(int key_code, t_miniRT *rt)
@@ -91,7 +92,9 @@ int	key_hook(int keycode, t_miniRT *rt)
 int	key_press(int keycode, t_miniRT *rt)
 {
 	printf("%d: Keyhook detected: %d\n", ++(rt->mouse_select.x), keycode);
-	if (keycode == XK_Left)
+	if (keycode == XK_Escape)
+		free_all(rt);
+	else if (keycode == XK_Left)
 		move_by(&rt->camera->pos, rt->camera->right, -SPEED);
 	else if (keycode == XK_Right)
 		move_by(&rt->camera->pos, rt->camera->right, SPEED);
@@ -99,8 +102,7 @@ int	key_press(int keycode, t_miniRT *rt)
 		move_by(&rt->camera->pos, rt->camera->up, SPEED);
 	else if (keycode == XK_Down)
 		move_by(&rt->camera->pos, rt->camera->up, -SPEED);
-	else if (key_hook(keycode, rt))
-
+	//else if (key_hook(keycode, rt))
 
 	return (0);
 }

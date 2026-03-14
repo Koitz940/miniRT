@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 21:55:09 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/03/14 12:15:50 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/03/14 13:24:33 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,9 @@
 # define TOL 0.0001
 # define SCALE 1.1
 # define FOV 1
+# define K 0.032
+# define L 0.09
+# define C 1.0
 
 enum e_errors
 {
@@ -250,7 +253,8 @@ int		intersect_cylinder(t_cylinder *cylinder, t_vec dir,
 int		loop(t_miniRT *rt);
 int		set_cyl_body(t_pixel *px, t_cylinder *cyl, double t);
 int		set_cyl_cap(t_pixel *px, t_cylinder *cyl, double t);
-int		get_true_col(t_screen *screen, t_miniRT *rt, t_pixel *px, t_vec vec);
+int		get_true_col(t_miniRT *rt, t_pixel *px, t_vec vec);
+t_vec	get_grad(t_pixel *px, t_camera *cam, t_vec pos);
 
 /* MLX HOOKS */
 void	mlx_hooks(t_miniRT *rt);
