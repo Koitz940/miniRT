@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ask2.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xwu <xwu@student.42urduliz.com>            +#+  +:+       +#+        */
+/*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/21 12:32:36 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/03/14 01:51:04 by xwu              ###   ########.fr       */
+/*   Updated: 2026/03/14 19:55:05 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,26 +34,30 @@ void	remove_nl(char *str)
 	if (str[i] == '\n')
 		str[i] = '\0';
 }
+
 int	ask_change_fov(int *x)
 {
 	char	*str;
+	int		a;
 
 	write_ask("Write the FOV change", (double *)x);
 	while (1)
 	{
+		a = 0;
 		str = get_next_line(0);
-		if (ft_ft_atoi(str, x))
+		if (ft_ft_atoi(str, &a))
 		{
 			if (!str)
 				return (MALLOC);
 			free(str);
-			ft_putendl_fd("Incorrect decimal number, try again: ", 1);
+			ft_putendl_fd("Incorrect integer number, try again: ", 1);
 		}
 		else
 		{
-			free(str);
-			break ;
+			if (*x + a < 1 || *x + a > 180)
+				ft_putendl_fd("This change goes out of bounds, try again: ", 1);
+			else
+				return (*x += a, free(str), SUCCESS);
 		}
 	}
-	return (SUCCESS);
 }

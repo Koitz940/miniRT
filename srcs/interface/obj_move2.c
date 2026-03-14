@@ -64,4 +64,3 @@ void	size_down_figure(t_obj type, void *object, t_miniRT *rt)
 	else
 		return ;
 }
-

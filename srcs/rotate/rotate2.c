@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/21 12:54:02 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/02/21 12:59:10 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/03/14 19:32:37 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,27 @@ int	rotate_cylinder_cam(t_cylinder *cylinder, t_miniRT *rt)
 	if (ask_factor(&(coefs.z)))
 		return (MALLOC);
 	new_dir = rotate_dir(cylinder->dir, rt->camera, coefs);
+	normalise(&new_dir);
 	cylinder->dir = new_dir;
 	return (SUCCESS);
+}
+
+void	apply_cam(t_camera *cam, t_vec coefs)
+{
+	t_vec	r;
+	t_vec	f;
+	t_vec	u;
+
+	r = cam->right;
+	f = cam->dir;
+	u = cam->up;
+	f = rotate_axis(f, cam->right, cos(coefs.x), sin(coefs.x));
+	u = rotate_axis(u, cam->right, cos(coefs.x), sin(coefs.x));
+	r = rotate_axis(r, cam->dir, cos(coefs.x), sin(coefs.x));
+	u = rotate_axis(u, cam->dir, cos(coefs.y), sin(coefs.y));
+	r = rotate_axis(r, cam->up, cos(coefs.z), sin(coefs.z));
+	f = rotate_axis(f, cam->up, cos(coefs.z), sin(coefs.z));
+	cam->right = r;
+	cam->dir = f;
+	cam->up = u;
 }

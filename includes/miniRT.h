@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xwu <xwu@student.42urduliz.com>            +#+  +:+       +#+        */
+/*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 21:55:09 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/03/14 16:22:23 by xwu              ###   ########.fr       */
+/*   Updated: 2026/03/14 19:42:15 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,6 +160,7 @@ void	reset_screen(t_miniRT *rt);
 /* TESTING/ERROR */
 void	errormsg(int flag);
 void	start(t_miniRT *rt);
+void	print_vec(t_vec vec);
 
 /* VECTORS */
 int		add_plane(t_planes *planes, t_plane plane);
@@ -226,9 +227,8 @@ t_vec	rotate_x(t_vec vec, double angle);
 t_vec	rotate_y(t_vec vec, double angle);
 t_vec	rotate_z(t_vec vec, double angle);
 t_vec	rotate_dir(t_vec vec, t_camera *camera, t_vec coefs);
-t_vec	apply_x(t_vec vec, t_camera *camera, double c, double s);
-t_vec	apply_y(t_vec vec, t_camera *camera, double c, double s);
-t_vec	apply_z(t_vec vec, t_camera *camera, double c, double s);
+t_vec	rotate_axis(t_vec vec, t_vec axis, double c, double s);
+void	apply_cam(t_camera *cam, t_vec coefs);
 int		rotate_cam_cam(t_camera *camera, t_miniRT *rt);
 int		rotate_cam(t_camera *camera, t_miniRT *rt);
 void	rotate_figure(t_obj type, void *obj, t_miniRT *rt, int keycode);

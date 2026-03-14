@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/08 18:56:07 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/02/21 17:43:01 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/03/14 19:55:46 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ int	move_light(t_light *light, t_miniRT *rt)
 	(void)rt;
 	if (ask_coords(&x, &y, &z))
 		return (MALLOC);
-	light->pos.x -= x;
-	light->pos.y -= y;
-	light->pos.z -= z;
+	light->pos.x += x;
+	light->pos.y += y;
+	light->pos.z += z;
 	return (SUCCESS);
 }
 
@@ -73,9 +73,9 @@ int	move_cylinder(t_cylinder *cylinder, t_miniRT *rt)
 	(void)rt;
 	if (ask_coords(&x, &y, &z))
 		return (MALLOC);
-	cylinder->pos.x -= x;
-	cylinder->pos.y -= y;
-	cylinder->pos.z -= z;
+	cylinder->pos.x += x;
+	cylinder->pos.y += y;
+	cylinder->pos.z += z;
 	return (SUCCESS);
 }
 

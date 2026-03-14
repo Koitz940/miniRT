@@ -107,7 +107,8 @@ int	misc_keys(int keycode, t_miniRT *rt)
 		rt->mouse_select.type = LIGHT;
 		current_obj_msg(LIGHT);
 	}
-	else if ((keycode == XK_1 || keycode == XK_2) && rt->mouse_select.x != keycode - '0')
+	else if ((keycode == XK_1 || keycode == XK_2)
+		&& rt->mouse_select.x != keycode - '0')
 	{
 		rt->mouse_select.x = keycode - '0';
 		rt->mouse_select.y = 1;
@@ -137,7 +138,8 @@ int	key_hook(int keycode, t_miniRT *rt)
 	rt->mouse_select.t = 0.0;
 	if (misc_keys(keycode, rt))
 		return (0);
-	if (camera_move(keycode, rt) || object_changes(keycode, rt) || camera_changes(keycode, rt))
+	if (camera_move(keycode, rt)
+		|| object_changes(keycode, rt) || camera_changes(keycode, rt))
 		rt->mouse_select.t = 1.0;
 	if (keycode && rt->mouse_select.t)
 	{
