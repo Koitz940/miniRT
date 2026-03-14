@@ -18,6 +18,9 @@ int	move_sphere(t_sphere *sphere, t_miniRT *rt)
 	double	y;
 	double	z;
 
+	x = 0;
+	y = 0;
+	z = 0;
 	(void)rt;
 	if (ask_coords(&x, &y, &z))
 		return (MALLOC);
@@ -33,6 +36,9 @@ int	place_sphere(t_sphere *sphere, t_miniRT *rt)
 	double	y;
 	double	z;
 
+	x = 0;
+	y = 0;
+	z = 0;
 	(void)rt;
 	if (ask_coords(&x, &y, &z))
 		return (MALLOC);
@@ -46,6 +52,9 @@ int	move_light_from(t_light *light, t_miniRT *rt)
 {
 	t_vec	coefs;
 
+	coefs.x = 0;
+	coefs.y = 0;
+	coefs.z = 0;
 	if (ask_coords(&(coefs.x), &(coefs.y), &(coefs.z)))
 		return (MALLOC);
 	translate_base(&(light->pos), rt->camera, coefs);
@@ -56,6 +65,9 @@ int	move_cylinder_from(t_cylinder *cylinder, t_miniRT *rt)
 {
 	t_vec	coefs;
 
+	coefs.x = 0;
+	coefs.y = 0;
+	coefs.z = 0;
 	if (ask_coords(&(coefs.x), &(coefs.y), &(coefs.z)))
 		return (MALLOC);
 	translate_base(&(cylinder->pos), rt->camera, coefs);
@@ -66,6 +78,9 @@ int	move_sphere_from(t_sphere *sphere, t_miniRT *rt)
 {
 	t_vec	coefs;
 
+	coefs.x = 0;
+	coefs.y = 0;
+	coefs.z = 0;
 	if (ask_coords(&(coefs.x), &(coefs.y), &(coefs.z)))
 		return (MALLOC);
 	translate_base(&(sphere->pos), rt->camera, coefs);

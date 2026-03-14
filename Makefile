@@ -30,21 +30,26 @@ OBJECTS	= $(addprefix $(OBJ_DIR)/, $(OBJS))
 
 OBJS_BONUS = $(SRC_BONUS:.c=.o)
 
-MLXFLAGS = -Lmlx -lmlx -lX11 -lXext -lm -lbsd -lft -Llibft
+ifeq ($(shell uname), Darwin)
+	MLX_DIR = mlx_mac
+	MLXFLAGS = -L$(MLX_DIR) -Llibft -lmlx -lft -framework OpenGL -framework AppKit
+else
+	MLXFLAGS = -Lmlx -lmlx -lX11 -lXext -lm -lbsd -lft -Llibft
+endif
 
-MLX = mlx/libmlx.a
+MLX = $(MLX_DIR)/libmlx.a
 LIBFT = libft/libft.a
 
 objs/%.o: srcs/%.c
 	@mkdir -p objs objs/ask objs/hooks objs/init objs/interface objs/main_loop objs/math objs/move objs/parse objs/resize objs/rotate
-	$(CC) $(CFLAGS) -c $< -o $@ $(MLXFLAGS) $(INCLUDES)
+	$(CC) $(CFLAGS) -c $< $(INCLUDES) -o $@
 
 $(NAME): $(MLX) $(LIBFT) $(OBJECTS)
 	@echo $(OBJECTS)
-	$(CC) $(CFLAGS) $(OBJECTS) $(MLXFLAGS) $(INCLUDES) -o $@ 
+	$(CC) $(CFLAGS) $(OBJECTS) $(MLXFLAGS) -o $@ 
 
 $(MLX):
-	$(MAKE) -C mlx
+	$(MAKE) -C $(MLX_DIR)
 	$(MAKE) -C libft
 
 all: $(NAME) 
@@ -58,9 +63,9 @@ clean:
 	$(RM) $(OBJECTS) $(OBJS_BONUS)
 
 fclean: clean
-	rm -r objs
+	rm -rf objs
 	$(RM) $(NAME) $(NAME_BONUS)
-	$(MAKE) clean -C mlx
+	$(MAKE) clean -C $(MLX_DIR)
 	$(MAKE) fclean -C libft
 
 re: fclean all

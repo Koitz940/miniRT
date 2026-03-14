@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 21:55:09 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/03/14 11:51:05 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/03/14 12:15:50 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,12 @@
 # include "sphere.h"
 # include "libft.h"
 # include "mlx.h"
-# include <X11/keysym.h>
+# ifndef __APPLE__
+#  include <X11/keysym.h>
+# else
+#  include "keycodes.h"
+#  include <OpenGL/gl.h>
+# endif
 # include <sys/time.h>
 # include <unistd.h>
 # include <stdlib.h>
@@ -65,9 +70,9 @@ enum e_mlx_key_events
 enum e_mlx_mouse_events
 {
 	ZERO,
-	RIGHT_CLICK,
-	CENTER_CLICK,
 	LEFT_CLICK,
+	CENTER_CLICK,
+	RIGHT_CLICK,
 	SCROLL_UP,
 	SCROLL_DOWN,
 	SCROLL_LEFT,
@@ -139,6 +144,7 @@ int		parse_cylinder(t_miniRT *rt, char **split);
 int		sanitize_line(char *line);
 
 /* UTILS */
+void	remove_nl(char *str);
 int		ft_strcmp(const char *s1, const char *s2);
 int		ft_atod(char *str, double *x);
 int		ft_ft_atoi(char *str, int *n);
@@ -247,7 +253,7 @@ int		set_cyl_cap(t_pixel *px, t_cylinder *cyl, double t);
 int		get_true_col(t_screen *screen, t_miniRT *rt, t_pixel *px, t_vec vec);
 
 /* MLX HOOKS */
-int		mlx_hooks(t_miniRT *rt);
+void	mlx_hooks(t_miniRT *rt);
 int		key_hook(int keycode, t_miniRT *rt);
 int		mouse_hook(int key, int x, int y, t_miniRT *rt);
 int		key_press(int key_code, t_miniRT *rt);

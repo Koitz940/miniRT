@@ -6,7 +6,7 @@
 /*   By: xwu <xwu@student.42urduliz.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/21 12:32:36 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/03/11 19:53:39 by xwu              ###   ########.fr       */
+/*   Updated: 2026/03/14 01:51:04 by xwu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,20 @@ void	write_ask(char *msg, double *x)
 	ft_putendl_fd("]: ", 1);
 }
 
+void	remove_nl(char *str)
+{
+	int	i;
+
+	i = ft_strlen(str) - 1;
+	while (str + i != str)
+	{
+		if (str[i] == '\n')
+			str[i] = '\0';
+		i--;
+	}
+	if (str[i] == '\n')
+		str[i] = '\0';
+}
 int	ask_change_fov(int *x)
 {
 	char	*str;

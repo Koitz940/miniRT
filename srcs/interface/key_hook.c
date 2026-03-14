@@ -20,6 +20,7 @@
 - [p] && [obj selected]	move obj (absolute)
 - [c] && [obj selected]	move obj (relative to camera)
 - [r] && [obj selected]	rotate obj
+- [s] && [obj selected]	rotate obj
 - [m]	move obj (relative)
 - [p]	move camera (absolute)
 - [c]	move camera (relative to camera)
@@ -41,32 +42,14 @@ static void	camera_changes(int key_code, t_miniRT *rt)
 		ask_fov(&rt->camera->fov);
 	else if (key_code == XK_F)
 		ask_change_fov(&rt->camera->fov);
-}
-
-int	key_press(int key_code, t_miniRT *rt)
-{
-	if (key_code == XK_Left)
-		move_by(&rt->camera->pos, rt->camera->right, -SPEED);
-	else if (key_code == XK_Right)
-		move_by(&rt->camera->pos, rt->camera->right, SPEED);
-	else if (key_code == XK_Up)
-		move_by(&rt->camera->pos, rt->camera->up, SPEED);
-	else if (key_code == XK_Down)
-		move_by(&rt->camera->pos, rt->camera->up, -SPEED);
-	return (0);
-}
-
-int	key_release(int key_code, t_miniRT *rt)
-{
-	(void)key_code;
+	reset_screen(rt);
 	loop(rt);
-	return (0);
 }
 
-static void	object_changes(int key_code, t_miniRT *rt)
+static int	object_changes(int key_code, t_miniRT *rt)
 {
 	if (rt->mouse_select.type == NONE)
-		return ;
+		return (1);
 	if (key_code == XK_m || key_code == XK_M)
 		move_figure(rt->mouse_select.type, rt->mouse_select.obj, rt);
 	else if (key_code == XK_p || key_code == XK_P)
@@ -77,26 +60,55 @@ static void	object_changes(int key_code, t_miniRT *rt)
 		resize_figure(rt->mouse_select.type, rt->mouse_select.obj, rt);
 	else if (key_code == XK_r || key_code == XK_R)
 		rotate_figure(rt->mouse_select.type, rt->mouse_select.obj, rt);
+	else
+		return (1);
+	reset_screen(rt);
+	loop(rt);
+	return (0);
 }
 
-int	key_hook(int key_code, t_miniRT *rt)
+int	key_hook(int keycode, t_miniRT *rt)
 {
-	if (key_code == XK_Escape)
+	if (keycode == XK_Escape)
 		free_all(rt);
-	else if (key_code == XK_BackSpace)
+	else if (keycode == XK_BackSpace)
 	{
 		rt->mouse_select.obj = NULL;
 		rt->mouse_select.type = NONE;
 		return (0);
 	}
-	else if (key_code == XK_l || key_code == XK_L)
+	else if (keycode == XK_l || keycode == XK_L)
 	{
 		rt->mouse_select.obj = rt->light;
 		rt->mouse_select.type = LIGHT;
 		current_obj_msg(LIGHT);
 	}
-	object_changes(key_code, rt);
-	camera_changes(key_code, rt);
+	else if (object_changes(keycode, rt) && camera_changes(keycode, rt))
+		rt->mouse_select.y = 1;
+	return (0);
+}
+
+int	key_press(int keycode, t_miniRT *rt)
+{
+	printf("%d: Keyhook detected: %d\n", ++(rt->mouse_select.x), keycode);
+	if (keycode == XK_Left)
+		move_by(&rt->camera->pos, rt->camera->right, -SPEED);
+	else if (keycode == XK_Right)
+		move_by(&rt->camera->pos, rt->camera->right, SPEED);
+	else if (keycode == XK_Up)
+		move_by(&rt->camera->pos, rt->camera->up, SPEED);
+	else if (keycode == XK_Down)
+		move_by(&rt->camera->pos, rt->camera->up, -SPEED);
+	else if (key_hook(keycode, rt))
+
+
+	return (0);
+}
+
+int	key_release(int key_code, t_miniRT *rt)
+{
+	(void)key_code;
+	reset_screen(rt);
 	loop(rt);
 	return (0);
 }

@@ -24,7 +24,6 @@ void	move_figure(t_obj type, void *object, t_miniRT *rt)
 		move_light(object, rt);
 	rt->mouse_select.obj = NULL;
 	rt->mouse_select.type = NONE;
-	reset_screen(rt);
 }
 
 void	place_figure(t_obj type, void *object, t_miniRT *rt)
@@ -39,7 +38,6 @@ void	place_figure(t_obj type, void *object, t_miniRT *rt)
 		place_light(object, rt);
 	rt->mouse_select.obj = NULL;
 	rt->mouse_select.type = NONE;
-	reset_screen(rt);
 }
 
 void	move_figure_from(t_obj type, void *object, t_miniRT *rt)
@@ -54,7 +52,6 @@ void	move_figure_from(t_obj type, void *object, t_miniRT *rt)
 		move_light_from(object, rt);
 	rt->mouse_select.obj = NULL;
 	rt->mouse_select.type = NONE;
-	reset_screen(rt);
 }
 
 void	resize_figure(t_obj type, void *obj, t_miniRT *rt)
