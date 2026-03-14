@@ -18,7 +18,7 @@ SRC = main.c free_file.c utils.c error_file.c append.c start.c\
 	ask/ask.c ask/ask2.c \
 	move/move1.c move/move2.c move/move3.c \
 	resize/resize.c resize/resize2.c resize/resize3.c \
-	math/base_change.c math/cross_product.c math/rotate.c math/rotate_base.c math/misc.c\
+	math/base_change.c math/cross_product.c math/rotate.c math/rotate_base.c \
 	rotate/rotate.c rotate/rotate2.c \
 	interface/hooks.c interface/key_hook.c interface/mouse.c interface/obj_move.c\
 	main_loop/loop.c main_loop/intersect.c main_loop/paint.c main_loop/paint2.c 

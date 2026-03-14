@@ -6,7 +6,7 @@
 /*   By: xwu <xwu@student.42urduliz.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 21:55:09 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/03/13 11:38:35 by xwu              ###   ########.fr       */
+/*   Updated: 2026/03/14 01:52:17 by xwu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 #  include <X11/keysym.h>
 # else
 #  include "keycodes.h"
+#  include <OpenGL/gl.h>
 # endif
 # include <sys/time.h>
 # include <unistd.h>
@@ -143,6 +144,7 @@ int		parse_cylinder(t_miniRT *rt, char **split);
 int		sanitize_line(char *line);
 
 /* UTILS */
+void	remove_nl(char *str);
 int		ft_strcmp(const char *s1, const char *s2);
 int		ft_atod(char *str, double *x);
 int		ft_ft_atoi(char *str, int *n);

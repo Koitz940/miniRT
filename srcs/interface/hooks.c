@@ -6,7 +6,7 @@
 /*   By: xwu <xwu@student.42urduliz.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/08 17:24:33 by xwu               #+#    #+#             */
-/*   Updated: 2026/03/13 12:25:07 by xwu              ###   ########.fr       */
+/*   Updated: 2026/03/14 02:28:15 by xwu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,7 @@ void	reset_screen(t_miniRT *rt)
 void	mlx_hooks(t_miniRT *rt)
 {
 	mlx_hook(rt->screen->window, ON_DESTROY, 0, free_all, rt);
-	//mlx_key_hook(rt->screen->window, key_hook, rt);
-	mlx_mouse_hook(rt->screen->window, mouse_hook, rt);
 	mlx_hook(rt->screen->window, ON_KEYDOWN, 1L << 0, key_press, rt);
-	//mlx_hook(rt->screen->window, ON_KEYUP, 1L << 1, key_release, rt);
+	mlx_hook(rt->screen->window, ON_KEYUP, 1L << 1, key_release, rt);
 	mlx_loop(rt->screen->mlx);
 }

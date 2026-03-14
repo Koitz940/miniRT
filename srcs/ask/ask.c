@@ -6,7 +6,7 @@
 /*   By: xwu <xwu@student.42urduliz.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 20:15:39 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/03/11 21:34:13 by xwu              ###   ########.fr       */
+/*   Updated: 2026/03/13 13:59:28 by xwu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ static int	ask_coords3(double *z, char *str)
 	while (1)
 	{
 		str = get_next_line(0);
+		remove_nl(str);
 		if (ft_atod(str, z))
 		{
 			if (!str)
@@ -41,6 +42,7 @@ static int	ask_coords2(double *y, double *z, char *str)
 	while (1)
 	{
 		str = get_next_line(0);
+		remove_nl(str);
 		if (ft_atod(str, y))
 		{
 			if (!str)
@@ -66,6 +68,7 @@ int	ask_coords(double *x, double *y, double *z)
 	while (1)
 	{
 		str = get_next_line(0);
+		remove_nl(str);
 		if (ft_atod(str, x))
 		{
 			if (!str)
