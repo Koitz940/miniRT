@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/18 19:05:02 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/03/09 22:16:27 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/03/14 14:16:45 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,9 @@ t_vec	get_right(t_vec a)
 	t_vec	worldup;
 
 	worldup.x = 0;
-	worldup.y = 0;
+	worldup.y = 1;
 	worldup.z = 0;
-	if (a.y == 1)
+	if (fabs(fabs(dot_prod(worldup, a)) - 1.0) < TOL)
 		worldup.z = 1;
-	else
-		worldup.y = 1;
 	return (vec_prod(worldup, a));
 }
