@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 21:47:27 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/03/09 23:39:32 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/03/14 10:59:17 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef struct s_cylinder
 	int		r;
 	int		g;
 	int		b;
+	char	light;
 }	t_cylinder;
 
 typedef struct s_cylinder_vec

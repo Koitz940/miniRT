@@ -6,7 +6,7 @@
 /*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 21:55:09 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/03/12 22:35:43 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/03/14 11:51:05 by gcassi-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -230,20 +230,21 @@ int		rotate_cylinder_cam(t_cylinder *cylinder, t_miniRT *rt);
 t_vec	choose_dir(t_pixel *pixel, t_camera *camera);
 void	choose_color(t_screen *screen, t_pixel *pixel, t_vec dir, t_miniRT *rt);
 int		loop(t_miniRT *rt);
-void	paint(t_miniRT *rt, t_pixel *point, int p);
-int		get_col(t_pixel *pixel);
-int		get_cyl_col(t_cylinder *cylinder);
-int		get_sphere_col(t_sphere *sphere);
-int		get_plane_col(t_plane *plane);
+void	paint(t_screen *screen, t_pixel *point, int p);
+int		get_col(t_pixel *pixel, double intens);
+int		get_cyl_col(t_cylinder *cylinder, double intens);
+int		get_sphere_col(t_sphere *sphere, double intens);
+int		get_plane_col(t_plane *plane, double intens);
 int		intersect_plane(t_plane *plane, t_vec dir,
-			t_pixel *pixel, t_camera *camera);
+			t_pixel *pixel, t_vec pos);
 int		intersect_sphere(t_sphere *sphere, t_vec dir,
-			t_pixel *pixel, t_camera *camera);
+			t_pixel *pixel, t_vec pos);
 int		intersect_cylinder(t_cylinder *cylinder, t_vec dir,
-			t_pixel *pixel, t_camera *camera);
+			t_pixel *pixel, t_vec pos);
 int		loop(t_miniRT *rt);
 int		set_cyl_body(t_pixel *px, t_cylinder *cyl, double t);
 int		set_cyl_cap(t_pixel *px, t_cylinder *cyl, double t);
+int		get_true_col(t_screen *screen, t_miniRT *rt, t_pixel *px, t_vec vec);
 
 /* MLX HOOKS */
 int		mlx_hooks(t_miniRT *rt);
