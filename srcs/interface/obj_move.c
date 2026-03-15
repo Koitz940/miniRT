@@ -6,7 +6,7 @@
 /*   By: xwu <xwu@student.42urduliz.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/11 20:42:14 by xwu               #+#    #+#             */
-/*   Updated: 2026/03/11 20:42:14 by xwu              ###   ########.fr       */
+/*   Updated: 2026/03/15 12:19:13 by xwu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	resize_figure(t_obj type, void *object, t_miniRT *rt)
 
 void	rotate_figure(t_obj type, void *object, t_miniRT *rt, int keycode)
 {
-	if (keycode == XK_r)
+	if (keycode == XK_r && type != SPHERE)
 	{
 		ft_putendl_fd("Rotating object", 1);
 		if (type == PLANE)
@@ -78,7 +78,7 @@ void	rotate_figure(t_obj type, void *object, t_miniRT *rt, int keycode)
 		else if (type == CYL_BODY || type == CYL_CAP)
 			rotate_cylinder(object, rt);
 	}
-	else if (keycode == XK_R)
+	else if (keycode == XK_R && type != SPHERE)
 	{
 		ft_putendl_fd("Rotating object in relation to camera", 1);
 		if (type == PLANE)

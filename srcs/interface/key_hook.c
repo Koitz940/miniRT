@@ -6,7 +6,7 @@
 /*   By: xwu <xwu@student.42urduliz.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/11 19:31:53 by xwu               #+#    #+#             */
-/*   Updated: 2026/03/11 19:31:53 by xwu              ###   ########.fr       */
+/*   Updated: 2026/03/15 12:09:05 by xwu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,21 +31,6 @@
 - [R]	rotate camera (relative to camera)
 */
 
-/* 
-int	rotate_cam_keys(int keycode, t_miniRT *rt)
-{
-	t_vec	coefs;
-	t_vec	new_dir;
-
-	coefs = rt->camera->dir;
-	if (ft_tolower(keycode) == XK_a)
-		
-	else if (ft_tolower(keycode) == XK_d)
-	else if (ft_tolower(keycode) == XK_w)
-	else if (ft_tolower(keycode) == XK_s)
-	//rotar respecto a la base de la cámara y establecer nueva base
-}*/
-
 static int	camera_changes(int keycode, t_miniRT *rt)
 {
 	if (keycode == XK_m)
@@ -55,19 +40,17 @@ static int	camera_changes(int keycode, t_miniRT *rt)
 	else if (ft_tolower(keycode) == XK_p)
 		place_cam(rt->camera, rt);
 	else if (keycode == XK_f)
-		ask_fov(&rt->camera->fov);
+		replace_fov(rt->camera);
 	else if (keycode == XK_F)
-		ask_change_fov(&rt->camera->fov);
+		add_fov(rt->camera);
 	else if (keycode == XK_r)
-	{
-		ft_putendl_fd("Rotating camera", 1);
 		rotate_cam(rt->camera, rt);
-	}
 	else if (keycode == XK_R)
-	{
-		ft_putendl_fd("Rotating camera in relation to camera", 1);
 		rotate_cam_cam(rt->camera, rt);
-	}
+	else if (keycode == XK_plus)
+		plus_fov(rt->camera);
+	else if (keycode == XK_minus)
+		minus_fov(rt->camera);
 	else
 		return (0);
 	return (1);

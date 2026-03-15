@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
+/*   By: xwu <xwu@student.42urduliz.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 21:55:09 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/03/14 19:42:15 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/03/15 13:15:56 by xwu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,11 @@
 # define PI 3.14159265358979323846
 # define PI2 1.57079632679489661923
 # define PI4 0.78539816339744830962
-# define ROTANG 0.00872664625997164788
+# define ROTANG 0.1
+# define DEGREE_IN_RADIANS 0.017453294
 # define TOL 0.0001
 # define SCALE 1.1
-# define FOV 1
+# define FOV 3
 # define K 0.032
 # define L 0.09
 # define C 1.0
@@ -160,7 +161,6 @@ void	reset_screen(t_miniRT *rt);
 /* TESTING/ERROR */
 void	errormsg(int flag);
 void	start(t_miniRT *rt);
-void	print_vec(t_vec vec);
 
 /* VECTORS */
 int		add_plane(t_planes *planes, t_plane plane);
@@ -221,6 +221,10 @@ int		resize_light_plus(void *light, int ambience);
 int		resize_light_minus(void *light, int ambience);
 void	size_up_figure(t_obj type, void *object, t_miniRT *rt);
 void	size_down_figure(t_obj type, void *object, t_miniRT *rt);
+int		add_fov(t_camera *cam);
+int		replace_fov(t_camera *cam);
+int		plus_fov(t_camera *cam);
+int		minus_fov(t_camera *cam);
 
 /* ROTATE */
 t_vec	rotate_x(t_vec vec, double angle);

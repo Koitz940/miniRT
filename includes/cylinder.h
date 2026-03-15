@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cylinder.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
+/*   By: xwu <xwu@student.42urduliz.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 21:47:27 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/03/14 12:52:36 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/03/15 13:15:46 by xwu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ typedef struct s_why
 	t_vec	dir;
 	t_vec	w;
 }	t_why;
-
 
 void	free_cylinders(t_cylinders *cylinders);
 

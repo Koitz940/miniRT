@@ -6,7 +6,7 @@
 /*   By: xwu <xwu@student.42urduliz.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 20:16:27 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/03/15 00:20:42 by xwu              ###   ########.fr       */
+/*   Updated: 2026/03/15 12:07:44 by xwu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int	rotate_cam(t_camera *camera, t_miniRT *rt)
 	t_vec	coefs;
 
 	(void)rt;
+	ft_putendl_fd("Rotating camera", 1);
 	ft_putendl_fd("Asking for rotation angle over the x axis", 1);
 	if (ask_factor(&(coefs.x)))
 		return (MALLOC);
@@ -51,6 +52,7 @@ int	rotate_cam_cam(t_camera *camera, t_miniRT *rt)
 	t_vec	coefs;
 
 	(void)rt;
+	ft_putendl_fd("Rotating camera in relation to camera", 1);
 	ft_putendl_fd("Asking for rotation angle over the x\
 		 axis of the camera\n", 1);
 	if (ask_factor(&(coefs.x)))

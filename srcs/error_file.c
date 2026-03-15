@@ -6,7 +6,7 @@
 /*   By: xwu <xwu@student.42urduliz.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 22:43:26 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/03/14 16:27:25 by xwu              ###   ########.fr       */
+/*   Updated: 2026/03/15 12:31:44 by xwu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ or ctrl d was pressed", 2);
 	else if (flag == NO_MANDATORY)
 		ft_putendl_fd("Error: Camera, light or ambient\
  light was not defined", 2);
-	else if (flag == NO_MANDATORY)
-		ft_putendl_fd("Error: Missing mandatory elements or empty file", 2);
+	else if (flag == EMPTY)
+		ft_putendl_fd("Error: Empty file", 2);
 	else if (flag == NO_DIR)
 		ft_putendl_fd("Error: Direction 0,0,0 given", 2);
 }

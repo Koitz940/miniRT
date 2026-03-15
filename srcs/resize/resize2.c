@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   resize2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
+/*   By: xwu <xwu@student.42urduliz.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/21 12:18:14 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/02/28 16:52:50 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/03/15 12:08:44 by xwu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,9 @@ int	resize_sphere_plus(t_sphere *sphere)
 {
 	double	check;
 
-	check = sphere->r * SCALE;
+	check = sphere->d * SCALE;
 	if (check != INFINITY)
-		sphere->r = check;
+		sphere->d = check;
 	return (SUCCESS);
 }
 
@@ -69,8 +69,8 @@ int	resize_sphere_minus(t_sphere *sphere)
 {
 	double	check;
 
-	check = sphere->r / SCALE;
+	check = sphere->d / SCALE;
 	if (check != 0.0)
-		sphere->r = check;
+		sphere->d = check;
 	return (SUCCESS);
 }

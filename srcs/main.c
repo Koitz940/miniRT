@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
+/*   By: xwu <xwu@student.42urduliz.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/18 18:07:12 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/03/13 00:35:30 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/03/15 12:28:53 by xwu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int	validate_file(int ac, char **av)
 
 	if (ac != 2)
 		return (IN_AM);
-	if (ft_strlen(av[1]) < 4)
+	if (ft_strlen(av[1]) < 3)
 		return (FILE_NAME);
 	i = 0;
 	while (av[1][i] && av[1][i] != '.')
@@ -61,6 +61,11 @@ int	main(int ac, char **av)
 	int			flag;
 
 	flag = validate_file(ac, av);
+	if (flag)
+	{
+		errormsg(flag);
+		return (1);
+	}
 	rt = ft_calloc(sizeof(t_miniRT), 1);
 	if (!rt)
 		return (errormsg(MALLOC), 1);

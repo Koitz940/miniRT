@@ -6,7 +6,7 @@
 /*   By: xwu <xwu@student.42urduliz.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/21 12:54:02 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/03/15 01:39:43 by xwu              ###   ########.fr       */
+/*   Updated: 2026/03/15 11:49:02 by xwu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,9 @@ void	apply_cam(t_camera *cam, t_vec coefs)
 	u = rotate_axis(u, cam->dir, cos(coefs.y), sin(coefs.y));
 	r = rotate_axis(r, cam->up, cos(coefs.z), sin(coefs.z));
 	f = rotate_axis(f, cam->up, cos(coefs.z), sin(coefs.z));
+	normalise(&f);
+	normalise(&r);
+	normalise(&u);
 	cam->right = r;
 	cam->dir = f;
 	cam->up = u;

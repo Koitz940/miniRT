@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ask2.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
+/*   By: xwu <xwu@student.42urduliz.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/21 12:32:36 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/03/14 19:55:05 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/03/15 12:15:27 by xwu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,17 @@
 
 void	write_ask(char *msg, double *x)
 {
+	(void)x;
 	ft_putstr_fd(msg, 1);
-	ft_putstr_fd(" [Current value: ", 1);
-	ft_putstr_fd(ft_itoa(*x), 1);
-	ft_putendl_fd("]: ", 1);
+	ft_putendl_fd(": ", 1);
 }
 
 void	remove_nl(char *str)
 {
 	int	i;
 
+	if (!str || !(*str))
+		return ;
 	i = ft_strlen(str) - 1;
 	while (str + i != str)
 	{
