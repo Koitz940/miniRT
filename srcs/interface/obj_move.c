@@ -70,14 +70,22 @@ void	resize_figure(t_obj type, void *object, t_miniRT *rt)
 
 void	rotate_figure(t_obj type, void *object, t_miniRT *rt, int keycode)
 {
-	if (type == PLANE && keycode == XK_r)
-		rotate_plane(object, rt);
-	else if ((type == CYL_BODY || type == CYL_CAP) && keycode == XK_r)
-		rotate_cylinder(object, rt);
-	else if (type == PLANE && keycode == XK_R)
-		rotate_plane_cam(object, rt);
-	else if ((type == CYL_BODY || type == CYL_CAP) && keycode == XK_R)
-		rotate_cylinder_cam(object, rt);
+	if (keycode == XK_r)
+	{
+		ft_putendl_fd("Rotating object", 1);
+		if (type == PLANE)
+			rotate_plane(object, rt);
+		else if (type == CYL_BODY || type == CYL_CAP)
+			rotate_cylinder(object, rt);
+	}
+	else if (keycode == XK_R)
+	{
+		ft_putendl_fd("Rotating object in relation to camera", 1);
+		if (type == PLANE)
+			rotate_plane_cam(object, rt);
+		else if ((type == CYL_BODY || type == CYL_CAP))
+			rotate_cylinder_cam(object, rt);
+	}
 	else
 		return ;
 	rt->mouse_select.obj = NULL;

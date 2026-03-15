@@ -6,7 +6,7 @@
 /*   By: xwu <xwu@student.42urduliz.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/08 17:24:33 by xwu               #+#    #+#             */
-/*   Updated: 2026/03/14 16:00:31 by xwu              ###   ########.fr       */
+/*   Updated: 2026/03/15 01:41:40 by xwu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,10 @@ void	current_obj_msg(t_obj type)
 		ft_putendl_fd("LIGHT", 1);
 	else if (type == CYL_BODY || type == CYL_CAP)
 		ft_putendl_fd("CYLINDER", 1);
-	ft_putendl_fd("[m] Move figure by (x,y,z)\n[p] Place figure to (x,y,z)\n\
-[c] Place figure in relation to the camera\nRight click to deselect", 1);
+	ft_putendl_fd("[m] Move figure by (x,y,z)\n[M] Move figure in relation to \
+the camera \n[p or P] Place figure to (x,y,z)\n[r] Rotate object\n[R] Rotate \
+object in relation to the camera\n[+] Augment object size \n[-] Diminish object \
+size\nRight click to deselect", 1);
 }
 
 void	reset_screen(t_miniRT *rt)

@@ -59,9 +59,15 @@ static int	camera_changes(int keycode, t_miniRT *rt)
 	else if (keycode == XK_F)
 		ask_change_fov(&rt->camera->fov);
 	else if (keycode == XK_r)
+	{
+		ft_putendl_fd("Rotating camera", 1);
 		rotate_cam(rt->camera, rt);
+	}
 	else if (keycode == XK_R)
+	{
+		ft_putendl_fd("Rotating camera in relation to camera", 1);
 		rotate_cam_cam(rt->camera, rt);
+	}
 	else
 		return (0);
 	return (1);

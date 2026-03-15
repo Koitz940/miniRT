@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
+/*   By: xwu <xwu@student.42urduliz.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/21 12:54:02 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/03/14 19:32:37 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/03/15 01:39:43 by xwu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	rotate_cylinder(t_cylinder *cylinder, t_miniRT *rt)
 	if (ask_factor(&x))
 		return (MALLOC);
 	new_dir = rotate_y(new_dir, x);
-	ft_putendl_fd("Asking for rotation angle over the y axis\n", 1);
+	ft_putendl_fd("Asking for rotation angle over the z axis\n", 1);
 	if (ask_factor(&x))
 		return (MALLOC);
 	new_dir = rotate_z(new_dir, x);
