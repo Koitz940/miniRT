@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcassi-d <gcassi-d@42urduliz.com>          +#+  +:+       +#+        */
+/*   By: xwu <xwu@student.42urduliz.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 17:55:22 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/03/14 14:12:31 by gcassi-d         ###   ########.fr       */
+/*   Updated: 2026/03/15 14:15:21 by xwu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ int	parse(t_miniRT *rt, char *line)
 {
 	char	**split;
 
+	if (!line)
+		return (MALLOC);
 	while (*line == ' ')
 		line++;
 	if (!line[0])

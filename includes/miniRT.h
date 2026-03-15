@@ -6,7 +6,7 @@
 /*   By: xwu <xwu@student.42urduliz.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 21:55:09 by gcassi-d          #+#    #+#             */
-/*   Updated: 2026/03/15 13:15:56 by xwu              ###   ########.fr       */
+/*   Updated: 2026/03/15 14:04:02 by xwu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@
 # include <stdlib.h>
 # include <stdio.h>
 
-# define WIDTH 800
-# define HEIGHT 600
+# define WIDTH 600
+# define HEIGHT 400
 # define CAPACITY 256
 # define PI 3.14159265358979323846
 # define PI2 1.57079632679489661923
