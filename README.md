@@ -1,6 +1,7 @@
 *This project has been created as part of the 42 curriculum by gcassi-d, xwu.*
 
 # miniRT
+![BALLS](<Screenshot from 2026-03-15 13-55-40.png>)
 
 ## Description
 
